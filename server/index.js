@@ -2,6 +2,7 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
 //=============== INITIALIZE EXPRESS APP & SETUP FOR DATA PARSING===============//
 const app = express();
@@ -24,6 +25,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // // const users = require('./models/Users');
 // mongoose.Promise = Promise;
 // mongoose.connect(configDB.url)
+const db = require("./models");
 
 //=============== PASSPORT CONFIGURATION ===============//
 // require('./config/passport')(passport) //pass passport for configuration
@@ -43,7 +45,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // app.use(flash());
 
 //=============== SERVE STATIC ASSETS ===============//
-app.use(express.static(path.resolve(__dirname, '..', 'build')));
+app.use(express.static(path.resolve(__dirname, "..", "build")));
 
 //=============== ROUTES SETUP ===============//
 // require('./app/routes.js')(app, passport) //load our routes and pass in our app and fully configured passport
@@ -51,8 +53,8 @@ app.use(express.static(path.resolve(__dirname, '..', 'build')));
 // require('./app/testRoutes.js')(app)
 
 //=============== API ROUTES ===============//
-app.get('*', (req, res) => {
-	res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "..", "build", "index.html"));
 });
 
 //=============== STARTING THE SERVER ===============//
