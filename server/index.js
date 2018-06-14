@@ -16,7 +16,8 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 //=============== AUTHENTICATION PACKAGES ===============//
 // const session = require('express-session');
 // const cookieParser = require('cookie-parser');
-// const passport = require('passport');
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 // const flash = require('connect-flash');
 
 //=============== DATABASE PACKAGES & CONFIG ===============//
@@ -29,6 +30,20 @@ const db = require("./models");
 
 //=============== PASSPORT CONFIGURATION ===============//
 // require('./config/passport')(passport) //pass passport for configuration
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "/auth/google/callback"
+    },
+    (accessToken, refreshToken, profile, done) => {
+      console.log("access token: ", accessToken);
+      console.log("refresh token: ", refreshToken);
+      console.log("profile: ", profile);
+    }
+  )
+);
 
 //=============== AUTHENTICATION SETUP ===============//
 // app.use(cookieParser());
@@ -51,6 +66,14 @@ app.use(express.static(path.resolve(__dirname, "..", "build")));
 // require('./app/routes.js')(app, passport) //load our routes and pass in our app and fully configured passport
 // require('./app/githubRoutes.js')(app)
 // require('./app/testRoutes.js')(app)
+app.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"]
+  })
+);
+
+app.get("/auth/google/callback", passport.authenticate("google"));
 
 //=============== API ROUTES ===============//
 app.get("*", (req, res) => {

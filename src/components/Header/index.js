@@ -22,6 +22,7 @@ render() {
                 <li><Link to={"/partners"}>Partners</Link></li>
                 <li><Link to={ "/events" }>Events</Link></li>
                 <li><Link to={ "/donate" }>Donate</Link></li>
+                <li><a>LOGIN</a></li>
               </ul>
             </div>
           </nav>
