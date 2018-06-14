@@ -20,9 +20,9 @@ class App extends Component {
     return (
       <div className="Site">
         <div className="Site-content">
-          <Header />
           <BrowserRouter>
             <div>
+              <Header />
               <Route exact path="/" component={Main} />
               <Route path="/pets" component={Pets} />
               <Route path="/fosters" component={Fosters} />
