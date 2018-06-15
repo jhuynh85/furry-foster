@@ -1,3 +1,7 @@
-.page-footer {
+.copyright {
 	font-size: 0.75rem;
+}
+
+.page-footer .row {
+	margin-bottom: 0;
 }
