@@ -2,6 +2,12 @@
 	font-size: 0.75rem;
 }
 
-.page-footer .row {
+.page-footer {
 	margin-bottom: 0;
+	background-color: rgb(75, 61, 52);
+	color: white;
+}
+
+.page-footer a {
+	color: white;
 }
