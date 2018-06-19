@@ -29,7 +29,6 @@ class App extends Component {
         <div className="Site">
           <div className="Site-content">
             <Header />
-            <br />
             <Route exact path="/" component={Main} />
             <Route path="/pets" component={Pets} />
             <Route path="/fosters" component={Fosters} />

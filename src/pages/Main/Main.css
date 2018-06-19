@@ -1,0 +1,32 @@
+.main-background-image {
+	background-image: url("../../assets/images/ff_website2018_carousel.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	height: 420px;
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .main-background-image {
+		height: 350px;
+	}
+}
+
+@media screen and (max-width: 820px) {
+  .main-background-image {
+		height: 250px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+  .main-background-image {
+		height: 150px;
+	}
+
+	.main-image-button {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+}
