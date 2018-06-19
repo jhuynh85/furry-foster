@@ -7,12 +7,15 @@
     "bulma": "^0.7.1",
     "express": "^4.16.3",
     "font-awesome": "^4.7.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0",
     "mysql2": "^1.5.3",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth20": "^1.0.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
+    "prettier": "^1.13.5",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-router-dom": "^4.3.1",
@@ -20,6 +23,7 @@
     "sequelize": "^4.37.10"
   },
   "scripts": {
+    "precommit": "lint-staged",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -30,6 +34,12 @@
       "build/*",
       "public/*",
       "src/*"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --print-width 100 --use-tabs --jsx-bracket-same-line --write",
+      "git add"
     ]
   }
 }
