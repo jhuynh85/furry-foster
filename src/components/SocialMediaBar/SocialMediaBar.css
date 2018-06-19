@@ -1,10 +1,14 @@
 .social-media-bar {
 	margin-bottom: 0;
 	padding-left: 5%;
-	padding-right: 5%;
+	padding-right: 10%;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	background-color: #E6E6E6;
+}
+
+.social-media-bar a {
+	color: #4a4a4a;
 }
 
 @media screen and (max-width: 768px) {

@@ -1,0 +1,14 @@
+.ff-logo {
+	height: 95px;
+}
+
+@media screen and (max-width: 768px) {
+  .header-search-input-bar {
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+
+	.ff-logo {
+		height: 80px;
+	}
+}
