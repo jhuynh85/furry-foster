@@ -44,6 +44,7 @@ class App extends Component {
             <Route path="/blog" component={Blog} />
             <Route path="/faq" component={FAQ} />
             <Route path="/contact" component={Contact} />
+            <br/>
           </div>
           <Footer />
         </div>

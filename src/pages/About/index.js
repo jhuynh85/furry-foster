@@ -4,7 +4,7 @@ import "./About.css";
 class About extends React.Component {
   render() {
     return (
-      <div className="container is-widescreen">
+      <div className="container is-fluid">
         <h1 className="title is-1">About Us</h1>
         <div className="content">
           <h4 className="subtitle is-4">Who We Are</h4>

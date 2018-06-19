@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ffLogo from "../../assets/images/ff_logo.png";
 import "./Header.css";
 
@@ -13,7 +14,9 @@ class Header extends React.Component {
         <SocialMediaBar />
         <div className="columns">
           <div className="column has-text-centered">
-            <img src={ffLogo} className="ff-logo" alt="Furry Foster logo" />
+            <Link to={"/"}>
+              <img src={ffLogo} className="ff-logo" alt="Furry Foster logo" />
+            </Link>
           </div>
           <div className="column align-mid header-search-input-bar">
             <Search />

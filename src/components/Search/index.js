@@ -15,11 +15,13 @@ class Search extends React.Component {
     console.log("Searching for " + this.state.type + " near " + this.state.location);
   };
 
+  // Handle changes in location input field
   handleLocationChange = e => {
     this.setState({ location: e.target.value });
     console.log("location: " + e.target.value);
   };
 
+  // Handle changes in dropdown select
   handleSelectChange = e => {
     this.setState({ type: e.target.value });
     console.log(e.target.value + " selected");
@@ -47,7 +49,7 @@ class Search extends React.Component {
             />
           </p>
           <p className="control">
-            <button type="submit" className="button is-warning">
+            <button type="submit" className="button is-warning search-submit-button">
               <span className="icon">
                 <i className="fa fa-search" />
               </span>

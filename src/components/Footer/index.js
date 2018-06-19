@@ -9,6 +9,7 @@ const currentYear = currentDate.getFullYear();
 
 const Footer = () => (
   <footer className="page-footer has-text-centered title-case">
+    <br/>
     <div className="columns is-centered is-mobile">
       <div className="column is-one-quarter">
         <ul>

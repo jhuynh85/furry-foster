@@ -11,6 +11,10 @@
 	color: #4a4a4a;
 }
 
+.social-media-bar a:hover {
+	color: #4a4a4ab0;
+}
+
 @media screen and (max-width: 768px) {
   .social-media-bar {
 		text-align: center;
