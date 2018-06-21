@@ -16,7 +16,6 @@ class Main extends React.Component {
 	}
 
 	render() {
-		console.log("Created by Joseph Huynh 2018");
 		return (
 			<div>
 				<div className="main-background-image has-text-centered">

@@ -24,6 +24,7 @@ import Contact from "./pages/Contact";
 
 class App extends Component {
 	render() {
+		console.log("Created by Joseph Huynh 2018");
 		return (
 			<BrowserRouter>
 				<div className="Site">
