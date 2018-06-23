@@ -21,6 +21,7 @@ import HappyTails from "./pages/HappyTails";
 import Blog from "./pages/Blog";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
+import Login from "./pages/Login";
 
 class App extends Component {
 	render() {
@@ -45,6 +46,7 @@ class App extends Component {
 							<Route path="/blog" component={Blog} />
 							<Route path="/faq" component={FAQ} />
 							<Route path="/contact" component={Contact} />
+							<Route path="/login" component={Login} />
 						</Switch>
 						<br />
 					</div>
