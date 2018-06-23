@@ -4,7 +4,8 @@ import "./RescueAppForm.css";
 class RescueAppForm extends React.Component {
 	render() {
 		return (
-			<div>
+			<div className="container is-fluid">
+				<br />
 				<div className="title-case">Rescues sign up here</div>
 				<form>
 					<div className="field">
@@ -76,8 +77,7 @@ class RescueAppForm extends React.Component {
 					<div className="field">
 						<label className="checkbox">
 							<input type="checkbox" />
-							YES! My organization covers 100% foster care costs for food and vet
-							care.
+							YES! My organization covers 100% foster care costs for food and vet care.
 						</label>
 					</div>
 					<div className="field">

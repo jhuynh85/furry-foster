@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+import { clickPage } from "../../actions";
+import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -6,14 +9,13 @@ class Navbar extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			activeButton: "",
 			burgerActive: false
 		};
 	}
 
 	// Handler for adding the 'is-active' effect when a navbar button is clicked
 	handleButtonClick = e => {
-		this.setState({ activeButton: e.target.getAttribute("data-name") });
+		this.props.clickPage(e.target.getAttribute("data-name"));
 	};
 
 	// Handler for clicking on burger menu
@@ -43,7 +45,7 @@ class Navbar extends React.Component {
 							data-name="pets"
 							onClick={this.handleButtonClick}
 							className={
-								this.state.activeButton === "pets" ? "navbar-item is-active" : "navbar-item"
+								this.props.activePage === "pets" ? "navbar-item is-active" : "navbar-item"
 							}>
 							Pets
 						</Link>
@@ -54,7 +56,7 @@ class Navbar extends React.Component {
 								data-name="fosters"
 								onClick={this.handleButtonClick}
 								className={
-									this.state.activeButton === "fosters" ? "navbar-link is-active" : "navbar-link"
+									this.props.activePage === "fosters" ? "navbar-link is-active" : "navbar-link"
 								}>
 								Fosters
 							</Link>
@@ -80,7 +82,7 @@ class Navbar extends React.Component {
 								data-name="rescues"
 								onClick={this.handleButtonClick}
 								className={
-									this.state.activeButton === "rescues" ? "navbar-link is-active" : "navbar-link"
+									this.props.activePage === "rescues" ? "navbar-link is-active" : "navbar-link"
 								}>
 								Rescues
 							</Link>
@@ -106,7 +108,7 @@ class Navbar extends React.Component {
 								data-name="programs"
 								onClick={this.handleButtonClick}
 								className={
-									this.state.activeButton === "programs" ? "navbar-link is-active" : "navbar-link"
+									this.props.activePage === "programs" ? "navbar-link is-active" : "navbar-link"
 								}>
 								Programs
 							</Link>
@@ -132,7 +134,7 @@ class Navbar extends React.Component {
 								data-name="partners"
 								onClick={this.handleButtonClick}
 								className={
-									this.state.activeButton === "partners" ? "navbar-link is-active" : "navbar-link"
+									this.props.activePage === "partners" ? "navbar-link is-active" : "navbar-link"
 								}>
 								Partners
 							</Link>
@@ -154,7 +156,7 @@ class Navbar extends React.Component {
 							data-name="events"
 							onClick={this.handleButtonClick}
 							className={
-								this.state.activeButton === "events" ? "navbar-item is-active" : "navbar-item"
+								this.props.activePage === "events" ? "navbar-item is-active" : "navbar-item"
 							}>
 							Events
 						</Link>
@@ -165,7 +167,7 @@ class Navbar extends React.Component {
 								data-name="donate"
 								onClick={this.handleButtonClick}
 								className={
-									this.state.activeButton === "donate" ? "navbar-link is-active" : "navbar-link"
+									this.props.activePage === "donate" ? "navbar-link is-active" : "navbar-link"
 								}>
 								Donate
 							</Link>
@@ -185,4 +187,26 @@ class Navbar extends React.Component {
 	}
 }
 
-export default Navbar;
+//----------REDUX configuration----------//
+// Map the redux store's state to Navbar's props
+function mapStateToProps(state) {
+	return {
+		activePage: state.activePage
+	};
+}
+
+// Anything returned from this function will end up as props
+// on the Navbar container
+function mapDispatchToProps(dispatch) {
+	// Whenver clickPage is called, the result should be passed
+	// to all of our reducers
+	return bindActionCreators({ clickPage: clickPage }, dispatch);
+}
+
+// Promote Navbar from a component to a container
+// It needs to know about this new dispatch method, clickPage
+// Make it available as a prop
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Navbar);
