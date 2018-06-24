@@ -13,9 +13,11 @@ class Navbar extends React.Component {
 		};
 	}
 
-	// Handler for adding the 'is-active' effect when a navbar button is clicked
+	// Handler for adding the 'is-active' effect and to close burger
+	// menu when a navbar button is clicked
 	handleButtonClick = e => {
 		this.props.clickPage(e.target.getAttribute("data-name"));
+		this.setState({ burgerActive: false });
 	};
 
 	// Handler for clicking on burger menu
@@ -23,9 +25,25 @@ class Navbar extends React.Component {
 		this.setState({ burgerActive: !this.state.burgerActive });
 	};
 
+	// Handler for closing burger menu when user clicks anywhere
+	// outside while it is active
+	handleOutsideClick = e => {
+		if (!this.navMenu.contains(e.target)) {
+			this.setState({ burgerActive: false });
+		}
+	};
+
+	componentDidMount() {
+		document.addEventListener("mousedown", this.handleOutsideClick);
+	}
+
+	componentWillUnmount() {
+		document.removeEventListener("mousedown", this.handleOutsideClick);
+	}
+
 	render() {
 		return (
-			<nav className="navbar is-warning">
+			<nav ref={navMenu => (this.navMenu = navMenu)} className="navbar is-warning">
 				<div className="navbar-brand">
 					<div
 						className={
@@ -61,16 +79,32 @@ class Navbar extends React.Component {
 								Fosters
 							</Link>
 							<div className="navbar-dropdown is-boxed">
-								<Link to="/fosters/learn_about_fostering" className="navbar-item">
+								<Link
+									to="/fosters/learn_about_fostering"
+									className="navbar-item"
+									data-name="fosters"
+									onClick={this.handleButtonClick}>
 									Learn about fostering
 								</Link>
-								<Link to="/fosters/fostermob" className="navbar-item">
+								<Link
+									to="/fosters/fostermob"
+									className="navbar-item"
+									data-name="fosters"
+									onClick={this.handleButtonClick}>
 									Foster Mob
 								</Link>
-								<Link to="/fosters/apply" className="navbar-item">
+								<Link
+									to="/fosters/apply"
+									className="navbar-item"
+									data-name="fosters"
+									onClick={this.handleButtonClick}>
 									Apply to foster
 								</Link>
-								<Link to="/fosters/happytails" className="navbar-item">
+								<Link
+									to="/fosters/happytails"
+									className="navbar-item"
+									data-name="fosters"
+									onClick={this.handleButtonClick}>
 									Happy Tails
 								</Link>
 							</div>
@@ -87,16 +121,32 @@ class Navbar extends React.Component {
 								Rescues
 							</Link>
 							<div className="navbar-dropdown is-boxed">
-								<Link to="/rescues/learn" className="navbar-item">
+								<Link
+									to="/rescues/learn"
+									className="navbar-item"
+									data-name="rescues"
+									onClick={this.handleButtonClick}>
 									Learn about partnership
 								</Link>
-								<Link to="/rescues/resources" className="navbar-item">
+								<Link
+									to="/rescues/resources"
+									className="navbar-item"
+									data-name="rescues"
+									onClick={this.handleButtonClick}>
 									Get Resources
 								</Link>
-								<Link to="/rescues/apply" className="navbar-item">
+								<Link
+									to="/rescues/apply"
+									className="navbar-item"
+									data-name="rescues"
+									onClick={this.handleButtonClick}>
 									Apply to Partner
 								</Link>
-								<Link to="/rescues/happytails" className="navbar-item">
+								<Link
+									to="/rescues/happytails"
+									className="navbar-item"
+									data-name="rescues"
+									onClick={this.handleButtonClick}>
 									Happy Tails
 								</Link>
 							</div>
@@ -113,16 +163,32 @@ class Navbar extends React.Component {
 								Programs
 							</Link>
 							<div className="navbar-dropdown is-boxed">
-								<Link to="/resources" className="navbar-item">
+								<Link
+									to="/resources"
+									className="navbar-item"
+									data-name="programs"
+									onClick={this.handleButtonClick}>
 									Resources
 								</Link>
-								<Link to="/furever" className="navbar-item">
+								<Link
+									to="/furever"
+									className="navbar-item"
+									data-name="programs"
+									onClick={this.handleButtonClick}>
 									Foster 2 Furever
 								</Link>
-								<Link to="/rescues/apply" className="navbar-item">
+								<Link
+									to="/rescues/apply"
+									className="navbar-item"
+									data-name="programs"
+									onClick={this.handleButtonClick}>
 									Apply to Partner
 								</Link>
-								<Link to="/fostermob" className="navbar-item">
+								<Link
+									to="/fostermob"
+									className="navbar-item"
+									data-name="programs"
+									onClick={this.handleButtonClick}>
 									Foster Mob
 								</Link>
 							</div>
@@ -139,13 +205,25 @@ class Navbar extends React.Component {
 								Partners
 							</Link>
 							<div className="navbar-dropdown is-boxed">
-								<Link to="/partners/rescues" className="navbar-item">
+								<Link
+									to="/partners/rescues"
+									className="navbar-item"
+									data-name="partners"
+									onClick={this.handleButtonClick}>
 									Rescue partners
 								</Link>
-								<Link to="/partners/community" className="navbar-item">
+								<Link
+									to="/partners/community"
+									className="navbar-item"
+									data-name="partners"
+									onClick={this.handleButtonClick}>
 									Community partners
 								</Link>
-								<Link to="/partners/apply" className="navbar-item">
+								<Link
+									to="/partners/apply"
+									className="navbar-item"
+									data-name="partners"
+									onClick={this.handleButtonClick}>
 									Become a partner
 								</Link>
 							</div>
@@ -172,10 +250,11 @@ class Navbar extends React.Component {
 								Donate
 							</Link>
 							<div className="navbar-dropdown is-boxed">
-								<Link to="/donate" className="navbar-item">
-									Donate
-								</Link>
-								<Link to="/donate/wishlist" className="navbar-item">
+								<Link
+									to="/donate/wishlist"
+									className="navbar-item"
+									data-name="donate"
+									onClick={this.handleButtonClick}>
 									Fulfill A Wish
 								</Link>
 							</div>
