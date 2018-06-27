@@ -1,13 +1,15 @@
-//=============== DEPENDENCIES ===============//
+// =============== DEPENDENCIES ===============//
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
+const morgan = require("morgan");
 require("dotenv").config();
 
 //=============== INITIALIZE EXPRESS APP & SETUP FOR DATA PARSING===============//
 const app = express();
 const port = process.env.PORT || 5000;
 
+// app.use(morgan("combined"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
@@ -28,7 +30,7 @@ const db = require("./models");
 
 //=============== PASSPORT CONFIGURATION ===============//
 // require('./config/passport')(passport) //pass passport for configuration
-require("../services/passport");
+require("./services/passport");
 
 //=============== AUTHENTICATION SETUP ===============//
 // app.use(cookieParser());
@@ -48,8 +50,9 @@ require("../services/passport");
 app.use(express.static(path.resolve(__dirname, "..", "build")));
 
 //=============== ROUTES SETUP ===============//
+require("./routes/testRoutes")(app);
 require("./routes/authRoutes")(app);
-// require('./app/routes.js')(app, passport) //load our routes and pass in our app and fully configured passport
+// require('./app/testRoutes.js')(app, passport) //load our routes and pass in our app and fully configured passport
 // require('./app/githubRoutes.js')(app)
 // require('./app/testRoutes.js')(app)
 

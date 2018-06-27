@@ -277,7 +277,7 @@ function mapStateToProps(state) {
 // Anything returned from this function will end up as props
 // on the Navbar container
 function mapDispatchToProps(dispatch) {
-	// Whenver clickPage is called, the result should be passed
+	// Whenever clickPage is called, the result should be passed
 	// to all of our reducers
 	return bindActionCreators({ clickPage: clickPage }, dispatch);
 }

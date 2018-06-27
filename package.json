@@ -1,48 +1,60 @@
 {
-  "name": "furry-foster",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "bulma": "^0.7.1",
-    "express": "^4.16.3",
-    "font-awesome": "^4.7.0",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.2.0",
-    "mysql2": "^1.5.3",
-    "passport": "^0.4.0",
-    "passport-facebook": "^2.1.1",
-    "passport-google-oauth20": "^1.0.0",
-    "passport-local": "^1.0.0",
-    "path": "^0.12.7",
-    "prettier": "^1.13.5",
-    "prop-types": "^15.6.2",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
-    "redux": "^4.0.0",
-    "sequelize": "^4.37.10"
-  },
-  "scripts": {
-    "precommit": "lint-staged",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "build/*",
-      "public/*",
-      "src/*"
-    ]
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --print-width 100 --use-tabs --jsx-bracket-same-line --write",
-      "git add"
-    ]
-  }
+	"name": "furry-foster",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"bulma": "^0.7.1",
+		"express": "^4.16.3",
+		"font-awesome": "^4.7.0",
+		"husky": "^0.14.3",
+		"lint-staged": "^7.2.0",
+		"morgan": "^1.9.0",
+		"mysql2": "^1.5.3",
+		"passport": "^0.4.0",
+		"passport-facebook": "^2.1.1",
+		"passport-google-oauth20": "^1.0.0",
+		"passport-local": "^1.0.0",
+		"path": "^0.12.7",
+		"prettier": "^1.13.5",
+		"prop-types": "^15.6.2",
+		"react": "^16.3.2",
+		"react-dom": "^16.3.2",
+		"react-redux": "^5.0.7",
+		"react-router-dom": "^4.3.1",
+		"react-scripts": "1.1.4",
+		"redux": "^4.0.0",
+		"sequelize": "^4.37.10"
+	},
+	"scripts": {
+		"precommit": "lint-staged",
+		"start": "react-scripts start",
+		"start:server": "node server",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	},
+	"nodemonConfig": {
+		"ignore": [
+			"build/*",
+			"public/*",
+			"src/*"
+		]
+	},
+	"lint-staged": {
+		"src/**/*.{js,jsx,json,css}": [
+			"prettier --print-width 100 --use-tabs --jsx-bracket-same-line --write",
+			"git add"
+		]
+	},
+	"devDependencies": {
+		"babel-eslint": "^7.2.3",
+		"eslint": "^4.1.1",
+		"eslint-config-react-app": "^2.1.0",
+		"eslint-plugin-flowtype": "^2.34.1",
+		"eslint-plugin-import": "^2.6.0",
+		"eslint-plugin-jsx-a11y": "^5.1.1",
+		"eslint-plugin-react": "^7.1.0"
+	},
+	"proxy": "http://localhost:5000"
 }
