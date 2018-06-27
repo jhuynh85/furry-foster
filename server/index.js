@@ -21,12 +21,10 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // const flash = require('connect-flash');
 
 //=============== DATABASE PACKAGES & CONFIG ===============//
-// const mongoose = require('mongoose');
-// const configDB = require('./config/database.js');
-// // const users = require('./models/Users');
+const mongoose = require("mongoose");
+const user = require("./models/User");
 // mongoose.Promise = Promise;
-// mongoose.connect(configDB.url)
-const db = require("./models");
+mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/furry-foster-test");
 
 //=============== PASSPORT CONFIGURATION ===============//
 // require('./config/passport')(passport) //pass passport for configuration
@@ -52,6 +50,7 @@ app.use(express.static(path.resolve(__dirname, "..", "build")));
 //=============== ROUTES SETUP ===============//
 require("./routes/testRoutes")(app);
 require("./routes/authRoutes")(app);
+require("./routes/router")(app);
 // require('./app/testRoutes.js')(app, passport) //load our routes and pass in our app and fully configured passport
 // require('./app/githubRoutes.js')(app)
 // require('./app/testRoutes.js')(app)
