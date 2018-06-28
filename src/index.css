@@ -1,30 +1,39 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif !important;
+	margin: 0;
+	padding: 0;
+	font-family: "Montserrat", sans-serif !important;
 }
 
 .title-case {
-  font-family: "Roboto Slab", serif;
+	font-family: "Roboto Slab", serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+.text-color {
+	color: #4a4a4a;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-family: "Roboto Slab", serif !important;
 }
 
 .align-bottom {
-  margin-top: auto;
+	margin-top: auto;
 }
 
 .align-mid {
-  margin-top: auto;
-  margin-bottom: auto;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
 /* Fix for .is-fluid not having 32px margins below 1087px width */
 @media screen and (max-width: 1087px) {
-  .container.is-fluid {
-    margin-left: 32px !important;
-    margin-right: 32px !important;
+	.container.is-fluid {
+		margin-left: 32px !important;
+		margin-right: 32px !important;
 	}
 }

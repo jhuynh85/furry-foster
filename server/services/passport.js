@@ -3,8 +3,30 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
+const LocalStrategy = require("passport-local");
 
-// Create JWT Strategy
+// Local Strategy for authenticating email/password login
+passport.use(
+	new LocalStrategy({ usernameField: "email" }, function(email, password, doneCallback) {
+		// Verify email and password
+		User.findOne({ email: email }, function(err, user) {
+			if (err) return doneCallback(err);
+			// Email not found
+			if (!user) return doneCallback(null, false);
+
+			// Compare passwords
+			user.comparePassword(password, function(err, isMatch) {
+				if (err) return doneCallback(err);
+				// Password incorrect
+				if (!isMatch) return doneCallback(null, false);
+				// Email and password matches
+				return doneCallback(null, user);
+			});
+		});
+	})
+);
+
+// JWT Strategy for authenticating JWT tokens
 passport.use(
 	new JwtStrategy(
 		{
@@ -28,7 +50,7 @@ passport.use(
 	)
 );
 
-// Create Google strategy
+// Google Strategy for authenticating Google login
 passport.use(
 	new GoogleStrategy(
 		{

@@ -6,6 +6,8 @@ import "./Header.css";
 import SocialMediaBar from "../SocialMediaBar";
 import Search from "../Search";
 import Navbar from "../../containers/Navbar";
+import SignIn from "../SignIn";
+import SignUp from "../SignUp";
 
 class Header extends React.Component {
 	render() {
@@ -22,7 +24,7 @@ class Header extends React.Component {
 						<Search />
 					</div>
 					<div className="column is-one-quarter has-text-centered align-mid">
-						LOGIN &nbsp;<strong>|</strong>&nbsp; JOIN
+						<SignIn /> &nbsp;<strong>|</strong>&nbsp; <SignUp />
 					</div>
 				</div>
 				<Navbar />

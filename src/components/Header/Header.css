@@ -3,7 +3,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .header-search-input-bar {
+	.header-search-input-bar {
 		margin-left: 15px;
 		margin-right: 15px;
 	}
