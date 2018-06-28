@@ -34,19 +34,25 @@ class SignIn extends Component {
 					<form>
 						<div className="field">
 							<label className="label">Email Address</label>
-							<div className="control">
+							<div className="control has-icons-left">
 								<input
 									className="input"
 									type="email"
 									name="orgEmail"
 									placeholder="fosters@example.com"
 								/>
+								<span className="icon is-small is-left">
+									<i className="fa fa-envelope" />
+								</span>
 							</div>
 						</div>
 						<div className="field">
 							<label className="label">Password</label>
-							<div className="control">
-								<input className="input" type="text" placeholder="" />
+							<div className="control has-icons-left">
+								<input className="input" type="password" placeholder="" />
+								<span className="icon is-small is-left">
+									<i className="fa fa-lock" />
+								</span>
 							</div>
 						</div>
 						<input className="button is-warning is-medium" type="submit" value="Submit" />

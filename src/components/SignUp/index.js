@@ -38,13 +38,13 @@ class SignUp extends Component {
 						<div className="field">
 							<label className="label">Password</label>
 							<div className="control">
-								<input className="input" type="text" placeholder="" />
+								<input className="input" type="password" placeholder="" />
 							</div>
 						</div>
 						<div className="field">
 							<label className="label">Confirm Password</label>
 							<div className="control">
-								<input className="input" type="text" placeholder="" />
+								<input className="input" type="password" placeholder="" />
 							</div>
 						</div>
 						<input className="button is-warning is-medium" type="submit" value="Submit" />
