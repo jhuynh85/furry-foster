@@ -17,7 +17,14 @@ class SignIn extends Component {
 		};
 	}
 
+	resetForm = () => {
+		const { reset } = this.props;
+		// console.log("Resetting sign in form");
+		reset();
+	};
+
 	toggleModal = () => {
+		if (this.state.modalState) this.resetForm(); // Reset form when modal is closed
 		this.setState({ modalState: !this.state.modalState });
 	};
 

@@ -12,13 +12,13 @@ passport.use(
 		User.findOne({ email: email }, function(err, user) {
 			if (err) return doneCallback(err);
 			// Email not found
-			if (!user) return doneCallback(null, false);
+			if (!user) return doneCallback(null, false, { error: "Email does not exist" });
 
 			// Compare passwords
 			user.comparePassword(password, function(err, isMatch) {
 				if (err) return doneCallback(err);
 				// Password incorrect
-				if (!isMatch) return doneCallback(null, false);
+				if (!isMatch) return doneCallback(null, false, { error: "Incorrect password" });
 				// Email and password matches
 				return doneCallback(null, user);
 			});

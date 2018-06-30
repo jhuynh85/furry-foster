@@ -6,7 +6,7 @@ class RescueAppForm extends React.Component {
 		return (
 			<div className="container is-fluid">
 				<br />
-				<div className="title-case">Rescues sign up here</div>
+				<h4 className="title title-case is-4">Rescue sign-up</h4>
 				<form>
 					<div className="field">
 						<label className="label">Organization Name*</label>
@@ -47,43 +47,43 @@ class RescueAppForm extends React.Component {
 					<div className="field">
 						<label className="label">Organization Website*</label>
 						<div className="control">
-							<input className="input" type="url" placeholder="Text input" />
+							<input className="input" type="url" />
 						</div>
 					</div>
 					<div className="field">
 						<label className="label">501(c)3 EIN*</label>
 						<div className="control">
-							<input className="input" type="text" placeholder="Text input" />
+							<input className="input" type="text" />
 						</div>
 					</div>
 					<div className="field">
 						<label className="label">Account Email</label>
 						<div className="control">
-							<input className="input" type="email" placeholder="Text input" />
+							<input className="input" type="email" />
 						</div>
 					</div>
 					<div className="field">
 						<label className="label">Account Password</label>
 						<div className="control">
-							<input className="input" type="text" placeholder="Text input" />
+							<input className="input" type="text" />
 						</div>
 					</div>
 					<div className="field">
 						<label className="label">Confirm Password</label>
 						<div className="control">
-							<input className="input" type="text" placeholder="Text input" />
+							<input className="input" type="text" />
 						</div>
 					</div>
 					<div className="field">
 						<label className="checkbox">
-							<input type="checkbox" />
-							YES! My organization covers 100% foster care costs for food and vet care.
+							<input type="checkbox" />&nbsp; YES! My organization covers 100% foster care costs for
+							food and vet care.
 						</label>
 					</div>
 					<div className="field">
 						<label className="checkbox">
 							<input type="checkbox" />
-							YES! I have read and agree to all <a>terms and conditions</a>.
+							&nbsp; YES! I have read and agree to all <a>terms and conditions</a>.
 						</label>
 					</div>
 					<input className="button is-warning is-medium" type="submit" value="Submit" />

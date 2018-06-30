@@ -65,7 +65,7 @@ class Navbar extends React.Component {
 							className={
 								this.props.activePage === "pets" ? "navbar-item is-active" : "navbar-item"
 							}>
-							Pets
+							<strong>Pets</strong>
 						</Link>
 
 						<div className="navbar-item has-dropdown is-hoverable">
@@ -76,7 +76,7 @@ class Navbar extends React.Component {
 								className={
 									this.props.activePage === "fosters" ? "navbar-link is-active" : "navbar-link"
 								}>
-								Fosters
+								<strong>Fosters</strong>
 							</Link>
 							<div className="navbar-dropdown is-boxed">
 								<Link
@@ -118,7 +118,7 @@ class Navbar extends React.Component {
 								className={
 									this.props.activePage === "rescues" ? "navbar-link is-active" : "navbar-link"
 								}>
-								Rescues
+								<strong>Rescues</strong>
 							</Link>
 							<div className="navbar-dropdown is-boxed">
 								<Link
@@ -160,7 +160,7 @@ class Navbar extends React.Component {
 								className={
 									this.props.activePage === "programs" ? "navbar-link is-active" : "navbar-link"
 								}>
-								Programs
+								<strong>Programs</strong>
 							</Link>
 							<div className="navbar-dropdown is-boxed">
 								<Link
@@ -202,7 +202,7 @@ class Navbar extends React.Component {
 								className={
 									this.props.activePage === "partners" ? "navbar-link is-active" : "navbar-link"
 								}>
-								Partners
+								<strong>Partners</strong>
 							</Link>
 							<div className="navbar-dropdown is-boxed">
 								<Link
@@ -236,7 +236,7 @@ class Navbar extends React.Component {
 							className={
 								this.props.activePage === "events" ? "navbar-item is-active" : "navbar-item"
 							}>
-							Events
+							<strong>Events</strong>
 						</Link>
 
 						<div className="navbar-item has-dropdown is-hoverable">
@@ -247,7 +247,7 @@ class Navbar extends React.Component {
 								className={
 									this.props.activePage === "donate" ? "navbar-link is-active" : "navbar-link"
 								}>
-								Donate
+								<strong>Donate</strong>
 							</Link>
 							<div className="navbar-dropdown is-boxed">
 								<Link

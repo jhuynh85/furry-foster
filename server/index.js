@@ -52,7 +52,6 @@ app.use(express.static(path.resolve(__dirname, "..", "build")));
 //=============== ROUTES SETUP ===============//
 require("./routes/testRoutes")(app);
 require("./routes/authRoutes")(app);
-require("./routes/router")(app);
 // require('./app/testRoutes.js')(app, passport) //load our routes and pass in our app and fully configured passport
 // require('./app/githubRoutes.js')(app)
 // require('./app/testRoutes.js')(app)
