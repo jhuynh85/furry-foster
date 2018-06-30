@@ -2,10 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as actions from "../../actions";
+import { toast } from "react-toastify";
 
 const SignOut = props => {
 	const handleSignOut = () => {
-		props.signout();
+		props.signout(() => {
+			toast.info("SIGNED OUT");
+		});
 	};
 
 	return (

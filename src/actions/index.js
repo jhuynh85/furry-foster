@@ -20,8 +20,8 @@ export const signup = ({ email, password }, callback) => async dispatch => {
 		console.log("Signup successful");
 		callback();
 	} catch (e) {
-		console.log("Error: ", e);
-		dispatch({ type: AUTH_ERROR, payload: "ERROR!" });
+		console.log("Error: ", e.response);
+		dispatch({ type: AUTH_ERROR, payload: e.response.data.error });
 	}
 };
 
@@ -37,18 +37,15 @@ export const signin = ({ email, password }, callback) => async dispatch => {
 		console.log("Signin successful");
 		callback();
 	} catch (e) {
-		console.log("Error: ", e);
-		dispatch({ type: AUTH_ERROR, payload: "Invalid login!" });
+		console.log("Error: ", e.response);
+		dispatch({ type: AUTH_ERROR, payload: "Invalid email/password combination" });
 	}
 };
 
 // Signs the user out and clears JWT token from localStorage
-export const signout = () => {
+export const signout = signoutCallback => dispatch => {
 	console.log("Signed out");
 	localStorage.removeItem("token");
-
-	return {
-		type: AUTH_USER,
-		payload: ""
-	};
+	dispatch({ type: AUTH_USER, payload: "" });
+	signoutCallback();
 };

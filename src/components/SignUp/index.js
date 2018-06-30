@@ -3,6 +3,7 @@ import { compose } from "redux";
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import { toast } from "react-toastify";
 
 import "./SignUp.css";
 import Modal from "../Modal";
@@ -22,6 +23,7 @@ class SignUp extends Component {
 
 	onSubmit = formProps => {
 		this.props.signup({ email: formProps.email, password: formProps.password }, () => {
+			toast.success("ACCOUNT CREATED");
 			// this.props.history.push("/redirect");
 		});
 	};

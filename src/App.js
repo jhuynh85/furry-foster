@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "./App.css";
+import "react-toastify/dist/ReactToastify.min.css";
 
 //============Import components=========//
 import Header from "./containers/Header";
@@ -31,6 +33,18 @@ class App extends Component {
 			<BrowserRouter>
 				<div className="Site">
 					<div className="Site-content">
+						<ToastContainer
+							toastClassName="custom-toast-css"
+							position="bottom-right"
+							autoClose={3000}
+							hideProgressBar
+							newestOnTop={false}
+							closeOnClick
+							rtl={false}
+							pauseOnVisibilityChange
+							draggable
+							pauseOnHover
+						/>
 						<Header />
 						<Switch>
 							<Route exact path="/" component={Main} />

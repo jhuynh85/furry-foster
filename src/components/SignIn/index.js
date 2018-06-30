@@ -3,6 +3,7 @@ import { reduxForm, Field } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import { toast } from "react-toastify";
 
 import "./SignIn.css";
 import Modal from "../Modal";
@@ -22,6 +23,7 @@ class SignIn extends Component {
 
 	onSubmit = formProps => {
 		this.props.signin({ email: formProps.email, password: formProps.password }, () => {
+			toast.info("SIGNED IN");
 			// this.props.history.push("/redirect");
 		});
 	};
@@ -88,7 +90,7 @@ class SignIn extends Component {
 }
 
 function mapStateToProps(state) {
-	return { errorMessage: state.auth.errMessage };
+	return { errorMessage: state.auth.errorMessage };
 }
 
 export default compose(

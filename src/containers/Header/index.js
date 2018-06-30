@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ffLogo from "../../assets/images/ff_logo.png";
+
 import "./Header.css";
 
 import { connect } from "react-redux";

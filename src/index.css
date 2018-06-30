@@ -12,6 +12,10 @@ body {
 	color: #4a4a4a;
 }
 
+.custom-toast-css {
+	text-align: center;
+}
+
 h1,
 h2,
 h3,
