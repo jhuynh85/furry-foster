@@ -2,18 +2,20 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-const morgan = require("morgan");
 require("dotenv").config();
+const cors = require("cors");
 
 //=============== INITIALIZE EXPRESS APP & SETUP FOR DATA PARSING===============//
 const app = express();
 const port = process.env.PORT || 5000;
 
-// app.use(morgan("combined"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+//=============== ENABLE CORS ===============//
+app.use(cors());
 
 //=============== AUTHENTICATION PACKAGES ===============//
 // const session = require('express-session');

@@ -4,7 +4,7 @@
 	padding-right: 10%;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	background-color: #E6E6E6;
+	background-color: #e6e6e6;
 }
 
 .social-media-bar a {
@@ -16,7 +16,12 @@
 }
 
 @media screen and (max-width: 768px) {
-  .social-media-bar {
+	.social-media-bar {
 		text-align: center;
+		margin-bottom: 1rem !important;
+	}
+
+	.level-right {
+		margin-top: 5px !important;
 	}
 }

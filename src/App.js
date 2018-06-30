@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 
 //============Import components=========//
-import Header from "./components/Header";
+import Header from "./containers/Header";
 import Footer from "./components/Footer";
 
 //============Import pages=============//
@@ -22,6 +22,7 @@ import Blog from "./pages/Blog";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 
 class App extends Component {
 	render() {
@@ -47,6 +48,7 @@ class App extends Component {
 							<Route path="/faq" component={FAQ} />
 							<Route path="/contact" component={Contact} />
 							<Route path="/login" component={Login} />
+							<Route path="/user/:userId" component={Profile} />
 						</Switch>
 						<br />
 					</div>

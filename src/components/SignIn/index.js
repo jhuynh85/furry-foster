@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { reduxForm, Field } from "redux-form";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import * as actions from "../../actions";
 
 import "./SignIn.css";
 import Modal from "../Modal";
@@ -16,11 +20,19 @@ class SignIn extends Component {
 		this.setState({ modalState: !this.state.modalState });
 	};
 
+	onSubmit = formProps => {
+		this.props.signin({ email: formProps.email, password: formProps.password }, () => {
+			// this.props.history.push("/redirect");
+		});
+	};
+
 	render() {
+		const { handleSubmit } = this.props;
+
 		return (
 			<span className={"signinComponent"}>
 				<a className={"text-color"} onClick={this.toggleModal}>
-					<strong>LOGIN</strong>
+					<strong>SIGN IN</strong>
 				</a>
 				<Modal
 					closeModal={this.toggleModal}
@@ -31,15 +43,18 @@ class SignIn extends Component {
 							New? <a>Create an account.</a>
 						</span>
 					}>
-					<form>
+					<form onSubmit={handleSubmit(this.onSubmit)}>
 						<div className="field">
 							<label className="label">Email Address</label>
 							<div className="control has-icons-left">
-								<input
+								<Field
 									className="input"
-									type="email"
-									name="orgEmail"
-									placeholder="fosters@example.com"
+									name={"email"}
+									type={"email"}
+									component={"input"}
+									placeholder={"fosters@example.com"}
+									autoComplete={"none"}
+									autoFocus={"true"}
 								/>
 								<span className="icon is-small is-left">
 									<i className="fa fa-envelope" />
@@ -49,13 +64,22 @@ class SignIn extends Component {
 						<div className="field">
 							<label className="label">Password</label>
 							<div className="control has-icons-left">
-								<input className="input" type="password" placeholder="" />
+								<Field
+									className="input"
+									component={"input"}
+									name={"password"}
+									type={"password"}
+									autoComplete={"none"}
+								/>
 								<span className="icon is-small is-left">
 									<i className="fa fa-lock" />
 								</span>
 							</div>
 						</div>
-						<input className="button is-warning is-medium" type="submit" value="Submit" />
+						<button className="button is-warning is-medium" type="submit">
+							Submit
+						</button>
+						<span>{this.props.errorMessage}</span>
 					</form>
 				</Modal>
 			</span>
@@ -63,4 +87,14 @@ class SignIn extends Component {
 	}
 }
 
-export default SignIn;
+function mapStateToProps(state) {
+	return { errorMessage: state.auth.errMessage };
+}
+
+export default compose(
+	connect(
+		mapStateToProps,
+		actions
+	),
+	reduxForm({ form: "signin" })
+)(SignIn);

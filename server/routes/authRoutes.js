@@ -5,7 +5,7 @@ module.exports = app => {
 	//---------EMAIL/PASSWORD AUTHENTICATION ROUTES---------//
 	const requireSignin = passport.authenticate("local", { session: false });
 
-	app.post("/auth/signin", requireSignin, Authentication.signin);
+	app.post("/signin", requireSignin, Authentication.signin);
 
 	//---------JWT AUTHENTICATION ROUTES---------//
 	const requireAuth = passport.authenticate("jwt", { session: false });

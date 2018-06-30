@@ -6,13 +6,18 @@ import "./index.css";
 import "bulma/css/bulma.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
+// import registerServiceWorker from "./registerServiceWorker";
 import reducers from "./reducers";
+import reduxThunk from "redux-thunk";
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const store = createStore(
+	reducers,
+	{ auth: { authenticated: localStorage.getItem("token") } },
+	applyMiddleware(reduxThunk)
+);
 
 ReactDOM.render(
-	<Provider store={createStoreWithMiddleware(reducers)}>
+	<Provider store={store}>
 		<App />
 	</Provider>,
 	document.getElementById("root")

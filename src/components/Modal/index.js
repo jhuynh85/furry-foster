@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Modal.css";
 
 const Modal = ({ children, closeModal, modalState, title, footer }) => {

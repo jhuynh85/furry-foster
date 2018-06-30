@@ -269,9 +269,7 @@ class Navbar extends React.Component {
 //----------REDUX configuration----------//
 // Map the redux store's state to Navbar's props
 function mapStateToProps(state) {
-	return {
-		activePage: state.activePage
-	};
+	return { activePage: state.activePage };
 }
 
 // Anything returned from this function will end up as props

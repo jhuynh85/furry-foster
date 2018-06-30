@@ -83,7 +83,7 @@ class RescueAppForm extends React.Component {
 					<div className="field">
 						<label className="checkbox">
 							<input type="checkbox" />
-							YES! I have read and agree to all <a href="#">terms and conditions</a>.
+							YES! I have read and agree to all <a>terms and conditions</a>.
 						</label>
 					</div>
 					<input className="button is-warning is-medium" type="submit" value="Submit" />
