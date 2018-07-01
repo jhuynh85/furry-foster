@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 
 import SocialMediaBar from "../../components/SocialMediaBar";
 import Search from "../../components/Search";
-import Navbar from "../../containers/Navbar";
+import Navbar from "../Navbar";
 import SignIn from "../../components/SignIn";
 import SignUp from "../../components/SignUp";
 import SignOut from "../../components/SignOut";

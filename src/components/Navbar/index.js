@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { clickPage } from "../../actions";
+import { clickPage } from "../../actions/index";
 import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import "./Navbar.css";

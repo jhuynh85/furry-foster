@@ -5,7 +5,7 @@ import "./App.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
 //============Import components=========//
-import Header from "./containers/Header";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 //============Import pages=============//
