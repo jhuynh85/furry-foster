@@ -6,12 +6,12 @@ import "./Header.css";
 
 import { connect } from "react-redux";
 
-import SocialMediaBar from "../../components/SocialMediaBar";
-import Search from "../../components/Search";
+import SocialMediaBar from "../SocialMediaBar";
+import Search from "../Search";
 import Navbar from "../Navbar";
-import SignIn from "../../components/SignIn";
-import SignUp from "../../components/SignUp";
-import SignOut from "../../components/SignOut";
+import SignIn from "../SignIn";
+import SignUp from "../SignUp";
+import SignOut from "../SignOut";
 
 const Header = ({ auth }) => {
 	const renderSignInOrSignOut = () => {
