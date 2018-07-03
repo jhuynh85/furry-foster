@@ -1,8 +1,21 @@
 import React from "react";
 import "./Banner.css";
 
-const Banner = () => {
-	return <div>Banner Image</div>;
+const Banner = props => {
+	return (
+		<div>
+			<div
+				className="banner"
+				style={{
+					backgroundImage: "url(" + props.image + ")",
+					backgroundRepeat: "no-repeat"
+				}}>
+				<div className="banner-text">
+					<h2>{props.text}</h2>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Banner;
