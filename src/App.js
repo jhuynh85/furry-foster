@@ -13,6 +13,7 @@ import Main from "./pages/Main";
 import Pets from "./pages/Pets";
 import Fosters from "./pages/Fosters";
 import Rescues from "./pages/Rescues";
+import RescuesLearn from "./pages/RescuesLearn";
 import Programs from "./pages/Programs";
 import Partners from "./pages/Partners";
 import Events from "./pages/Events";
@@ -50,6 +51,8 @@ class App extends Component {
 							<Route exact path="/" component={Main} />
 							<Route path="/pets" component={Pets} />
 							<Route path="/fosters" component={Fosters} />
+							<Route exact path="/rescues/learn" component={RescuesLearn} />
+							<Route exact path="/rescues/apply" component={RescuesLearn} />
 							<Route path="/rescues" component={Rescues} />
 							<Route path="/programs" component={Programs} />
 							<Route path="/partners" component={Partners} />

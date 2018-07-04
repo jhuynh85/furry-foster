@@ -11,7 +11,7 @@ const Banner = props => {
 					backgroundRepeat: "no-repeat"
 				}}>
 				<div className="banner-text">
-					<h2>{props.text}</h2>
+					<h2 className="title is-2">{props.text}</h2>
 				</div>
 			</div>
 		</div>
