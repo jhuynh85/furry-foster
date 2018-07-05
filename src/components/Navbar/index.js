@@ -80,25 +80,11 @@ class Navbar extends React.Component {
 							</Link>
 							<div className="navbar-dropdown is-boxed">
 								<Link
-									to="/fosters/learn_about_fostering"
+									to="/fosters/learn"
 									className="navbar-item"
 									data-name="fosters"
 									onClick={this.handleButtonClick}>
-									Learn about fostering
-								</Link>
-								<Link
-									to="/fosters/fostermob"
-									className="navbar-item"
-									data-name="fosters"
-									onClick={this.handleButtonClick}>
-									Foster Mob
-								</Link>
-								<Link
-									to="/fosters/apply"
-									className="navbar-item"
-									data-name="fosters"
-									onClick={this.handleButtonClick}>
-									Apply to foster
+									Learn About Fostering
 								</Link>
 								<Link
 									to="/fosters/happytails"
@@ -106,6 +92,13 @@ class Navbar extends React.Component {
 									data-name="fosters"
 									onClick={this.handleButtonClick}>
 									Happy Tails
+								</Link>
+								<Link
+									to="/fosters/apply"
+									className="navbar-item"
+									data-name="fosters"
+									onClick={this.handleButtonClick}>
+									Apply to Foster
 								</Link>
 							</div>
 						</div>
@@ -126,21 +119,7 @@ class Navbar extends React.Component {
 									className="navbar-item"
 									data-name="rescues"
 									onClick={this.handleButtonClick}>
-									Learn about partnership
-								</Link>
-								<Link
-									to="/rescues/resources"
-									className="navbar-item"
-									data-name="rescues"
-									onClick={this.handleButtonClick}>
-									Get Resources
-								</Link>
-								<Link
-									to="/rescues/apply"
-									className="navbar-item"
-									data-name="rescues"
-									onClick={this.handleButtonClick}>
-									Apply to Partner
+									Learn About Partnership
 								</Link>
 								<Link
 									to="/rescues/happytails"
@@ -148,6 +127,13 @@ class Navbar extends React.Component {
 									data-name="rescues"
 									onClick={this.handleButtonClick}>
 									Happy Tails
+								</Link>
+								<Link
+									to="/rescues/apply"
+									className="navbar-item"
+									data-name="rescues"
+									onClick={this.handleButtonClick}>
+									Apply to Partner
 								</Link>
 							</div>
 						</div>
@@ -164,71 +150,28 @@ class Navbar extends React.Component {
 							</Link>
 							<div className="navbar-dropdown is-boxed">
 								<Link
-									to="/resources"
+									to="/programs/resources"
 									className="navbar-item"
 									data-name="programs"
 									onClick={this.handleButtonClick}>
 									Resources
 								</Link>
 								<Link
-									to="/furever"
+									to="/programs/foster2furever"
 									className="navbar-item"
 									data-name="programs"
 									onClick={this.handleButtonClick}>
 									Foster 2 Furever
 								</Link>
 								<Link
-									to="/rescues/apply"
+									to="/programs/sponsor"
 									className="navbar-item"
 									data-name="programs"
 									onClick={this.handleButtonClick}>
-									Apply to Partner
-								</Link>
-								<Link
-									to="/fostermob"
-									className="navbar-item"
-									data-name="programs"
-									onClick={this.handleButtonClick}>
-									Foster Mob
+									Apply to Sponsor
 								</Link>
 							</div>
 						</div>
-
-						<div className="navbar-item has-dropdown is-hoverable">
-							<Link
-								to="/partners"
-								data-name="partners"
-								onClick={this.handleButtonClick}
-								className={
-									this.props.activePage === "partners" ? "navbar-link is-active" : "navbar-link"
-								}>
-								<strong>Partners</strong>
-							</Link>
-							<div className="navbar-dropdown is-boxed">
-								<Link
-									to="/partners/rescues"
-									className="navbar-item"
-									data-name="partners"
-									onClick={this.handleButtonClick}>
-									Rescue partners
-								</Link>
-								<Link
-									to="/partners/community"
-									className="navbar-item"
-									data-name="partners"
-									onClick={this.handleButtonClick}>
-									Community partners
-								</Link>
-								<Link
-									to="/partners/apply"
-									className="navbar-item"
-									data-name="partners"
-									onClick={this.handleButtonClick}>
-									Become a partner
-								</Link>
-							</div>
-						</div>
-
 						<Link
 							to="/events"
 							data-name="events"
@@ -238,7 +181,6 @@ class Navbar extends React.Component {
 							}>
 							<strong>Events</strong>
 						</Link>
-
 						<div className="navbar-item has-dropdown is-hoverable">
 							<Link
 								to="/donate"
