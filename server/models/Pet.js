@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = require("bcrypt-nodejs");
 
 // Define model
 const PetSchema = new Schema({
@@ -8,13 +7,14 @@ const PetSchema = new Schema({
 	type: { type: String, required: true },
 	description: String,
 	features: { type: String, required: true },
-	images: [{type: String}],
-	breeds: [{type: String}],
+	images: [{ type: String }],
+	breeds: [{ type: String }],
 	age: Number,
 	gender: String,
-	color: [{type: String}],
+	color: [{ type: String }],
 	weight: Number,
-	availability: String
+	availability: String,
+	rescue: { type: Schema.Types.ObjectId, ref: "Rescue" }
 });
 
 // Create and export model class

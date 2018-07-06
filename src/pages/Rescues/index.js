@@ -1,6 +1,5 @@
 import React from "react";
 import "./Rescues.css";
-import RescueAppForm from "../../components/RescueAppForm";
 
 import Banner from "../../components/Banner";
 import Sidebar from "../../components/Sidebar";
