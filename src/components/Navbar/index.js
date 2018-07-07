@@ -173,13 +173,13 @@ class Navbar extends React.Component {
 							</div>
 						</div>
 						<Link
-							to="/events"
-							data-name="events"
+							to="/blog"
+							data-name="blog"
 							onClick={this.handleButtonClick}
 							className={
-								this.props.activePage === "events" ? "navbar-item is-active" : "navbar-item"
+								this.props.activePage === "blog" ? "navbar-item is-active" : "navbar-item"
 							}>
-							<strong>Events</strong>
+							<strong>Blog</strong>
 						</Link>
 						<div className="navbar-item has-dropdown is-hoverable">
 							<Link

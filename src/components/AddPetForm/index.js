@@ -15,16 +15,16 @@ class AddPetForm extends React.Component {
 						</div>
 					</div>
 					<div className="field">
-						<label className="label">Pet Name</label>
+						<label className="label">Availability</label>
 						<div className="control">
-							<input className="input" type="email" name="petName" placeholder="" />
+							<input className="input" type="text" />
 						</div>
 					</div>
 					<div className="field">
-						<label className="label">Upload Pet Photos</label>
+						<label className="label">Upload Photos</label>
 						<div class="file is-boxed">
 							<label class="file-label">
-								<input class="file-input" type="file" name="resume" />
+								<input class="file-input" type="file" name="petPhotos" />
 								<span class="file-cta">
 									<span class="file-icon">
 										<i class="fas fa-upload" />
@@ -35,84 +35,136 @@ class AddPetForm extends React.Component {
 						</div>
 					</div>
 					<div className="field">
-						<label className="label">Pet Breed</label>
+						<label className="label">Name</label>
+						<div className="control">
+							<textarea className="textarea" type="email" name="petName" placeholder="" />
+						</div>
+					</div>
+					<div className="field">
+						<label className="label">Description</label>
+						<div className="control">
+							<input className="input" type="text" name="petDescription" placeholder="" />
+						</div>
+					</div>
+					<div className="field">
+						<label className="label">Breed</label>
 						<div class="field has-addons">
 							<div class="control">
 								<input class="input" type="text" placeholder="Breed" />
 							</div>
 							<div class="control">
-								<a class="button is-info">Add Breed</a>
+								<a class="button is-warning">Add Breed</a>
 							</div>
 						</div>
 					</div>
 					<div className="field">
-						<label className="label">Organization Website</label>
-						<div className="field has-addons">
-							<p className="control">
-								<a className="button is-static">
-									<b>http://</b>
-								</a>
-							</p>
-							<p className="control is-expanded">
-								<input className="input" type="text" placeholder="www.yourrescue.com" />
-							</p>
-						</div>
-					</div>
-					<div className="field">
-						<label className="label">501(c)3 EIN*</label>
+						<label className="label">Age</label>
 						<div className="field is-grouped">
 							<div className="control">
 								<input
 									className="input"
 									type="number"
-									name="ein_1"
+									name="age_months"
 									placeholder=""
 									size="2"
 									maxlength="2"
 								/>
 							</div>
-							<p>- </p>
+							<p>months </p>
 							<div className="control">
 								<input
 									className="input"
 									type="number"
-									name="ein_2"
+									name="age_years"
 									placeholder=""
-									size="7"
-									maxlength="7"
+									size="2"
+									maxlength="2"
 								/>
+							</div>
+							<p>years </p>
+						</div>
+					</div>
+					<div className="field">
+						<label className="label">Gender</label>
+						<div className="control">
+							<input className="input" type="text" />
+						</div>
+					</div>
+					<div className="field">
+						<label className="label">Color</label>
+						<div class="field has-addons">
+							<div class="control">
+								<input class="input" type="text" placeholder="Color" />
+							</div>
+							<div class="control">
+								<a class="button is-warning">Add Color</a>
 							</div>
 						</div>
 					</div>
 					<div className="field">
-						<label className="label">Account Email*</label>
-						<div className="control">
-							<input className="input" type="email" />
+						<label className="label">Weight</label>
+						<div className="field is-grouped">
+							<div className="control">
+								<input
+									className="input"
+									type="number"
+									name="weight_lbs"
+									placeholder=""
+									size="3"
+									maxlength="3"
+								/>
+							</div>
+							<p>lbs </p>
+							<div className="control">
+								<input
+									className="input"
+									type="number"
+									name="weight_oz"
+									placeholder=""
+									size="2"
+									maxlength="2"
+								/>
+							</div>
+							<p>oz </p>
 						</div>
 					</div>
 					<div className="field">
-						<label className="label">Account Password*</label>
-						<div className="control">
-							<input className="input" type="text" />
-						</div>
-					</div>
-					<div className="field">
-						<label className="label">Confirm Password*</label>
-						<div className="control">
-							<input className="input" type="text" />
-						</div>
+						<label className="label">Features</label>
 					</div>
 					<div className="field">
 						<label className="checkbox">
 							<input type="checkbox" />
-							&nbsp; <b>YES!</b> My organization covers 100% foster care costs for food and vet
-							care.
+							Housetrained
 						</label>
 					</div>
 					<div className="field">
 						<label className="checkbox">
 							<input type="checkbox" />
-							&nbsp; <b>YES!</b> I have read and agree to all <a>terms and conditions</a>.
+							Altered
+						</label>
+					</div>
+					<div className="field">
+						<label className="checkbox">
+							<input type="checkbox" />
+							Microchipped
+						</label>
+					</div>
+					<div className="field">
+						<label className="checkbox">
+							<input type="checkbox" />
+							Child Friendly
+						</label>
+					</div>
+					<div className="field">
+						<label className="checkbox">
+							<input type="checkbox" />
+							Dog Friendly
+						</label>
+					</div>
+					<div className="field">
+						<label className="checkbox">
+							<input type="checkbox" />
+							Cat Friendly
 						</label>
 					</div>
 					<input className="button is-warning is-medium" type="submit" value="Submit" />

@@ -4,8 +4,7 @@ import "./RescueAppForm.css";
 class RescueAppForm extends React.Component {
 	render() {
 		return (
-			<div className="container is-fluid">
-				<br />
+			<div className="">
 				<h4 className="title title-case is-4">Rescue sign-up</h4>
 				<form>
 					<div className="field">
@@ -62,9 +61,11 @@ class RescueAppForm extends React.Component {
 						<div className="control">
 							<input className="input" type="text" name="orgAddr_1" placeholder="Address 1" />
 						</div>
+						<br />
 						<div className="control">
 							<input className="input" type="text" name="orgAddr_2" placeholder="Address 2" />
 						</div>
+						<br />
 						<div className="field is-grouped">
 							<div className="control">
 								<input className="input" type="text" name="orgCity" placeholder="City" />
