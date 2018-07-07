@@ -1,86 +1,47 @@
 import React from "react";
-import "./RescueAppForm.css";
+import "./AddPetForm.css";
 
-class RescueAppForm extends React.Component {
+class AddPetForm extends React.Component {
 	render() {
 		return (
 			<div className="container is-fluid">
 				<br />
-				<h4 className="title title-case is-4">Rescue sign-up</h4>
+				<h4 className="title title-case is-4">Add A New Pet</h4>
 				<form>
 					<div className="field">
-						<label className="label">Organization Name*</label>
+						<label className="label">Pet Type*</label>
 						<div className="control">
-							<input className="input" type="text" name="orgName" placeholder="" />
+							<input className="input" type="text" name="petType" placeholder="" />
 						</div>
 					</div>
 					<div className="field">
-						<label className="label">Organization Email</label>
+						<label className="label">Pet Name</label>
 						<div className="control">
-							<input className="input" type="email" name="orgEmail" placeholder="" />
+							<input className="input" type="email" name="petName" placeholder="" />
 						</div>
 					</div>
 					<div className="field">
-						<label className="label">Organization Phone Number</label>
-						<div className="field is-grouped">
-							<div className="control">
-								<input
-									className="input"
-									type="number"
-									name="orgPhone_1"
-									placeholder=""
-									size="3"
-									maxlength="3"
-								/>
-							</div>
-							<p>- </p>
-							<div className="control">
-								<input
-									className="input"
-									type="number"
-									name="orgPhone_2"
-									placeholder=""
-									size="3"
-									maxlength="3"
-								/>
-							</div>
-							<p>- </p>
-							<div className="control">
-								<input
-									className="input"
-									type="number"
-									name="orgPhone_3"
-									placeholder=""
-									size="3"
-									maxlength="3"
-								/>
-							</div>
+						<label className="label">Upload Pet Photos</label>
+						<div class="file is-boxed">
+							<label class="file-label">
+								<input class="file-input" type="file" name="resume" />
+								<span class="file-cta">
+									<span class="file-icon">
+										<i class="fas fa-upload" />
+									</span>
+									<span class="file-label">Choose a file…</span>
+								</span>
+							</label>
 						</div>
 					</div>
 					<div className="field">
-						<label className="label">Organization Address</label>
-						<div className="control">
-							<input className="input" type="text" name="orgAddr_1" placeholder="Address 1" />
-						</div>
-						<div className="control">
-							<input className="input" type="text" name="orgAddr_2" placeholder="Address 2" />
-						</div>
-						<div className="field is-grouped">
-							<div className="control">
-								<input className="input" type="text" name="orgCity" placeholder="City" />
+						<label className="label">Pet Breed</label>
+						<div class="field has-addons">
+							<div class="control">
+								<input class="input" type="text" placeholder="Breed" />
 							</div>
-							<div className="control">
-								<input className="input" type="text" name="orgState" placeholder="State" />
-							</div>
-							<div className="control">
-								<input
-									className="input"
-									type="number"
-									name="orgZip"
-									placeholder="Zip Code"
-									size="5"
-									maxlength="5"
-								/>
+							<div class="control">
+								<a class="button is-info">Add Breed</a>
 							</div>
 						</div>
 					</div>
@@ -161,4 +122,4 @@ class RescueAppForm extends React.Component {
 	}
 }
 
-export default RescueAppForm;
+export default AddPetForm;

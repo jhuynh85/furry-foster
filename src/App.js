@@ -12,16 +12,19 @@ import Footer from "./components/Footer";
 import Main from "./pages/Main";
 import Pets from "./pages/Pets";
 import Fosters from "./pages/Fosters";
+import FostersLearn from "./pages/FostersLearn";
+import FostersApply from "./pages/FostersApply";
+import FostersTails from "./pages/FostersTails";
 import Rescues from "./pages/Rescues";
 import RescuesLearn from "./pages/RescuesLearn";
 import RescuesApply from "./pages/RescuesApply";
+import RescuesTails from "./pages/RescuesTails";
 import Programs from "./pages/Programs";
 import Partners from "./pages/Partners";
 import Events from "./pages/Events";
 import Donate from "./pages/Donate";
 import About from "./pages/About";
 import Volunteer from "./pages/Volunteer";
-import HappyTails from "./pages/HappyTails";
 import Blog from "./pages/Blog";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
@@ -51,9 +54,13 @@ class App extends Component {
 						<Switch>
 							<Route exact path="/" component={Main} />
 							<Route path="/pets" component={Pets} />
-							<Route path="/fosters" component={Fosters} />
+							<Route exact path="/fosters" component={Fosters} />
+							<Route exact path="/fosters/learn" component={FostersLearn} />
+							<Route exact path="/fosters/happytails" component={FostersTails} />
+							<Route exact path="/fosters/apply" component={FostersApply} />
 							<Route exact path="/rescues" component={Rescues} />
 							<Route exact path="/rescues/learn" component={RescuesLearn} />
+							<Route exact path="/rescues/happytails" component={RescuesTails} />
 							<Route exact path="/rescues/apply" component={RescuesApply} />
 							<Route path="/programs" component={Programs} />
 							<Route path="/partners" component={Partners} />
@@ -61,7 +68,6 @@ class App extends Component {
 							<Route path="/donate" component={Donate} />
 							<Route path="/about" component={About} />
 							<Route path="/volunteer" component={Volunteer} />
-							<Route path="/happytails" component={HappyTails} />
 							<Route path="/blog" component={Blog} />
 							<Route path="/faq" component={FAQ} />
 							<Route path="/contact" component={Contact} />
