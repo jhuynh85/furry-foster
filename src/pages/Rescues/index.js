@@ -34,9 +34,9 @@ class Rescues extends React.Component {
 										Becoming a rescue partner is more than just listing your pets online.
 									</p>
 									<ul>
-										<li>List Available Foster Pets, free</li>
-										<li>Attract New Foster Families</li>
-										<li>Free Services, Food & Accessories</li>
+										<li>List available foster pets for free</li>
+										<li>Attract new foster families</li>
+										<li>Free services, food, and accessories</li>
 										<li>Extra promotion for your pets</li>
 										<li>A community for your foster families</li>
 									</ul>
@@ -48,7 +48,7 @@ class Rescues extends React.Component {
 										If your organization meets the criteria below, let's work together.
 									</p>
 									<ul>
-										<li>Engage in 501(c)3 non-profit activities involved with animal rescue</li>
+										<li>Engage in 501(c)(3) non-profit activities involved with animal rescue</li>
 										<li>
 											Cover basic costs for foster homes including food, vet care, and bedding
 										</li>

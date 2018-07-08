@@ -85,9 +85,7 @@ class SignIn extends Component {
 								</span>
 							</div>
 						</div>
-						<button className="button is-warning is-medium" type="submit">
-							Submit
-						</button>
+						<input className="button is-warning is-medium" type="submit" value="Submit" />
 						<span>{this.props.errorMessage}</span>
 					</form>
 				</Modal>

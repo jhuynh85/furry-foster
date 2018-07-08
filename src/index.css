@@ -12,6 +12,11 @@ body {
 	color: #4a4a4a;
 }
 
+.form-error-message {
+	color: red;
+	font-size: 0.75rem;
+}
+
 .custom-toast-css {
 	text-align: center;
 }

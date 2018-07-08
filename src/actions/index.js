@@ -49,3 +49,5 @@ export const signout = signoutCallback => dispatch => {
 	dispatch({ type: AUTH_USER, payload: "" });
 	signoutCallback();
 };
+
+export const rescueApply = ({ formProps }, callback) => async dispatch => {};

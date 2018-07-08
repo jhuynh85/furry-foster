@@ -5,7 +5,9 @@ const bcrypt = require("bcrypt-nodejs");
 // Define model
 const RescueSchema = new Schema(
 	{
-		name: { type: String, required: true },
+		orgName: { type: String, required: true },
+		orgEmail: { type: String, unique: true, lowercase: true },
+		phone: { type: String, unique: true },
 		email: { type: String, unique: true, lowercase: true, required: true },
 		password: { type: String, required: true },
 		address1: { type: String, required: true },
