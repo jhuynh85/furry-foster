@@ -15,7 +15,7 @@ class SignInUp extends Component {
 		super(props);
 
 		this.state = {
-			modalState: false
+			modalState: true
 		};
 	}
 
@@ -45,17 +45,9 @@ class SignInUp extends Component {
 				<a className={"text-color"} onClick={this.toggleModal}>
 					<strong>SIGN IN/UP</strong>
 				</a>
-				<Modal
-					closeModal={this.toggleModal}
-					modalState={this.state.modalState}
-					title="Sign In"
-					footer={
-						<span>
-							New? <a>Create an account.</a>
-						</span>
-					}>
+				<Modal closeModal={this.toggleModal} modalState={this.state.modalState} title="" footer="">
 					<Tabs>
-						<Pane label="Tab 1">
+						<Pane label="Sign In">
 							<div>
 								<form onSubmit={handleSubmit(this.onSubmit)}>
 									<div className="field">
@@ -95,11 +87,11 @@ class SignInUp extends Component {
 								</form>
 							</div>
 						</Pane>
-						<Pane label="Tab 2">
+						<Pane label="Sign Up">
 							<form onSubmit={handleSubmit(this.onSubmit)}>
 								<div className="field">
 									<label className="label">Email Address</label>
-									<div className="control">
+									<div className="control has-icons-left">
 										<Field
 											className="input"
 											name={"email"}
@@ -109,11 +101,14 @@ class SignInUp extends Component {
 											autoComplete={"none"}
 											autoFocus={"true"}
 										/>
+										<span className="icon is-small is-left">
+											<i className="fa fa-envelope" />
+										</span>
 									</div>
 								</div>
 								<div className="field">
 									<label className="label">Password</label>
-									<div className="control">
+									<div className="control has-icons-left">
 										<Field
 											className="input"
 											component={"input"}
@@ -121,11 +116,14 @@ class SignInUp extends Component {
 											type={"password"}
 											autoComplete={"none"}
 										/>
+										<span className="icon is-small is-left">
+											<i className="fa fa-lock" />
+										</span>
 									</div>
 								</div>
 								<div className="field">
 									<label className="label">Confirm Password</label>
-									<div className="control">
+									<div className="control has-icons-left">
 										<Field
 											className="input"
 											component={"input"}
@@ -133,6 +131,9 @@ class SignInUp extends Component {
 											type={"password"}
 											autoComplete={"none"}
 										/>
+										<span className="icon is-small is-left">
+											<i className="fa fa-lock" />
+										</span>
 									</div>
 								</div>
 								<input className="button is-warning is-medium" type="submit" value="Submit" />

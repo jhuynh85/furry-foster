@@ -1,0 +1,12 @@
+.tabs a.active {
+	background-color: #ececec;
+}
+
+.tabs a:hover {
+	background-color: #ececec;
+}
+
+.tabs a {
+	transition: background-color 0.8s ease;
+	background-color: #fff;
+}

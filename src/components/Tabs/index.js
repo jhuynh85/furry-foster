@@ -13,18 +13,22 @@ class Tabs extends React.Component {
 		function labels(child, index) {
 			let activeClass = this.state.selected === index ? "active" : "";
 			return (
-				<li key={index} name={index}>
+				<li key={index} name={index} className="is-marginless">
 					<a href="#" className={activeClass} onClick={this.handleClick.bind(this, index)}>
 						{child.props.label}
 					</a>
 				</li>
 			);
 		}
-		return <ul className="tabs__labels">{this.props.children.map(labels.bind(this))}</ul>;
+		return (
+			<div className="tabs is-toggle is-fullwidth">
+				<ul className="is-marginless">{this.props.children.map(labels.bind(this))}</ul>
+			</div>
+		);
 	}
 
 	renderContent() {
-		return <div className="tabs__content">{this.props.children[this.state.selected]}</div>;
+		return <div className="">{this.props.children[this.state.selected]}</div>;
 	}
 
 	handleClick(index, event) {
