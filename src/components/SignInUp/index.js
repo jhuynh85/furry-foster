@@ -15,7 +15,7 @@ class SignInUp extends Component {
 		super(props);
 
 		this.state = {
-			modalState: true
+			modalState: false
 		};
 	}
 
