@@ -13,13 +13,21 @@ import SignIn from "../SignIn";
 import SignUp from "../SignUp";
 import SignOut from "../SignOut";
 
+import SignInUp from "../SignInUp";
+
 const Header = ({ auth }) => {
 	const renderSignInOrSignOut = () => {
 		if (!auth) {
 			return (
-				<span>
-					<SignIn /> &nbsp;&nbsp;<strong>|</strong> &nbsp;&nbsp;<SignUp />
-				</span>
+				<div>
+					<span>
+						<SignIn /> &nbsp;&nbsp;<strong>|</strong> &nbsp;&nbsp;<SignUp />
+					</span>
+					<br />
+					<span>
+						<SignInUp />
+					</span>
+				</div>
 			);
 		}
 		return <SignOut />;
