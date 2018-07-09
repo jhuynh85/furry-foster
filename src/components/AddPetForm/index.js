@@ -5,19 +5,34 @@ class AddPetForm extends React.Component {
 	render() {
 		return (
 			<div className="container is-fluid">
-				<br />
 				<h4 className="title title-case is-4">Add A New Pet</h4>
 				<form>
 					<div className="field">
 						<label className="label">Pet Type*</label>
 						<div className="control">
-							<input className="input" type="text" name="petType" placeholder="" />
+							<label className="radio">
+								<input type="radio" name="answer" />
+								Dog
+							</label>
+							<label className="radio">
+								<input type="radio" name="answer" />
+								Cat
+							</label>
 						</div>
 					</div>
 					<div className="field">
-						<label className="label">Availability</label>
-						<div className="control">
-							<input className="input" type="text" />
+						<label className="label">Needs</label>
+						<div className="field">
+							<label className="checkbox">
+								<input type="checkbox" />
+								Foster Family
+							</label>
+						</div>
+						<div className="field">
+							<label className="checkbox">
+								<input type="checkbox" />
+								Adopter
+							</label>
 						</div>
 					</div>
 					<div className="field">
@@ -37,15 +52,16 @@ class AddPetForm extends React.Component {
 					<div className="field">
 						<label className="label">Name</label>
 						<div className="control">
-							<textarea className="textarea" type="email" name="petName" placeholder="" />
+							<input className="input" type="text" name="petDescription" placeholder="" />
 						</div>
 					</div>
 					<div className="field">
 						<label className="label">Description</label>
 						<div className="control">
-							<input className="input" type="text" name="petDescription" placeholder="" />
+							<textarea className="textarea" type="email" name="petName" placeholder="" />
 						</div>
 					</div>
+
 					<div className="field">
 						<label className="label">Breed</label>
 						<div class="field has-addons">
@@ -63,41 +79,45 @@ class AddPetForm extends React.Component {
 							<div className="control">
 								<input
 									className="input"
-									type="number"
+									type="text"
 									name="age_months"
 									placeholder=""
 									size="2"
 									maxlength="2"
 								/>
 							</div>
-							<p>months </p>
+							<span className={"center-label-text-vertically"}>months&nbsp;&nbsp;&nbsp;</span>
 							<div className="control">
 								<input
 									className="input"
-									type="number"
+									type="text"
 									name="age_years"
 									placeholder=""
 									size="2"
 									maxlength="2"
 								/>
 							</div>
-							<p>years </p>
+							<span className={"center-label-text-vertically"}>years&nbsp;&nbsp;&nbsp;</span>
 						</div>
 					</div>
 					<div className="field">
 						<label className="label">Gender</label>
-						<div className="control">
-							<input className="input" type="text" />
+						<div className="select">
+							<select>
+								<option />
+								<option>Male</option>
+								<option>Female</option>
+							</select>
 						</div>
 					</div>
 					<div className="field">
 						<label className="label">Color</label>
-						<div class="field has-addons">
-							<div class="control">
-								<input class="input" type="text" placeholder="Color" />
+						<div className="field has-addons">
+							<div className="control">
+								<input className="input" type="text" placeholder="Color" />
 							</div>
-							<div class="control">
-								<a class="button is-warning">Add Color</a>
+							<div className="control">
+								<a className="button is-warning">Add Color</a>
 							</div>
 						</div>
 					</div>
@@ -107,61 +127,49 @@ class AddPetForm extends React.Component {
 							<div className="control">
 								<input
 									className="input"
-									type="number"
+									type="text"
 									name="weight_lbs"
 									placeholder=""
 									size="3"
 									maxlength="3"
 								/>
 							</div>
-							<p>lbs </p>
+							<span className={"center-label-text-vertically"}>lb&nbsp;&nbsp;&nbsp;</span>
 							<div className="control">
 								<input
 									className="input"
-									type="number"
+									type="text"
 									name="weight_oz"
 									placeholder=""
 									size="2"
 									maxlength="2"
 								/>
 							</div>
-							<p>oz </p>
+							<span className={"center-label-text-vertically"}>oz&nbsp;&nbsp;&nbsp;</span>
 						</div>
 					</div>
 					<div className="field">
 						<label className="label">Features</label>
-					</div>
-					<div className="field">
 						<label className="checkbox">
 							<input type="checkbox" />
 							Housetrained
 						</label>
-					</div>
-					<div className="field">
 						<label className="checkbox">
 							<input type="checkbox" />
 							Altered
 						</label>
-					</div>
-					<div className="field">
 						<label className="checkbox">
 							<input type="checkbox" />
 							Microchipped
 						</label>
-					</div>
-					<div className="field">
 						<label className="checkbox">
 							<input type="checkbox" />
 							Child Friendly
 						</label>
-					</div>
-					<div className="field">
 						<label className="checkbox">
 							<input type="checkbox" />
 							Dog Friendly
 						</label>
-					</div>
-					<div className="field">
 						<label className="checkbox">
 							<input type="checkbox" />
 							Cat Friendly
