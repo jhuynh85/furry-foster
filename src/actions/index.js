@@ -39,9 +39,15 @@ export const signup = ({ type, ...input }, callback) => async dispatch => {
 			});
 		}
 
-		dispatch({ type: AUTH_USER, payload: response.data.token });
+		const { id, token } = response.data;
+		const payload = {
+			id,
+			token
+		};
+		dispatch({ type: AUTH_USER, payload });
 		// Store token to localStorage
-		localStorage.setItem("token", response.data.token);
+		localStorage.setItem("id", id);
+		localStorage.setItem("token", token);
 		console.log("Signup successful");
 		callback();
 	} catch (e) {
@@ -50,15 +56,34 @@ export const signup = ({ type, ...input }, callback) => async dispatch => {
 	}
 };
 
-export const signin = ({ email, password }, callback) => async dispatch => {
+export const signin = ({ email, password, type }, callback) => async dispatch => {
 	try {
-		const response = await axios.post("/signin/user", {
-			email,
-			password
-		});
-		dispatch({ type: AUTH_USER, payload: response.data.token });
+		let response;
+		//----------- USER SIGNIN -------//
+		if (type === "user") {
+			response = await axios.post("/signin/user", {
+				email,
+				password
+			});
+		}
+
+		//----------- RESCUE SIGNIN -------//
+		else if (type === "rescue") {
+			response = await axios.post("/signin/rescue", {
+				email,
+				password
+			});
+		}
+
+		const { id, token } = response.data;
+		const payload = {
+			id,
+			token
+		};
+		dispatch({ type: AUTH_USER, payload });
 		// Store token to localStorage
-		localStorage.setItem("token", response.data.token);
+		localStorage.setItem("id", id);
+		localStorage.setItem("token", token);
 		console.log("Signin successful");
 		callback();
 	} catch (e) {
@@ -70,6 +95,8 @@ export const signin = ({ email, password }, callback) => async dispatch => {
 // Signs the user out and clears JWT token from localStorage
 export const signout = signoutCallback => dispatch => {
 	console.log("Signed out");
+	// Clear localStorage
+	localStorage.removeItem("id");
 	localStorage.removeItem("token");
 	dispatch({ type: AUTH_USER, payload: "" });
 	signoutCallback();
