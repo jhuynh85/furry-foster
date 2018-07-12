@@ -3,15 +3,22 @@ const Authentication = require("../controllers/authentication");
 
 module.exports = app => {
 	//--------- EMAIL/PASSWORD AUTHENTICATION ROUTES ---------//
-	const requireSignin = passport.authenticate("local", { session: false });
+	const requireUserSignin = passport.authenticate("userLocal", { session: false });
+	app.post("/signin/user", requireUserSignin, Authentication.signinUser);
+	app.post("/signup/user", Authentication.signupUser);
 
-	app.post("/signin", requireSignin, Authentication.signin);
-	app.post("/signup", Authentication.signup);
+	// const requireRescueSignin = passport.authenticate("rescueLocal", { session: false });
+	// app.post("/signin/rescue", requireRescueSignin, Authentication.signinRescue);
+	// app.post("/signup/rescue", Authentication.signupRescue);
 
-	//--------- JWT AUTHENTICATION ROUTES ---------//
-	const requireAuth = passport.authenticate("jwt", { session: false });
+	//--------- JWT-PROTECTED ROUTES ---------//
+	const requireJWT = passport.authenticate("jwt", { session: false });
 
-	app.get("/someProtectedPath", requireAuth, function(req, res) {
+	app.post("/edit/user/:userID", requireJWT, function(req, res) {
+		res.json({ success: true });
+	});
+
+	app.post("/edit/rescue/:rescueID", requireJWT, function(req, res) {
 		res.json({ success: true });
 	});
 

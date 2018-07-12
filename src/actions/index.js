@@ -10,7 +10,7 @@ export const clickPage = page => {
 
 export const signup = ({ email, password }, callback) => async dispatch => {
 	try {
-		const response = await axios.post("http://localhost:5000/signup", {
+		const response = await axios.post("/signup/user", {
 			email,
 			password
 		});
@@ -27,7 +27,7 @@ export const signup = ({ email, password }, callback) => async dispatch => {
 
 export const signin = ({ email, password }, callback) => async dispatch => {
 	try {
-		const response = await axios.post("http://localhost:5000/signin", {
+		const response = await axios.post("/signin/user", {
 			email,
 			password
 		});

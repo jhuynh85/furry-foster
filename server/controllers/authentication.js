@@ -4,11 +4,15 @@ const User = require("../models/User");
 // Create JWT token
 function tokenForUser(user) {
 	const timeStamp = new Date().getTime();
-	return jwt.encode({ sub: user.id, iat: timeStamp }, process.env.JWT_SECRET);
+	const payload = {
+		sub: user.id,
+		iat: timeStamp
+	};
+	return jwt.encode(payload, process.env.JWT_SECRET);
 }
 
 // Sign up function for creating a new user
-exports.signup = function(req, res, next) {
+exports.signupUser = function(req, res, next) {
 	const email = req.body.email;
 	const password = req.body.password;
 
@@ -32,14 +36,15 @@ exports.signup = function(req, res, next) {
 		newUser.save(function(err) {
 			if (err) return next(err);
 			// Respond to request with JWT token
-			res.json({ token: tokenForUser(newUser) });
+			res.json({ id: newUser.id, token: tokenForUser(newUser) });
 		});
 	});
 };
 
 // Signin function
-exports.signin = function(req, res, next) {
+exports.signinUser = function(req, res, next) {
 	// User has already had their email and password auth'd
 	// We just need to give them a token
-	res.send({ token: tokenForUser(req.user) });
+	// console.log("Signed in userId: ", req.user.id);
+	res.json({ id: req.user.id, token: tokenForUser(req.user) });
 };

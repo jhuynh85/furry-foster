@@ -6,7 +6,9 @@ const ExtractJwt = require("passport-jwt").ExtractJwt;
 const LocalStrategy = require("passport-local");
 
 // Local Strategy for authenticating email/password login
+//------------ USER AUTHENTICATION ----------//
 passport.use(
+	"userLocal",
 	new LocalStrategy({ usernameField: "email" }, function(email, password, doneCallback) {
 		// Verify email and password
 		User.findOne({ email: email }, function(err, user) {
@@ -26,6 +28,12 @@ passport.use(
 	})
 );
 
+//------------ RESCUE AUTHENTICATION ----------//
+passport.use(
+	"rescueLocal",
+	new LocalStrategy({ usernameField: "email" }, function(email, password, doneCallback) {})
+);
+
 // JWT Strategy for authenticating JWT tokens
 passport.use(
 	new JwtStrategy(
@@ -34,6 +42,8 @@ passport.use(
 			secretOrKey: process.env.JWT_SECRET
 		},
 		function(payload, doneCallback) {
+			console.log("JWT payload: ", payload);
+
 			// Check if user ID in payload exists
 			User.findById(payload.sub, function(err, user) {
 				if (err) return doneCallback(err, false);

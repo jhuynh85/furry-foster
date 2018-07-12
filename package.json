@@ -2,6 +2,7 @@
 	"name": "furry-foster",
 	"version": "0.1.0",
 	"private": true,
+	"author": "Joseph Huynh, Margaret Choi",
 	"dependencies": {
 		"axios": "^0.18.0",
 		"bcrypt-nodejs": "^0.0.3",
@@ -38,7 +39,8 @@
 		"start:server": "node server",
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"heroku-postbuild": "yarn build"
 	},
 	"nodemonConfig": {
 		"ignore": [

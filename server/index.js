@@ -24,13 +24,12 @@ app.use(cors());
 
 //=============== DATABASE PACKAGES & CONFIG ===============//
 const mongoose = require("mongoose");
-const user = require("./models/User");
 // mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/furry-foster-test");
 
 //=============== PASSPORT CONFIGURATION ===============//
 // require('./config/passport')(passport) //pass passport for configuration
-require("./services/passport");
+require("./services/passportStrategies");
 
 //=============== AUTHENTICATION SETUP ===============//
 // app.use(cookieParser());
