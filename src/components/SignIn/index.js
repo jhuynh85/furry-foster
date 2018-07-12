@@ -29,10 +29,13 @@ class SignIn extends Component {
 	};
 
 	onSubmit = formProps => {
-		this.props.signin({ email: formProps.email, password: formProps.password }, () => {
-			toast.info("SIGNED IN");
-			// this.props.history.push("/redirect");
-		});
+		this.props.signin(
+			{ email: formProps.email, password: formProps.password, type: "user" },
+			() => {
+				toast.info("SIGNED IN");
+				// this.props.history.push("/redirect");
+			}
+		);
 	};
 
 	render() {

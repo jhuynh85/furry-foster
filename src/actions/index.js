@@ -8,12 +8,37 @@ export const clickPage = page => {
 	};
 };
 
-export const signup = ({ email, password }, callback) => async dispatch => {
+// Sign up action
+// Sends a request to create a new user or rescue
+export const signup = ({ type, ...input }, callback) => async dispatch => {
 	try {
-		const response = await axios.post("/signup/user", {
-			email,
-			password
-		});
+		let response;
+		//----------- USER SIGNUP -------//
+		if (type === "user") {
+			response = await axios.post("/signup/user", {
+				email: input.email,
+				password: input.password
+			});
+		}
+
+		//----------- RESCUE SIGNUP -------//
+		else if (type === "rescue") {
+			response = await axios.post("/signup/rescue", {
+				orgName: input.orgName,
+				orgEmail: input.orgEmail,
+				phone: input.phone,
+				email: input.email,
+				password: input.password,
+				address1: input.address1,
+				address2: input.address2,
+				city: input.city,
+				state: input.state,
+				zip: input.zip,
+				websiteURL: input.websiteURL,
+				ein: input.ein
+			});
+		}
+
 		dispatch({ type: AUTH_USER, payload: response.data.token });
 		// Store token to localStorage
 		localStorage.setItem("token", response.data.token);

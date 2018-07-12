@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import US_states from "../../assets/js/US-states";
 import "./RescueAppForm.css";
+import { toast } from "react-toastify";
 
 class RescueAppForm extends Component {
 	//----------- Field rendering functions ------------//
@@ -201,7 +202,32 @@ class RescueAppForm extends Component {
 		);
 	};
 
-	onSubmit = formProps => {};
+	onSubmit = formProps => {
+		this.props.signup(
+			{
+				orgName: formProps.orgName,
+				orgEmail: formProps.orgEmail,
+				phone:
+					formProps.phone1 && formProps.phone2 && formProps.phone3
+						? `${formProps.phone1}-${formProps.phone2}-${formProps.phone3}`
+						: "",
+				email: formProps.email,
+				password: formProps.password,
+				address1: formProps.address1,
+				address2: formProps.address2,
+				city: formProps.city,
+				state: formProps.state,
+				zip: formProps.zip,
+				websiteURL: formProps.websiteURL,
+				ein: `${formProps.ein1}-${formProps.ein2}`,
+				type: "rescue"
+			},
+			() => {
+				toast.success("RESCUE ACCOUNT CREATED");
+				// this.props.history.push("/redirect");
+			}
+		);
+	};
 
 	render() {
 		const { handleSubmit } = this.props;
@@ -285,6 +311,7 @@ class RescueAppForm extends Component {
 					</Field>
 					<input className="button is-warning is-medium" type="submit" value="Submit" />
 				</form>
+				<span>{this.props.errorMessage}</span>
 			</div>
 		);
 	}
@@ -357,9 +384,13 @@ function validate(values) {
 	return errors;
 }
 
+function mapStateToProps(state) {
+	return { errorMessage: state.auth.errorMessage };
+}
+
 export default compose(
 	connect(
-		null,
+		mapStateToProps,
 		actions
 	),
 	reduxForm({ validate, form: "rescueApply" })

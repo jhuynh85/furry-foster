@@ -6,23 +6,24 @@ const bcrypt = require("bcrypt-nodejs");
 const RescueSchema = new Schema(
 	{
 		orgName: { type: String, required: true },
-		orgEmail: { type: String, unique: true, lowercase: true },
+		orgEmail: { type: String, lowercase: true },
 		phone: { type: String, unique: true },
 		email: { type: String, unique: true, lowercase: true, required: true },
 		password: { type: String, required: true },
-		address1: { type: String, required: true },
+		address1: { type: String },
 		address2: String,
-		city: { type: String, required: true },
-		state: { type: String, required: true },
-		zip: { type: Number, required: true },
+		city: { type: String },
+		state: { type: String },
+		zip: { type: Number },
 		websiteURL: String,
-		ein: { type: String, required: true },
+		ein: { type: String, unique: true, required: true },
 		images: [{ type: String }],
 		description: String,
 		fosterRequirements: String,
 		facebookURL: String,
 		twitterURL: String,
 		instagramURL: String,
+		isApproved: { type: Boolean, default: true }, // Set default to false if rescues need to be approved first
 		pets: [{ type: Schema.Types.ObjectId, ref: "Pet" }]
 	},
 	{

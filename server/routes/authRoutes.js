@@ -9,7 +9,7 @@ module.exports = app => {
 
 	// const requireRescueSignin = passport.authenticate("rescueLocal", { session: false });
 	// app.post("/signin/rescue", requireRescueSignin, Authentication.signinRescue);
-	// app.post("/signup/rescue", Authentication.signupRescue);
+	app.post("/signup/rescue", Authentication.signupRescue);
 
 	//--------- JWT-PROTECTED ROUTES ---------//
 	const requireJWT = passport.authenticate("jwt", { session: false });

@@ -29,10 +29,13 @@ class SignUp extends Component {
 	};
 
 	onSubmit = formProps => {
-		this.props.signup({ email: formProps.email, password: formProps.password }, () => {
-			toast.success("ACCOUNT CREATED");
-			// this.props.history.push("/redirect");
-		});
+		this.props.signup(
+			{ email: formProps.email, password: formProps.password, type: "user" },
+			() => {
+				toast.success("USER ACCOUNT CREATED");
+				// this.props.history.push("/redirect");
+			}
+		);
 	};
 
 	render() {
