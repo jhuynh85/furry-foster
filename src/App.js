@@ -29,6 +29,7 @@ import Blog from "./pages/Blog";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
+import LoginRescues from "./pages/LoginRescues";
 import Profile from "./pages/Profile";
 
 class App extends Component {
@@ -71,7 +72,8 @@ class App extends Component {
 							<Route path="/blog" component={Blog} />
 							<Route path="/faq" component={FAQ} />
 							<Route path="/contact" component={Contact} />
-							<Route path="/login" component={Login} />
+							<Route exact path="/login" component={Login} />
+							<Route exact path="/login/rescues" component={LoginRescues} />
 							<Route path="/user/:userId" component={Profile} />
 						</Switch>
 					</div>
