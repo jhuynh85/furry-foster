@@ -7,7 +7,7 @@ const cors = require("cors");
 
 //=============== INITIALIZE EXPRESS APP & SETUP FOR DATA PARSING===============//
 const app = express();
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,7 +24,6 @@ app.use(cors());
 
 //=============== DATABASE PACKAGES & CONFIG ===============//
 const mongoose = require("mongoose");
-// mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/furry-foster-test");
 
 //=============== PASSPORT CONFIGURATION ===============//
@@ -51,9 +50,6 @@ app.use(express.static(path.resolve(__dirname, "..", "build")));
 //=============== ROUTES SETUP ===============//
 require("./routes/testRoutes")(app);
 require("./routes/authRoutes")(app);
-// require('./app/testRoutes.js')(app, passport) //load our routes and pass in our app and fully configured passport
-// require('./app/githubRoutes.js')(app)
-// require('./app/testRoutes.js')(app)
 
 //=============== API ROUTES ===============//
 app.get("*", (req, res) => {
@@ -61,5 +57,5 @@ app.get("*", (req, res) => {
 });
 
 //=============== STARTING THE SERVER ===============//
-const server = app.listen(port, () => console.log("App listening on PORT " + port));
+const server = app.listen(PORT, () => console.log("App listening on PORT " + PORT));
 // require("./sockets")(server)

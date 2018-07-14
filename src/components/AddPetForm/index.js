@@ -1,23 +1,67 @@
 import React from "react";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { reduxForm, Field } from "redux-form";
+import * as actions from "../../actions";
 import "./AddPetForm.css";
 
+const breeds = require("../../assets/js/breeds");
+const animalTypes = require("../../assets/js/animalTypes").types;
+
 class AddPetForm extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			selectedAnimalType: null
+		};
+	}
+
+	// Renders radio button fields for all animals listed in the animalTypes.js file
+	renderAnimalTypesFields = () => {
+		return animalTypes.map(type => {
+			return (
+				<label key={type + "Label"} className="radio">
+					<Field type="radio" component={"input"} value={type} name="animalType" />
+					{type.charAt(0).toUpperCase() + type.slice(1)}
+				</label>
+			);
+		});
+	};
+
+	// Populates dropdown with all the breeds of the select animal type
+	renderBreeds = () => {
+		const { selectedAnimalType } = this.state;
+		if (selectedAnimalType) {
+			const breedList = breeds[selectedAnimalType];
+			return breedList.map(breed => {
+				return (
+					<option key={breed} value={breed}>
+						{breed}
+					</option>
+				);
+			});
+		}
+		return <option value={""} />;
+	};
+
+	onSubmit = formProps => {};
+
 	render() {
+		const { handleSubmit } = this.props;
+
 		return (
 			<div className="container is-fluid">
 				<h4 className="title title-case is-4">Add A New Pet</h4>
-				<form>
+				<form onSubmit={handleSubmit(this.onSubmit)}>
 					<div className="field">
 						<label className="label">Pet Type*</label>
-						<div className="control">
-							<label className="radio">
-								<input type="radio" name="answer" />
-								Dog
-							</label>
-							<label className="radio">
-								<input type="radio" name="answer" />
-								Cat
-							</label>
+						<div
+							className="control"
+							onChange={event => {
+								this.setState({ selectedAnimalType: event.target.value });
+							}}>
+							{this.renderAnimalTypesFields()}
 						</div>
 					</div>
 					<div className="field">
@@ -37,14 +81,14 @@ class AddPetForm extends React.Component {
 					</div>
 					<div className="field">
 						<label className="label">Upload Photos</label>
-						<div class="file is-boxed">
-							<label class="file-label">
-								<input class="file-input" type="file" name="petPhotos" />
-								<span class="file-cta">
-									<span class="file-icon">
-										<i class="fas fa-upload" />
+						<div className="file is-boxed">
+							<label className="file-label">
+								<input className="file-input" type="file" name="petPhotos" />
+								<span className="file-cta">
+									<span className="file-icon">
+										<i className="fas fa-upload" />
 									</span>
-									<span class="file-label">Choose a file…</span>
+									<span className="file-label">Choose a file…</span>
 								</span>
 							</label>
 						</div>
@@ -52,24 +96,29 @@ class AddPetForm extends React.Component {
 					<div className="field">
 						<label className="label">Name</label>
 						<div className="control">
-							<input className="input" type="text" name="petDescription" placeholder="" />
+							<input className="input" type="text" name="petName" placeholder="" />
 						</div>
 					</div>
 					<div className="field">
 						<label className="label">Description</label>
 						<div className="control">
-							<textarea className="textarea" type="email" name="petName" placeholder="" />
+							<textarea className="textarea" name="petDescription" placeholder="" />
 						</div>
 					</div>
 
 					<div className="field">
 						<label className="label">Breed</label>
-						<div class="field has-addons">
-							<div class="control">
-								<input class="input" type="text" placeholder="Breed" />
+						<div className="field has-addons">
+							<div className="control">
+								<div className={"select"}>
+									<Field component={"select"} name={"breeds"}>
+										<option value={""} />
+										{this.renderBreeds()}
+									</Field>
+								</div>
 							</div>
-							<div class="control">
-								<a class="button is-warning">Add Breed</a>
+							<div className="control">
+								<a className="button is-warning">Add Breed</a>
 							</div>
 						</div>
 					</div>
@@ -79,25 +128,25 @@ class AddPetForm extends React.Component {
 							<div className="control">
 								<input
 									className="input"
-									type="text"
-									name="age_months"
-									placeholder=""
-									size="2"
-									maxlength="2"
-								/>
-							</div>
-							<span className={"center-label-text-vertically"}>months&nbsp;&nbsp;&nbsp;</span>
-							<div className="control">
-								<input
-									className="input"
-									type="text"
+									type="number"
 									name="age_years"
-									placeholder=""
 									size="2"
-									maxlength="2"
+									min={"0"}
+									max={"20"}
 								/>
 							</div>
 							<span className={"center-label-text-vertically"}>years&nbsp;&nbsp;&nbsp;</span>
+							<div className="control">
+								<input
+									className="input"
+									type="number"
+									name="age_months"
+									size="2"
+									min={"0"}
+									max={"11"}
+								/>
+							</div>
+							<span className={"center-label-text-vertically"}>months&nbsp;&nbsp;&nbsp;</span>
 						</div>
 					</div>
 					<div className="field">
@@ -125,24 +174,25 @@ class AddPetForm extends React.Component {
 						<label className="label">Weight</label>
 						<div className="field is-grouped">
 							<div className="control">
-								<input
+								<Field
 									className="input"
-									type="text"
+									component={"input"}
+									type="number"
 									name="weight_lbs"
-									placeholder=""
 									size="3"
-									maxlength="3"
+									min={"0"}
+									max={"300"}
 								/>
 							</div>
 							<span className={"center-label-text-vertically"}>lb&nbsp;&nbsp;&nbsp;</span>
 							<div className="control">
-								<input
+								<Field
 									className="input"
-									type="text"
+									component={"input"}
+									type="number"
 									name="weight_oz"
-									placeholder=""
-									size="2"
-									maxlength="2"
+									min={"0"}
+									max="15"
 								/>
 							</div>
 							<span className={"center-label-text-vertically"}>oz&nbsp;&nbsp;&nbsp;</span>
@@ -182,4 +232,10 @@ class AddPetForm extends React.Component {
 	}
 }
 
-export default AddPetForm;
+export default compose(
+	connect(
+		null,
+		actions
+	),
+	reduxForm({ form: "addPet" })
+)(AddPetForm);

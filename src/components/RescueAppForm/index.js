@@ -3,7 +3,7 @@ import { compose } from "redux";
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-import US_states from "../../assets/js/US-states";
+import US_states from "../../assets/js/states";
 import "./RescueAppForm.css";
 import { toast } from "react-toastify";
 
