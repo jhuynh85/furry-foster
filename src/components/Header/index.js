@@ -9,10 +9,7 @@ import { connect } from "react-redux";
 import SocialMediaBar from "../SocialMediaBar";
 import Search from "../Search";
 import Navbar from "../Navbar";
-import SignIn from "../SignIn";
-import SignUp from "../SignUp";
 import SignOut from "../SignOut";
-
 import SignInUp from "../SignInUp";
 
 const Header = ({ auth }) => {

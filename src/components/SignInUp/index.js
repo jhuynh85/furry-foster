@@ -1,9 +1,4 @@
 import React, { Component } from "react";
-import { reduxForm, Field } from "redux-form";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import * as actions from "../../actions";
-import { toast } from "react-toastify";
 
 import "./SignInUp.css";
 import Modal from "../Modal";
@@ -12,6 +7,7 @@ import Pane from "../Pane";
 
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
+import Button from "../Button";
 
 class SignInUp extends Component {
 	constructor(props) {
@@ -29,28 +25,17 @@ class SignInUp extends Component {
 	};
 
 	toggleModal = () => {
-		if (this.state.modalState) this.resetForm(); // Reset form when modal is closed
+		// if (this.state.modalState) this.resetForm(); // Reset form when modal is closed
 		this.setState({ modalState: !this.state.modalState });
 	};
 
-	onSubmit = formProps => {
-		this.props.signinup({ email: formProps.email, password: formProps.password }, () => {
-			toast.info("SIGNED IN");
-			// this.props.history.push("/redirect");
-		});
-	};
-
 	render() {
-		const { handleSubmit } = this.props;
-
 		return (
 			<span className={"signinupComponent"}>
-				<a className={"text-color"} onClick={this.toggleModal}>
-					<strong>LOG IN</strong> | <strong>SIGN UP</strong>
-				</a>
+				<Button text={"SIGN IN"} onClick={this.toggleModal} />
 				<Modal closeModal={this.toggleModal} modalState={this.state.modalState} title="" footer="">
 					<Tabs>
-						<Pane label="Log In">
+						<Pane label="Sign In">
 							<div>
 								<SignIn />
 							</div>
@@ -67,14 +52,4 @@ class SignInUp extends Component {
 	}
 }
 
-function mapStateToProps(state) {
-	return { errorMessage: state.auth.errorMessage };
-}
-
-export default compose(
-	connect(
-		mapStateToProps,
-		actions
-	),
-	reduxForm({ form: "signinup" })
-)(SignInUp);
+export default SignInUp;
