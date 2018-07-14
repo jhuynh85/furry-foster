@@ -21,10 +21,6 @@ const Header = ({ auth }) => {
 			return (
 				<div>
 					<span>
-						<SignIn /> &nbsp;&nbsp;<strong>|</strong> &nbsp;&nbsp;<SignUp />
-					</span>
-					<br />
-					<span>
 						<SignInUp />
 					</span>
 				</div>

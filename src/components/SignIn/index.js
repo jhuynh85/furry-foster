@@ -42,57 +42,44 @@ class SignIn extends Component {
 		const { handleSubmit } = this.props;
 
 		return (
-			<span className={"signinComponent"}>
-				<a className={"text-color"} onClick={this.toggleModal}>
-					<strong>SIGN IN</strong>
-				</a>
-				<Modal
-					closeModal={this.toggleModal}
-					modalState={this.state.modalState}
-					title="Sign In"
-					footer={
-						<span>
-							New? <a>Create an account.</a>
-						</span>
-					}>
-					<form onSubmit={handleSubmit(this.onSubmit)}>
-						<div className="field">
-							<label className="label">Email Address</label>
-							<div className="control has-icons-left">
-								<Field
-									className="input"
-									name={"email"}
-									type={"email"}
-									component={"input"}
-									placeholder={"fosters@example.com"}
-									autoComplete={"none"}
-									autoFocus={"true"}
-								/>
-								<span className="icon is-small is-left">
-									<i className="fa fa-envelope" />
-								</span>
-							</div>
+			<div>
+				<form onSubmit={handleSubmit(this.onSubmit)}>
+					<div className="field">
+						<label className="label">Email Address</label>
+						<div className="control has-icons-left">
+							<Field
+								className="input"
+								name={"email"}
+								type={"email"}
+								component={"input"}
+								placeholder={"fosters@example.com"}
+								autoComplete={"none"}
+								autoFocus={"true"}
+							/>
+							<span className="icon is-small is-left">
+								<i className="fa fa-envelope" />
+							</span>
 						</div>
-						<div className="field">
-							<label className="label">Password</label>
-							<div className="control has-icons-left">
-								<Field
-									className="input"
-									component={"input"}
-									name={"password"}
-									type={"password"}
-									autoComplete={"none"}
-								/>
-								<span className="icon is-small is-left">
-									<i className="fa fa-lock" />
-								</span>
-							</div>
+					</div>
+					<div className="field">
+						<label className="label">Password</label>
+						<div className="control has-icons-left">
+							<Field
+								className="input"
+								component={"input"}
+								name={"password"}
+								type={"password"}
+								autoComplete={"none"}
+							/>
+							<span className="icon is-small is-left">
+								<i className="fa fa-lock" />
+							</span>
 						</div>
-						<input className="button is-warning is-medium" type="submit" value="Submit" />
-						<span>{this.props.errorMessage}</span>
-					</form>
-				</Modal>
-			</span>
+					</div>
+					<input className="button is-warning is-medium" type="submit" value="Submit" />
+					<span>{this.props.errorMessage}</span>
+				</form>
+			</div>
 		);
 	}
 }
