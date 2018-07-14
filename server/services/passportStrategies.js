@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Rescue = require("../models/Rescue");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const JwtStrategy = require("passport-jwt").Strategy;
@@ -31,7 +32,23 @@ passport.use(
 //------------ RESCUE AUTHENTICATION ----------//
 passport.use(
 	"rescueLocal",
-	new LocalStrategy({ usernameField: "email" }, function(email, password, doneCallback) {})
+	new LocalStrategy({ usernameField: "email" }, function(email, password, doneCallback) {
+		// Verify email and password
+		Rescue.findOne({ email: email }, function(err, rescue) {
+			if (err) return doneCallback(err);
+			// Email not found
+			if (!rescue) return doneCallback(null, false, { error: "Email does not exist" });
+
+			// Compare passwords
+			rescue.comparePassword(password, function(err, isMatch) {
+				if (err) return doneCallback(err);
+				// Password incorrect
+				if (!isMatch) return doneCallback(null, false, { error: "Incorrect password" });
+				// Email and password matches
+				return doneCallback(null, rescue);
+			});
+		});
+	})
 );
 
 // JWT Strategy for authenticating JWT tokens

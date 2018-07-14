@@ -1,20 +1,39 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { reduxForm, Field } from "redux-form";
+import { compose } from "redux";
+import * as actions from "../../actions";
+import { toast } from "react-toastify";
+
 import "./LoginRescues.css";
+
 // import RescueSignIn from "../../components/RescueSignIn";
 
-class LoginRescues extends React.Component {
+class LoginRescues extends Component {
+	onSubmit = formProps => {
+		this.props.signin(
+			{ email: formProps.email, password: formProps.password, type: "rescue" },
+			() => {
+				toast.info("RESCUE SIGNED IN");
+				// this.props.history.push("/redirect");
+			}
+		);
+	};
+
 	render() {
+		const { handleSubmit } = this.props;
+
 		return (
 			<div className="container">
 				<div className="columns">
 					<div className="column">
 						<div className="section">
-							<h3 class="title is-3">Login for Rescue Organizations</h3>
-							<form onSubmit="">
+							<h3 className="title is-3">Login for Rescue Organizations</h3>
+							<form onSubmit={handleSubmit(this.onSubmit)}>
 								<div className="field">
 									<label className="label">Email Address</label>
 									<div className="control has-icons-left">
-										<input
+										<Field
 											className="input"
 											name={"email"}
 											type={"email"}
@@ -31,7 +50,7 @@ class LoginRescues extends React.Component {
 								<div className="field">
 									<label className="label">Password</label>
 									<div className="control has-icons-left">
-										<input
+										<Field
 											className="input"
 											component={"input"}
 											name={"password"}
@@ -44,7 +63,7 @@ class LoginRescues extends React.Component {
 									</div>
 								</div>
 								<input className="button is-warning is-medium" type="submit" value="Submit" />
-								<span />
+								<span>{this.props.errorMessage}</span>
 							</form>
 						</div>
 					</div>
@@ -57,4 +76,14 @@ class LoginRescues extends React.Component {
 	}
 }
 
-export default LoginRescues;
+function mapStateToProps(state) {
+	return { errorMessage: state.auth.errorMessage };
+}
+
+export default compose(
+	connect(
+		mapStateToProps,
+		actions
+	),
+	reduxForm({ form: "rescueSignin" })
+)(LoginRescues);

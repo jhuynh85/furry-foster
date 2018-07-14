@@ -7,7 +7,7 @@ const RescueSchema = new Schema(
 	{
 		orgName: { type: String, required: true },
 		orgEmail: { type: String, lowercase: true },
-		phone: { type: String, unique: true },
+		phone: { type: String },
 		email: { type: String, unique: true, lowercase: true, required: true },
 		password: { type: String, required: true },
 		address1: { type: String },

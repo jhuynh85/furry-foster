@@ -210,7 +210,7 @@ class RescueAppForm extends Component {
 				phone:
 					formProps.phone1 && formProps.phone2 && formProps.phone3
 						? `${formProps.phone1}-${formProps.phone2}-${formProps.phone3}`
-						: "",
+						: undefined,
 				email: formProps.email,
 				password: formProps.password,
 				address1: formProps.address1,

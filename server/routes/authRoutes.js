@@ -4,11 +4,11 @@ const Authentication = require("../controllers/authentication");
 module.exports = app => {
 	//--------- EMAIL/PASSWORD AUTHENTICATION ROUTES ---------//
 	const requireUserSignin = passport.authenticate("userLocal", { session: false });
-	app.post("/signin/user", requireUserSignin, Authentication.signinUser);
+	app.post("/signin/user", requireUserSignin, Authentication.signin);
 	app.post("/signup/user", Authentication.signupUser);
 
-	// const requireRescueSignin = passport.authenticate("rescueLocal", { session: false });
-	// app.post("/signin/rescue", requireRescueSignin, Authentication.signinRescue);
+	const requireRescueSignin = passport.authenticate("rescueLocal", { session: false });
+	app.post("/signin/rescue", requireRescueSignin, Authentication.signin);
 	app.post("/signup/rescue", Authentication.signupRescue);
 
 	//--------- JWT-PROTECTED ROUTES ---------//
