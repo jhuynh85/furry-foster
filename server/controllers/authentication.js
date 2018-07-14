@@ -46,8 +46,8 @@ exports.signupUser = function(req, res, next) {
 	});
 };
 
-// Signin function
-exports.signinUser = function(req, res, next) {
+// Signin function (for BOTH User and Rescue)
+exports.signin = function(req, res, next) {
 	// User has already had their email and password auth'd
 	// We just need to give them a token
 	// console.log("Signed in userId: ", req.user.id);

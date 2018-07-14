@@ -32,7 +32,7 @@ class SignIn extends Component {
 		this.props.signin(
 			{ email: formProps.email, password: formProps.password, type: "user" },
 			() => {
-				toast.info("SIGNED IN");
+				toast.info("USER SIGNED IN");
 				// this.props.history.push("/redirect");
 			}
 		);
