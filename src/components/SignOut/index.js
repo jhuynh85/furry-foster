@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import * as actions from "../../actions";
 import { toast } from "react-toastify";
+import Button from "../Button";
 
 const SignOut = props => {
 	const handleSignOut = () => {
@@ -11,11 +11,7 @@ const SignOut = props => {
 		});
 	};
 
-	return (
-		<Link to={"/"} className={"text-color"} onClick={handleSignOut}>
-			<strong>SIGN OUT</strong>
-		</Link>
-	);
+	return <Button onClick={handleSignOut} link={"/"} text={"SIGN OUT"} />;
 };
 
 export default connect(

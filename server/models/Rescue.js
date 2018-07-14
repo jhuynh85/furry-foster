@@ -15,14 +15,14 @@ const RescueSchema = new Schema(
 		city: { type: String },
 		state: { type: String },
 		zip: { type: Number },
-		websiteURL: String,
+		websiteURL: { type: String, lowercase: true },
 		ein: { type: String, unique: true, required: true },
 		images: [{ type: String }],
 		description: String,
 		fosterRequirements: String,
-		facebookURL: String,
-		twitterURL: String,
-		instagramURL: String,
+		facebookURL: { type: String, lowercase: true },
+		twitterURL: { type: String, lowercase: true },
+		instagramURL: { type: String, lowercase: true },
 		isApproved: { type: Boolean, default: true }, // Set default to false if rescues need to be approved first
 		pets: [{ type: Schema.Types.ObjectId, ref: "Pet" }]
 	},
@@ -50,6 +50,7 @@ RescueSchema.pre("save", function(next) {
 	});
 });
 
+// Function to check if given password matches this model's password
 RescueSchema.methods.comparePassword = function(candidatePassword, callback) {
 	bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
 		if (err) return callback(err);
