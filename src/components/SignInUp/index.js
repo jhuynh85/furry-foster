@@ -10,6 +10,9 @@ import Modal from "../Modal";
 import Tabs from "../Tabs";
 import Pane from "../Pane";
 
+import SignIn from "../SignIn";
+import SignUp from "../SignUp";
+
 class SignInUp extends Component {
 	constructor(props) {
 		super(props);
@@ -43,102 +46,19 @@ class SignInUp extends Component {
 		return (
 			<span className={"signinupComponent"}>
 				<a className={"text-color"} onClick={this.toggleModal}>
-					<strong>SIGN IN/UP</strong>
+					<strong>LOG IN</strong> | <strong>SIGN UP</strong>
 				</a>
 				<Modal closeModal={this.toggleModal} modalState={this.state.modalState} title="" footer="">
 					<Tabs>
-						<Pane label="Sign In">
+						<Pane label="Log In">
 							<div>
-								<form onSubmit={handleSubmit(this.onSubmit)}>
-									<div className="field">
-										<label className="label">Email Address</label>
-										<div className="control has-icons-left">
-											<Field
-												className="input"
-												name={"email"}
-												type={"email"}
-												component={"input"}
-												placeholder={"fosters@example.com"}
-												autoComplete={"none"}
-												autoFocus={"true"}
-											/>
-											<span className="icon is-small is-left">
-												<i className="fa fa-envelope" />
-											</span>
-										</div>
-									</div>
-									<div className="field">
-										<label className="label">Password</label>
-										<div className="control has-icons-left">
-											<Field
-												className="input"
-												component={"input"}
-												name={"password"}
-												type={"password"}
-												autoComplete={"none"}
-											/>
-											<span className="icon is-small is-left">
-												<i className="fa fa-lock" />
-											</span>
-										</div>
-									</div>
-									<input className="button is-warning is-medium" type="submit" value="Submit" />
-									<span>{this.props.errorMessage}</span>
-								</form>
+								<SignIn />
 							</div>
 						</Pane>
 						<Pane label="Sign Up">
-							<form onSubmit={handleSubmit(this.onSubmit)}>
-								<div className="field">
-									<label className="label">Email Address</label>
-									<div className="control has-icons-left">
-										<Field
-											className="input"
-											name={"email"}
-											type={"email"}
-											component={"input"}
-											placeholder={"fosters@example.com"}
-											autoComplete={"none"}
-											autoFocus={"true"}
-										/>
-										<span className="icon is-small is-left">
-											<i className="fa fa-envelope" />
-										</span>
-									</div>
-								</div>
-								<div className="field">
-									<label className="label">Password</label>
-									<div className="control has-icons-left">
-										<Field
-											className="input"
-											component={"input"}
-											name={"password"}
-											type={"password"}
-											autoComplete={"none"}
-										/>
-										<span className="icon is-small is-left">
-											<i className="fa fa-lock" />
-										</span>
-									</div>
-								</div>
-								<div className="field">
-									<label className="label">Confirm Password</label>
-									<div className="control has-icons-left">
-										<Field
-											className="input"
-											component={"input"}
-											name={"confirmPassword"}
-											type={"password"}
-											autoComplete={"none"}
-										/>
-										<span className="icon is-small is-left">
-											<i className="fa fa-lock" />
-										</span>
-									</div>
-								</div>
-								<input className="button is-warning is-medium" type="submit" value="Submit" />
-								<span>{this.props.errorMessage}</span>
-							</form>
+							<div>
+								<SignUp />
+							</div>
 						</Pane>
 					</Tabs>
 				</Modal>

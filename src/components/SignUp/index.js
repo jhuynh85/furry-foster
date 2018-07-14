@@ -42,55 +42,50 @@ class SignUp extends Component {
 		const { handleSubmit } = this.props;
 
 		return (
-			<span className={"signupComponent"}>
-				<a className={"text-color"} onClick={this.toggleModal}>
-					<strong>JOIN</strong>
-				</a>
-				<Modal closeModal={this.toggleModal} modalState={this.state.modalState} title="Sign Up">
-					<form onSubmit={handleSubmit(this.onSubmit)}>
-						<div className="field">
-							<label className="label">Email Address</label>
-							<div className="control">
-								<Field
-									className="input"
-									name={"email"}
-									type={"email"}
-									component={"input"}
-									placeholder={"fosters@example.com"}
-									autoComplete={"none"}
-									autoFocus={"true"}
-								/>
-							</div>
+			<div>
+				<form onSubmit={handleSubmit(this.onSubmit)}>
+					<div className="field">
+						<label className="label">Email Address</label>
+						<div className="control">
+							<Field
+								className="input"
+								name={"email"}
+								type={"email"}
+								component={"input"}
+								placeholder={"fosters@example.com"}
+								autoComplete={"none"}
+								autoFocus={"true"}
+							/>
 						</div>
-						<div className="field">
-							<label className="label">Password</label>
-							<div className="control">
-								<Field
-									className="input"
-									component={"input"}
-									name={"password"}
-									type={"password"}
-									autoComplete={"none"}
-								/>
-							</div>
+					</div>
+					<div className="field">
+						<label className="label">Password</label>
+						<div className="control">
+							<Field
+								className="input"
+								component={"input"}
+								name={"password"}
+								type={"password"}
+								autoComplete={"none"}
+							/>
 						</div>
-						<div className="field">
-							<label className="label">Confirm Password</label>
-							<div className="control">
-								<Field
-									className="input"
-									component={"input"}
-									name={"confirmPassword"}
-									type={"password"}
-									autoComplete={"none"}
-								/>
-							</div>
+					</div>
+					<div className="field">
+						<label className="label">Confirm Password</label>
+						<div className="control">
+							<Field
+								className="input"
+								component={"input"}
+								name={"confirmPassword"}
+								type={"password"}
+								autoComplete={"none"}
+							/>
 						</div>
-						<input className="button is-warning is-medium" type="submit" value="Submit" />
-						<span>{this.props.errorMessage}</span>
-					</form>
-				</Modal>
-			</span>
+					</div>
+					<input className="button is-warning is-medium" type="submit" value="Submit" />
+					<span>{this.props.errorMessage}</span>
+				</form>
+			</div>
 		);
 	}
 }
