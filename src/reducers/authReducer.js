@@ -1,5 +1,6 @@
 // Reducer for setting provided JWT token and any error message
-import { AUTH_USER, AUTH_ERROR } from "../actions/types";
+// and clearing any error message
+import { AUTH_USER, AUTH_ERROR, CLEAR_AUTH_ERROR } from "../actions/types";
 
 const INITIAL_STATE = {
 	authenticated: "",
@@ -16,6 +17,9 @@ export default function(state = INITIAL_STATE, action) {
 		case AUTH_ERROR:
 			console.log("AUTH_ERROR: ", action.payload);
 			return { ...state, errorMessage: action.payload };
+		case CLEAR_AUTH_ERROR:
+			console.log("CLEAR_AUTH_ERROR");
+			return { ...state, errorMessage: "" };
 		default:
 			return state;
 	}

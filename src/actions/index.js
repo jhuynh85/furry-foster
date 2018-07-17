@@ -1,10 +1,19 @@
 import axios from "axios";
-import { PAGE_CLICKED, AUTH_USER, AUTH_ERROR } from "./types";
+import { PAGE_CLICKED, AUTH_USER, AUTH_ERROR, CLEAR_AUTH_ERROR } from "./types";
 
 export const clickPage = page => {
 	return {
 		type: PAGE_CLICKED,
 		payload: page
+	};
+};
+
+// Dispatches an action to clear the auth.errorMessage property from
+// the redux store
+export const clearError = () => {
+	return {
+		type: CLEAR_AUTH_ERROR,
+		payload: ""
 	};
 };
 

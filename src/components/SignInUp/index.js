@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../../actions";
 
 import "./SignInUp.css";
 import Modal from "../Modal";
@@ -18,14 +20,8 @@ class SignInUp extends Component {
 		};
 	}
 
-	resetForm = () => {
-		const { reset } = this.props;
-		// console.log("Resetting sign in form");
-		reset();
-	};
-
 	toggleModal = () => {
-		// if (this.state.modalState) this.resetForm(); // Reset form when modal is closed
+		if (this.state.modalState) this.props.clearError(); // Clears any auth errors when the form is closed
 		this.setState({ modalState: !this.state.modalState });
 	};
 
@@ -52,4 +48,7 @@ class SignInUp extends Component {
 	}
 }
 
-export default SignInUp;
+export default connect(
+	null,
+	actions
+)(SignInUp);

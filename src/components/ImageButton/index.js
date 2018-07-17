@@ -6,12 +6,11 @@ import "./ImageButton.css";
 
 const ImageButton = props => {
 	return (
-		<div className={props.className}>
+		<div className={props.className + " imagebutton"}>
 			<Link to={props.link}>
 				<img className="image imagebutton-image" src={props.image} alt="" />
 			</Link>
 			<strong>{props.text}</strong>
-			<br />
 			<Button link={props.infoLink} text={props.infoText} />
 		</div>
 	);
