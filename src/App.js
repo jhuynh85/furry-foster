@@ -74,7 +74,7 @@ class App extends Component {
 							<Route path="/contact" component={Contact} />
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/login/rescues" component={LoginRescues} />
-							<Route path="/user/:userId" component={Profile} />
+							<Route path="/profile" component={Profile} />
 						</Switch>
 					</div>
 					<Footer />
