@@ -3,11 +3,12 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reducers from "./reducers";
 import reduxThunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const store = createStore(
 	reducers,
 	{ auth: { id: localStorage.getItem("id"), authenticated: localStorage.getItem("token") } },
-	applyMiddleware(reduxThunk)
+	composeWithDevTools(applyMiddleware(reduxThunk))
 );
 
 export default props => {
