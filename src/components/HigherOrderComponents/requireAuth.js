@@ -18,7 +18,7 @@ export default ChildComponent => {
 		shouldNavigateAway = () => {
 			if (!this.props.auth) {
 				console.log("User not authenticated!");
-				this.props.history.push("/");
+				this.props.history.push("/unauthorized");
 			}
 		};
 

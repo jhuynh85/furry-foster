@@ -59,6 +59,7 @@ class Profile extends Component {
 		return (
 			<ProfileContainer
 				match={this.props.match}
+				profilePic={""}
 				name={"Red Cat Rescue"}
 				location={"Los Angeles, CA"}
 				submenu={this.renderSubmenuArea()}

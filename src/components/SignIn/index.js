@@ -6,6 +6,7 @@ import * as actions from "../../actions";
 import { toast } from "react-toastify";
 
 import "./SignIn.css";
+import renderFieldWithLabel from "../HigherOrderComponents/renderFieldWithLabel";
 
 class SignIn extends Component {
 	onSubmit = formProps => {
@@ -23,43 +24,45 @@ class SignIn extends Component {
 
 		return (
 			<form onSubmit={handleSubmit(this.onSubmit)}>
-				<div className="field">
-					<label className="label">Email Address</label>
-					<div className="control has-icons-left">
-						<Field
-							className="input"
-							name={"email"}
-							type={"email"}
-							component={"input"}
-							placeholder={"fosters@example.com"}
-							autoComplete={"none"}
-							autoFocus={"true"}
-						/>
-						<span className="icon is-small is-left">
-							<i className="fa fa-envelope" />
-						</span>
-					</div>
-				</div>
-				<div className="field">
-					<label className="label">Password</label>
-					<div className="control has-icons-left">
-						<Field
-							className="input"
-							component={"input"}
-							name={"password"}
-							type={"password"}
-							autoComplete={"none"}
-						/>
-						<span className="icon is-small is-left">
-							<i className="fa fa-lock" />
-						</span>
-					</div>
-				</div>
+				<Field
+					className="input"
+					label={"Email Address"}
+					name={"email"}
+					type={"email"}
+					component={this.props.renderFieldWithLabel}
+					placeholder={"fosters@example.com"}
+					autoComplete={"none"}
+					autoFocus={"true"}
+				/>
+				<Field
+					className="input"
+					label={"Password"}
+					component={this.props.renderFieldWithLabel}
+					name={"password"}
+					type={"password"}
+					autoComplete={"none"}
+				/>
+				<div className={"form-error-message"}>{this.props.errorMessage}</div>
 				<input className="button is-warning is-medium" type="submit" value="Submit" />
-				<span>{this.props.errorMessage}</span>
 			</form>
 		);
 	}
+}
+
+function validate(values) {
+	const errors = {};
+
+	// Check for email
+	if (!values.email) {
+		errors.email = "An email address is required";
+	}
+
+	// Check for password
+	if (!values.password) {
+		errors.password = "A password is required";
+	}
+
+	return errors;
 }
 
 function mapStateToProps(state) {
@@ -67,9 +70,10 @@ function mapStateToProps(state) {
 }
 
 export default compose(
+	renderFieldWithLabel,
 	connect(
 		mapStateToProps,
 		actions
 	),
-	reduxForm({ form: "signin" })
+	reduxForm({ validate, form: "signin" })
 )(SignIn);

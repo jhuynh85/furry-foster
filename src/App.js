@@ -31,6 +31,7 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import LoginRescues from "./pages/LoginRescues";
 import Profile from "./pages/Profile";
+import Unauthorized from "./pages/Unauthorized";
 
 class App extends Component {
 	render() {
@@ -75,6 +76,7 @@ class App extends Component {
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/login/rescues" component={LoginRescues} />
 							<Route path="/profile" component={Profile} />
+							<Route exact path="/unauthorized" component={Unauthorized} />
 						</Switch>
 					</div>
 					<Footer />
