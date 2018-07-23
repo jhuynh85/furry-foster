@@ -25,6 +25,7 @@ class SignIn extends Component {
 		return (
 			<form onSubmit={handleSubmit(this.onSubmit)}>
 				<Field
+					icon={"envelope"}
 					className="input"
 					label={"Email Address"}
 					name={"email"}
@@ -35,6 +36,7 @@ class SignIn extends Component {
 					autoFocus={"true"}
 				/>
 				<Field
+					icon={"lock"}
 					className="input"
 					label={"Password"}
 					component={this.props.renderFieldWithLabel}

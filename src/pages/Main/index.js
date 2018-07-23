@@ -41,7 +41,7 @@ class Main extends React.Component {
 						<div className="column is-one-quarter">
 							<ImageButton
 								className="main-image-button"
-								link="/fosters/learn_about_fostering"
+								link="/fosters/learn"
 								image={learnIcon}
 								text="LEARN ABOUT FOSTERING"
 								infoText="MORE INFO"

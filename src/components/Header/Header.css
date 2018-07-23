@@ -2,6 +2,11 @@
 	height: 95px;
 }
 
+.one-line {
+	display: flex;
+	justify-content: center;
+}
+
 @media screen and (max-width: 768px) {
 	.header-search-input-bar {
 		margin-left: 15px;

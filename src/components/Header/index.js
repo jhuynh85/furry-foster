@@ -11,19 +11,20 @@ import Search from "../Search";
 import Navbar from "../Navbar";
 import SignOut from "../SignOut";
 import SignInUp from "../SignInUp";
+import Button from "../Button";
 
 const Header = ({ auth }) => {
 	const renderSignInOrSignOut = () => {
 		if (!auth) {
-			return (
-				<div>
-					<span>
-						<SignInUp />
-					</span>
-				</div>
-			);
+			return <SignInUp />;
 		}
-		return <SignOut />;
+		return (
+			<div className={"one-line"}>
+				<Button link={"/profile"} text={"PROFILE"} />
+				&nbsp;&nbsp;&nbsp;
+				<SignOut />
+			</div>
+		);
 	};
 
 	return (
@@ -38,9 +39,7 @@ const Header = ({ auth }) => {
 				<div className="column align-mid header-search-input-bar">
 					<Search />
 				</div>
-				<div className="column is-one-quarter has-text-centered align-mid">
-					{renderSignInOrSignOut()}
-				</div>
+				<div className="column has-text-centered align-mid">{renderSignInOrSignOut()}</div>
 			</div>
 			<Navbar />
 		</div>

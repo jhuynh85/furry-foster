@@ -8,21 +8,45 @@ export default ChildComponent => {
 			const { touched, error } = field.meta;
 			const className = `input ${touched && error ? "is-danger" : ""}`;
 
-			return (
-				<div className="field">
-					<label className="label">{field.label}</label>
-					<div className="control">
-						<input
-							className={className}
-							name={field.name}
-							type={field.type}
-							placeholder={field.placeholder}
-							{...field.input}
-						/>
+			// Version with icon
+			if (field.icon) {
+				return (
+					<div className="field">
+						<label className="label">{field.label}</label>
+						<div className="control has-icons-left">
+							<input
+								className="input"
+								name={field.name}
+								type={field.type}
+								placeholder={field.placeholder}
+								{...field.input}
+								autoComplete={"none"}
+							/>
+							<span className="icon is-small is-left">
+								<i className={"fa fa-" + field.icon} />
+							</span>
+						</div>
+						<span className={"form-error-message"}>{touched ? error : ""}</span>
 					</div>
-					<span className={"form-error-message"}>{touched ? error : ""}</span>
-				</div>
-			);
+				);
+			} else {
+				// Version without icon
+				return (
+					<div className="field">
+						<label className="label">{field.label}</label>
+						<div className="control">
+							<input
+								className={className}
+								name={field.name}
+								type={field.type}
+								placeholder={field.placeholder}
+								{...field.input}
+							/>
+						</div>
+						<span className={"form-error-message"}>{touched ? error : ""}</span>
+					</div>
+				);
+			}
 		};
 
 		render() {

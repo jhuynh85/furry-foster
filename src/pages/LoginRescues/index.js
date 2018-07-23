@@ -4,6 +4,7 @@ import { reduxForm, Field } from "redux-form";
 import { compose } from "redux";
 import * as actions from "../../actions";
 import { toast } from "react-toastify";
+import renderFieldWithLabel from "../../components/HigherOrderComponents/renderFieldWithLabel";
 
 import "./LoginRescues.css";
 
@@ -30,40 +31,26 @@ class LoginRescues extends Component {
 						<div className="section">
 							<h3 className="title is-3">Login for Rescue Organizations</h3>
 							<form onSubmit={handleSubmit(this.onSubmit)}>
-								<div className="field">
-									<label className="label">Email Address</label>
-									<div className="control has-icons-left">
-										<Field
-											className="input"
-											name={"email"}
-											type={"email"}
-											component={"input"}
-											placeholder={"rescues@example.com"}
-											autoComplete={"none"}
-											autoFocus={"true"}
-										/>
-										<span className="icon is-small is-left">
-											<i className="fa fa-envelope" />
-										</span>
-									</div>
-								</div>
-								<div className="field">
-									<label className="label">Password</label>
-									<div className="control has-icons-left">
-										<Field
-											className="input"
-											component={"input"}
-											name={"password"}
-											type={"password"}
-											autoComplete={"none"}
-										/>
-										<span className="icon is-small is-left">
-											<i className="fa fa-lock" />
-										</span>
-									</div>
-								</div>
+								<Field
+									icon={"envelope"}
+									className="input"
+									name={"email"}
+									type={"email"}
+									component={this.props.renderFieldWithLabel}
+									placeholder={"rescues@example.com"}
+									autoComplete={"none"}
+									autoFocus={"true"}
+								/>
+								<Field
+									icon={"lock"}
+									className="input"
+									component={this.props.renderFieldWithLabel}
+									name={"password"}
+									type={"password"}
+									autoComplete={"none"}
+								/>
+								<div className={"form-error-message"}>{this.props.errorMessage}</div>
 								<input className="button is-warning is-medium" type="submit" value="Submit" />
-								<span>{this.props.errorMessage}</span>
 							</form>
 						</div>
 					</div>
@@ -76,14 +63,31 @@ class LoginRescues extends Component {
 	}
 }
 
+function validate(values) {
+	const errors = {};
+
+	// Check for email
+	if (!values.email) {
+		errors.email = "An email address is required";
+	}
+
+	// Check for password
+	if (!values.password) {
+		errors.password = "A password is required";
+	}
+
+	return errors;
+}
+
 function mapStateToProps(state) {
 	return { errorMessage: state.auth.errorMessage };
 }
 
 export default compose(
+	renderFieldWithLabel,
 	connect(
 		mapStateToProps,
 		actions
 	),
-	reduxForm({ form: "rescueSignin" })
+	reduxForm({ validate, form: "rescueSignin" })
 )(LoginRescues);

@@ -21,7 +21,7 @@ class SignInUp extends Component {
 	}
 
 	toggleModal = () => {
-		if (this.state.modalState) this.props.clearError(); // Clears any auth errors when the form is closed
+		this.props.clearError(); // Clears any auth errors whenever modal is toggled
 		this.setState({ modalState: !this.state.modalState });
 	};
 
