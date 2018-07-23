@@ -20,7 +20,8 @@ export default ChildComponent => {
 								type={field.type}
 								placeholder={field.placeholder}
 								{...field.input}
-								autoComplete={"none"}
+								autoFocus={field.autoFocus}
+								autoComplete={field.autoComplete}
 							/>
 							<span className="icon is-small is-left">
 								<i className={"fa fa-" + field.icon} />
@@ -36,11 +37,13 @@ export default ChildComponent => {
 						<label className="label">{field.label}</label>
 						<div className="control">
 							<input
-								className={className}
+								className="input"
 								name={field.name}
 								type={field.type}
 								placeholder={field.placeholder}
 								{...field.input}
+								autoFocus={field.autoFocus}
+								autoComplete={field.autoComplete}
 							/>
 						</div>
 						<span className={"form-error-message"}>{touched ? error : ""}</span>

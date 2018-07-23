@@ -51,22 +51,6 @@ class SignIn extends Component {
 	}
 }
 
-function validate(values) {
-	const errors = {};
-
-	// Check for email
-	if (!values.email) {
-		errors.email = "An email address is required";
-	}
-
-	// Check for password
-	if (!values.password) {
-		errors.password = "A password is required";
-	}
-
-	return errors;
-}
-
 function mapStateToProps(state) {
 	return { errorMessage: state.auth.errorMessage };
 }
@@ -77,5 +61,5 @@ export default compose(
 		mapStateToProps,
 		actions
 	),
-	reduxForm({ validate, form: "signin" })
+	reduxForm({ form: "signin" })
 )(SignIn);
