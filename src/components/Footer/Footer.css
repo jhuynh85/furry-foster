@@ -1,13 +1,17 @@
-.copyright {
-	font-size: 0.75rem;
-}
-
 .page-footer {
-	margin-bottom: 0;
+	padding: 40px 0px;
 	background-color: rgb(75, 61, 52);
-	color: white;
+	color: #ffffff;
+	font-family: "Montserrat", sans-serif !important;
+	/*	font-size: 0.75rem;*/
 }
 
 .page-footer a {
-	color: white;
+	color: #ffffff;
+}
+
+.page-footer h6 {
+	color: #ffffff !important;
+	font-weight: bold;
+	font-family: "Montserrat", sans-serif !important;
 }
