@@ -15,7 +15,7 @@ export default ChildComponent => {
 						<label className="label">{field.label}</label>
 						<div className="control has-icons-left">
 							<input
-								className="input"
+								className={className}
 								name={field.name}
 								type={field.type}
 								placeholder={field.placeholder}
@@ -37,7 +37,7 @@ export default ChildComponent => {
 						<label className="label">{field.label}</label>
 						<div className="control">
 							<input
-								className="input"
+								className={className}
 								name={field.name}
 								type={field.type}
 								placeholder={field.placeholder}

@@ -24,6 +24,7 @@ const RescueSchema = new Schema(
 		twitterURL: { type: String, lowercase: true },
 		instagramURL: { type: String, lowercase: true },
 		isApproved: { type: Boolean, default: true }, // Set default to false if rescues need to be approved first
+		userType: { type: String, default: "rescue" },
 		pets: [{ type: Schema.Types.ObjectId, ref: "Pet" }]
 	},
 	{

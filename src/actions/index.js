@@ -48,14 +48,14 @@ export const signup = ({ type, ...input }, callback) => async dispatch => {
 			});
 		}
 
-		const { id, token } = response.data;
+		const { user, token } = response.data;
 		const payload = {
-			id,
+			user,
 			token
 		};
 		dispatch({ type: AUTH_USER, payload });
 		// Store token to localStorage
-		localStorage.setItem("id", id);
+		localStorage.setItem("user", JSON.stringify(user));
 		localStorage.setItem("token", token);
 		console.log("Signup successful");
 		callback();
@@ -84,14 +84,14 @@ export const signin = ({ email, password, type }, callback) => async dispatch =>
 			});
 		}
 
-		const { id, token } = response.data;
+		const { user, token } = response.data;
 		const payload = {
-			id,
+			user,
 			token
 		};
 		dispatch({ type: AUTH_USER, payload });
 		// Store token to localStorage
-		localStorage.setItem("id", id);
+		localStorage.setItem("user", JSON.stringify(user));
 		localStorage.setItem("token", token);
 		console.log("Signin successful");
 		callback();
@@ -105,7 +105,7 @@ export const signin = ({ email, password, type }, callback) => async dispatch =>
 export const signout = signoutCallback => dispatch => {
 	console.log("Signed out");
 	// Clear localStorage
-	localStorage.removeItem("id");
+	localStorage.removeItem("user");
 	localStorage.removeItem("token");
 	dispatch({ type: AUTH_USER, payload: "" });
 	signoutCallback();

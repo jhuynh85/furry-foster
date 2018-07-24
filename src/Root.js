@@ -5,9 +5,16 @@ import reducers from "./reducers";
 import reduxThunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
+const userObj = JSON.parse(localStorage.getItem("user"));
+
 const store = createStore(
 	reducers,
-	{ auth: { id: localStorage.getItem("id"), authenticated: localStorage.getItem("token") } },
+	{
+		auth: {
+			user: userObj,
+			authenticated: localStorage.getItem("token")
+		}
+	},
 	composeWithDevTools(applyMiddleware(reduxThunk))
 );
 

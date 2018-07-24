@@ -41,7 +41,7 @@ exports.signupUser = function(req, res, next) {
 		newUser.save(function(err) {
 			if (err) return next(err);
 			// Respond to request with JWT token
-			res.json({ id: newUser.id, token: tokenForUser(newUser) });
+			res.json({ user: newUser, token: tokenForUser(newUser) });
 		});
 	});
 };
@@ -51,7 +51,7 @@ exports.signin = function(req, res, next) {
 	// User has already had their email and password auth'd
 	// We just need to give them a token
 	// console.log("Signed in userId: ", req.user.id);
-	res.json({ id: req.user.id, token: tokenForUser(req.user) });
+	res.json({ user: req.user, token: tokenForUser(req.user) });
 };
 
 //--------- RESCUE FUNCTIONS ---------//
@@ -112,7 +112,7 @@ exports.signupRescue = function(req, res, next) {
 		newRescue.save(function(err) {
 			if (err) return next(err);
 			// Respond to request with JWT token
-			res.json({ id: newRescue.id, token: tokenForUser(newRescue) });
+			res.json({ user: newRescue, token: tokenForUser(newRescue) });
 		});
 	});
 };
