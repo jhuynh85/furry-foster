@@ -30,6 +30,17 @@ body {
 	text-align: center;
 }
 
+.unordered-dot-list {
+	list-style-type: disc;
+	list-style-position: inside;
+}
+
+.my-tags {
+	margin-right: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
 h1,
 h2,
 h3,

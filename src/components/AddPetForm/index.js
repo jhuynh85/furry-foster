@@ -13,7 +13,9 @@ class AddPetForm extends React.Component {
 		super(props);
 
 		this.state = {
-			selectedAnimalType: null
+			selectedAnimalType: null,
+			currentlySelectedBreed: null,
+			breeds: []
 		};
 	}
 
@@ -30,7 +32,7 @@ class AddPetForm extends React.Component {
 	};
 
 	// Populates dropdown with all the breeds of the select animal type
-	renderBreeds = () => {
+	renderBreedDropdown = () => {
 		const { selectedAnimalType } = this.state;
 		if (selectedAnimalType) {
 			const breedList = breeds[selectedAnimalType];
@@ -43,6 +45,26 @@ class AddPetForm extends React.Component {
 			});
 		}
 		return <option value={""} />;
+	};
+
+	// Sets the current breed when user selects from dropdown
+	onBreedChange = event => {
+		this.setState({ currentlySelectedBreed: event.target.value });
+	};
+
+	// Adds breed currently selected in the dropdown to the breed array if it isn't already in there
+	addBreed = event => {
+		const { breeds, currentlySelectedBreed } = this.state;
+		if (currentlySelectedBreed && breeds.indexOf(currentlySelectedBreed) === -1) {
+			this.setState({ breeds: [...breeds, currentlySelectedBreed] });
+		}
+	};
+
+	// Removes the selected breed from the breeds array
+	removeBreed = breedToRemove => {
+		this.setState({
+			breeds: this.state.breeds.filter(breed => breed !== breedToRemove)
+		});
 	};
 
 	onSubmit = formProps => {};
@@ -60,6 +82,7 @@ class AddPetForm extends React.Component {
 							className="control"
 							onChange={event => {
 								this.setState({ selectedAnimalType: event.target.value });
+								this.setState({ breeds: [] });
 							}}>
 							{this.renderAnimalTypesFields()}
 						</div>
@@ -86,7 +109,7 @@ class AddPetForm extends React.Component {
 								<input className="file-input" type="file" name="petPhotos" />
 								<span className="file-cta">
 									<span className="file-icon">
-										<i className="fas fa-upload" />
+										<i className="fa fa-upload" />
 									</span>
 									<span className="file-label">Choose a file…</span>
 								</span>
@@ -110,17 +133,34 @@ class AddPetForm extends React.Component {
 						<label className="label">Breed</label>
 						<div className="field has-addons">
 							<div className="control">
-								<div className={"select"}>
+								<div className={"select"} onChange={this.onBreedChange}>
 									<Field component={"select"} name={"breeds"}>
 										<option value={""} />
-										{this.renderBreeds()}
+										{this.renderBreedDropdown()}
 									</Field>
 								</div>
 							</div>
 							<div className="control">
-								<a className="button is-warning">Add Breed</a>
+								<a className="button is-warning" onClick={this.addBreed}>
+									Add Breed
+								</a>
 							</div>
 						</div>
+					</div>
+					<div className={"tags"}>
+						{this.state.breeds.map(breed => {
+							return (
+								<span key={breed} className={"tag is-warning"}>
+									<strong>{breed}</strong>
+									<button
+										className="delete is-small"
+										onClick={() => {
+											this.removeBreed(breed);
+										}}
+									/>
+								</span>
+							);
+						})}
 					</div>
 					<div className="field">
 						<label className="label">Age</label>
