@@ -5,18 +5,18 @@ const NewsletterBanner = props => {
 	return (
 		<div>
 			<div className="">
-				<section class="hero is-primary is-medium has-text-centered">
-					<div class="hero-body">
-						<div class="container ">
-							<h1 class="title is-1">Stay up to date with foster news!</h1>
-							<div class="level">
-								<div class="level-item">
-									<div class="field has-addons">
-										<div class="control">
-											<input class="input" type="text" placeholder="you@email.com" />
+				<section className="hero is-primary is-medium has-text-centered">
+					<div className="hero-body">
+						<div className="container ">
+							<h1 className="title is-1">Stay up to date with foster news!</h1>
+							<div className="level">
+								<div className="level-item">
+									<div className="field has-addons">
+										<div className="control">
+											<input className="input" type="text" placeholder="you@email.com" />
 										</div>
-										<div class="control">
-											<a class="button is-warning">Join</a>
+										<div className="control">
+											<a className="button is-warning">Join</a>
 										</div>
 									</div>
 								</div>
