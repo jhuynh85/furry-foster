@@ -4,6 +4,23 @@ import React, { Component } from "react";
 // renderFieldWithLabel function that can be used to render a Field component with input and label
 export default ChildComponent => {
 	class ComposedComponent extends Component {
+		// Renders a Field that has a checkbox
+		renderCheckbox = field => {
+			const { touched, error } = field.meta;
+
+			return (
+				<div className="field">
+					<label className="checkbox">
+						<input type={field.type} name={field.name} {...field.input} />
+					</label>
+					&nbsp; {field.children}
+					<br />
+					<span className={"form-error-message"}>{touched ? error : ""}</span>
+				</div>
+			);
+		};
+
+		// Renders a Field with a label
 		renderFieldWithLabel = field => {
 			const { touched, error } = field.meta;
 			const className = `input ${touched && error ? "is-danger" : ""}`;
@@ -53,7 +70,12 @@ export default ChildComponent => {
 		};
 
 		render() {
-			return <ChildComponent renderFieldWithLabel={this.renderFieldWithLabel} />;
+			return (
+				<ChildComponent
+					renderFieldWithLabel={this.renderFieldWithLabel}
+					renderCheckbox={this.renderCheckbox}
+				/>
+			);
 		}
 	}
 

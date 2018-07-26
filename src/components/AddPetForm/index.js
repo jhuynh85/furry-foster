@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
 import * as actions from "../../actions";
 import "./AddPetForm.css";
+import formFields from "../HigherOrderComponents/formFields";
 
 const breeds = require("../../assets/js/breeds");
 const animalTypes = require("../../assets/js/animalTypes").types;
@@ -13,22 +14,40 @@ class AddPetForm extends React.Component {
 		super(props);
 
 		this.state = {
+			submitting: false,
 			selectedAnimalType: null,
 			currentlySelectedBreed: null,
-			breeds: []
+			currentlySelectedColor: null,
+			breeds: [],
+			colors: []
 		};
 	}
 
 	// Renders radio button fields for all animals listed in the animalTypes.js file
-	renderAnimalTypesFields = () => {
-		return animalTypes.map(type => {
-			return (
-				<label key={type + "Label"} className="radio">
-					<Field type="radio" component={"input"} value={type} name="animalType" />
-					{type.charAt(0).toUpperCase() + type.slice(1)}
-				</label>
-			);
-		});
+	renderAnimalTypesFields = field => {
+		const { touched, error } = field.meta;
+
+		return (
+			<div className="field">
+				<label className="label">{field.label}</label>
+				<div
+					className="control"
+					onChange={event => {
+						this.setState({ selectedAnimalType: event.target.value });
+						this.setState({ breeds: [] });
+					}}>
+					{animalTypes.map(type => {
+						return (
+							<label key={type + "Label"} className="radio">
+								<Field type="radio" component={"input"} value={type} name="animalType" />
+								&nbsp;{type.charAt(0).toUpperCase() + type.slice(1)} &nbsp;
+							</label>
+						);
+					})}
+				</div>
+				<span className={"form-error-message"}>{touched ? error : ""}</span>
+			</div>
+		);
 	};
 
 	// Populates dropdown with all the breeds of the select animal type
@@ -67,39 +86,44 @@ class AddPetForm extends React.Component {
 		});
 	};
 
-	onSubmit = formProps => {};
+	onMonthChange = event => {};
+
+	onSubmit = formProps => {
+		this.setState({ submitting: true });
+		const { animalType, petName, gender, weight_lbs, weight_oz, age_years, age_months } = formProps;
+		console.log("formProps: ", formProps);
+		const newPet = {
+			name: petName,
+			gender,
+			weightInOz: parseInt(10, weight_lbs) * 16 + parseInt(10, weight_oz) || undefined,
+			ageInMonths: parseInt(10, age_years) * 12 + parseInt(10, age_months) || undefined
+		};
+	};
 
 	render() {
-		const { handleSubmit } = this.props;
+		const { handleSubmit, submitting } = this.props;
 
 		return (
 			<div className="container is-fluid">
 				<h4 className="title title-case is-4">Add A New Pet</h4>
 				<form onSubmit={handleSubmit(this.onSubmit)}>
-					<div className="field">
-						<label className="label">Pet Type*</label>
-						<div
-							className="control"
-							onChange={event => {
-								this.setState({ selectedAnimalType: event.target.value });
-								this.setState({ breeds: [] });
-							}}>
-							{this.renderAnimalTypesFields()}
-						</div>
-					</div>
+					<Field
+						className={"input"}
+						component={this.renderAnimalTypesFields}
+						label={"Pet Type*"}
+						name={"type"}
+					/>
 					<div className="field">
 						<label className="label">Needs</label>
-						<div className="field">
-							<label className="checkbox">
-								<input type="checkbox" />
-								Foster Family
-							</label>
+						<div className={"control"}>
+							<Field name={"needsFoster"} type="checkbox" component={this.props.renderCheckbox}>
+								Foster
+							</Field>
 						</div>
-						<div className="field">
-							<label className="checkbox">
-								<input type="checkbox" />
+						<div className={"control"}>
+							<Field name={"needsAdopter"} type="checkbox" component={this.props.renderCheckbox}>
 								Adopter
-							</label>
+							</Field>
 						</div>
 					</div>
 					<div className="field">
@@ -119,13 +143,13 @@ class AddPetForm extends React.Component {
 					<div className="field">
 						<label className="label">Name</label>
 						<div className="control">
-							<input className="input" type="text" name="petName" placeholder="" />
+							<Field className="input" component={"input"} type="text" name="petName" />
 						</div>
 					</div>
 					<div className="field">
 						<label className="label">Description</label>
 						<div className="control">
-							<textarea className="textarea" name="petDescription" placeholder="" />
+							<Field className="textarea" component={"textarea"} name="petDescription" />
 						</div>
 					</div>
 
@@ -166,8 +190,9 @@ class AddPetForm extends React.Component {
 						<label className="label">Age</label>
 						<div className="field is-grouped">
 							<div className="control">
-								<input
+								<Field
 									className="input"
+									component={"input"}
 									type="number"
 									name="age_years"
 									size="2"
@@ -177,8 +202,9 @@ class AddPetForm extends React.Component {
 							</div>
 							<span className={"center-label-text-vertically"}>years&nbsp;&nbsp;&nbsp;</span>
 							<div className="control">
-								<input
+								<Field
 									className="input"
+									component={"input"}
 									type="number"
 									name="age_months"
 									size="2"
@@ -191,12 +217,15 @@ class AddPetForm extends React.Component {
 					</div>
 					<div className="field">
 						<label className="label">Gender</label>
-						<div className="select">
-							<select>
-								<option />
-								<option>Male</option>
-								<option>Female</option>
-							</select>
+						<div className="control">
+							<label className="radio">
+								<Field type="radio" component={"input"} value="male" name="gender" />
+								&nbsp;Male &nbsp;
+							</label>
+							<label className="radio">
+								<Field type="radio" component={"input"} value="female" name="gender" />
+								&nbsp;Female &nbsp;
+							</label>
 						</div>
 					</div>
 					<div className="field">
@@ -221,7 +250,7 @@ class AddPetForm extends React.Component {
 									name="weight_lbs"
 									size="3"
 									min={"0"}
-									max={"300"}
+									max={"200"}
 								/>
 							</div>
 							<span className={"center-label-text-vertically"}>lb&nbsp;&nbsp;&nbsp;</span>
@@ -240,42 +269,69 @@ class AddPetForm extends React.Component {
 					</div>
 					<div className="field">
 						<label className="label">Features</label>
-						<label className="checkbox">
-							<input type="checkbox" />
-							Housetrained
-						</label>
-						<label className="checkbox">
-							<input type="checkbox" />
-							Altered
-						</label>
-						<label className="checkbox">
-							<input type="checkbox" />
-							Microchipped
-						</label>
-						<label className="checkbox">
-							<input type="checkbox" />
-							Child Friendly
-						</label>
-						<label className="checkbox">
-							<input type="checkbox" />
-							Dog Friendly
-						</label>
-						<label className="checkbox">
-							<input type="checkbox" />
-							Cat Friendly
-						</label>
+						<div className={"control"}>
+							<Field name={"isHouseTrained"} type="checkbox" component={this.props.renderCheckbox}>
+								House-trained
+							</Field>
+						</div>
+						<div className={"control"}>
+							<Field name={"isAltered"} type="checkbox" component={this.props.renderCheckbox}>
+								Altered
+							</Field>
+						</div>
+
+						<div className={"control"}>
+							<Field name={"isMicrochipped"} type="checkbox" component={this.props.renderCheckbox}>
+								Microchipped
+							</Field>
+						</div>
+						<div className={"control"}>
+							<Field name={"isChildFriendly"} type="checkbox" component={this.props.renderCheckbox}>
+								Child-friendly
+							</Field>
+						</div>
+						<div className={"control"}>
+							<Field name={"isDogFriendly"} type="checkbox" component={this.props.renderCheckbox}>
+								Dog-friendly
+							</Field>
+						</div>
+						<div className={"control"}>
+							<Field name={"isCatFriendly"} type="checkbox" component={this.props.renderCheckbox}>
+								Cat-friendly
+							</Field>
+						</div>
 					</div>
-					<input className="button is-warning is-medium" type="submit" value="Submit" />
+					<div className={"form-error-message"}>{this.props.errorMessage}</div>
+					<button
+						className={`button is-warning is-medium ${submitting ? "is-loading" : ""}`}
+						type="submit"
+						value={"Submit"}>
+						Submit
+					</button>
 				</form>
 			</div>
 		);
 	}
 }
 
+function validate(values) {
+	const errors = {};
+	// Check that pet type is selected
+	if (!values.animalType) {
+		errors.type = "A pet type is required";
+	}
+	return errors;
+}
+
+function mapStateToProps(state) {
+	return { errorMessage: state.auth.errorMessage };
+}
+
 export default compose(
+	formFields,
 	connect(
-		null,
+		mapStateToProps,
 		actions
 	),
-	reduxForm({ form: "addPet" })
+	reduxForm({ validate, form: "addPet" })
 )(AddPetForm);

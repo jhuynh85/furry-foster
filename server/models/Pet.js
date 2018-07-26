@@ -10,10 +10,10 @@ const PetSchema = new Schema(
 		features: { type: String, required: true },
 		images: [{ type: String }],
 		breeds: [{ type: String }],
-		age: Number,
+		ageInMonths: Number,
 		gender: String,
 		color: [{ type: String }],
-		weight: Number,
+		weightInOz: Number,
 		availability: String,
 		rescue: { type: Schema.Types.ObjectId, ref: "Rescue" }
 	},

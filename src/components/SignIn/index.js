@@ -6,7 +6,7 @@ import * as actions from "../../actions";
 import { toast } from "react-toastify";
 
 import "./SignIn.css";
-import renderFieldWithLabel from "../HigherOrderComponents/renderFieldWithLabel";
+import formFields from "../HigherOrderComponents/formFields";
 
 class SignIn extends Component {
 	onSubmit = formProps => {
@@ -20,7 +20,7 @@ class SignIn extends Component {
 	};
 
 	render() {
-		const { handleSubmit } = this.props;
+		const { handleSubmit, submitting } = this.props;
 
 		return (
 			<form onSubmit={handleSubmit(this.onSubmit)}>
@@ -45,7 +45,12 @@ class SignIn extends Component {
 					autoComplete={"none"}
 				/>
 				<div className={"form-error-message"}>{this.props.errorMessage}</div>
-				<input className="button is-warning is-medium" type="submit" value="Submit" />
+				<button
+					className={`button is-warning is-medium ${submitting ? "is-loading" : ""}`}
+					type="submit"
+					value="Submit">
+					Submit
+				</button>
 			</form>
 		);
 	}
@@ -56,7 +61,7 @@ function mapStateToProps(state) {
 }
 
 export default compose(
-	renderFieldWithLabel,
+	formFields,
 	connect(
 		mapStateToProps,
 		actions

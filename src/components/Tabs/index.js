@@ -14,7 +14,7 @@ class Tabs extends React.Component {
 			let activeClass = this.state.selected === index ? "active" : "";
 			return (
 				<li key={index} name={index} className="is-marginless">
-					<a href="#" className={activeClass} onClick={this.handleClick.bind(this, index)}>
+					<a className={activeClass} onClick={this.handleClick.bind(this, index)}>
 						{child.props.label}
 					</a>
 				</li>

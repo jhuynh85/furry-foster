@@ -4,7 +4,7 @@ import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import { toast } from "react-toastify";
-import renderFieldWithLabel from "../HigherOrderComponents/renderFieldWithLabel";
+import formFields from "../HigherOrderComponents/formFields";
 
 import "./SignUp.css";
 
@@ -20,7 +20,7 @@ class SignUp extends Component {
 	};
 
 	render() {
-		const { handleSubmit } = this.props;
+		const { handleSubmit, submitting } = this.props;
 
 		return (
 			<form onSubmit={handleSubmit(this.onSubmit)}>
@@ -51,7 +51,12 @@ class SignUp extends Component {
 					autoComplete={"none"}
 				/>
 				<div className={"form-error-message"}>{this.props.errorMessage}</div>
-				<input className="button is-warning is-medium" type="submit" value="Submit" />
+				<button
+					className={`button is-warning is-medium ${submitting ? "is-loading" : ""}`}
+					type="submit"
+					value="Submit">
+					Submit
+				</button>
 			</form>
 		);
 	}
@@ -84,7 +89,7 @@ function mapStateToProps(state) {
 }
 
 export default compose(
-	renderFieldWithLabel,
+	formFields,
 	connect(
 		mapStateToProps,
 		actions

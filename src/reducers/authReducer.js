@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 };
 
 export default function(state = INITIAL_STATE, action) {
-	console.log("Auth: ", state);
+	// console.log("Auth: ", state);
 	switch (action.type) {
 		case AUTH_USER:
 			const { user, token } = action.payload;

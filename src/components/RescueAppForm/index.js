@@ -6,42 +6,12 @@ import * as actions from "../../actions";
 import US_states from "../../assets/js/states";
 import "./RescueAppForm.css";
 import { toast } from "react-toastify";
+import formFields from "../HigherOrderComponents/formFields";
 
 class RescueAppForm extends Component {
 	//----------- Field rendering functions ------------//
 	// These functions are generally only used for fields that require input validation because it allows access
 	// to the field.meta.error property from the <Field> component, which can be used to display any errors
-
-	// Renders a generic form field with a label above it
-	renderFieldWithLabel = field => {
-		const { touched, error } = field.meta;
-		const className = `input ${touched && error ? "is-danger" : ""}`;
-
-		return (
-			<div className="field">
-				<label className="label">{field.label}</label>
-				<div className="control">
-					<input className={className} name={field.name} type={field.type} {...field.input} />
-				</div>
-				<span className={"form-error-message"}>{touched ? error : ""}</span>
-			</div>
-		);
-	};
-
-	renderCheckbox = field => {
-		const { touched, error } = field.meta;
-
-		return (
-			<div className="field">
-				<label className="checkbox">
-					<input type={field.type} name={field.name} {...field.input} />
-				</label>
-				&nbsp; {field.children}
-				<br />
-				<span className={"form-error-message"}>{touched ? error : ""}</span>
-			</div>
-		);
-	};
 
 	// Renders the phone number field (with 3 sub fields)
 	renderPhoneField = field => {
@@ -230,7 +200,7 @@ class RescueAppForm extends Component {
 	};
 
 	render() {
-		const { handleSubmit } = this.props;
+		const { handleSubmit, submitting } = this.props;
 
 		return (
 			<div className="">
@@ -239,7 +209,7 @@ class RescueAppForm extends Component {
 					<Field
 						label={"Organization Name*"}
 						className="input"
-						component={this.renderFieldWithLabel}
+						component={this.props.renderFieldWithLabel}
 						name={"orgName"}
 						type={"text"}
 						autoComplete={"none"}
@@ -282,7 +252,7 @@ class RescueAppForm extends Component {
 					<Field
 						label={"Account Email*"}
 						className="input"
-						component={this.renderFieldWithLabel}
+						component={this.props.renderFieldWithLabel}
 						name={"email"}
 						type={"email"}
 						autoComplete={"none"}
@@ -290,7 +260,7 @@ class RescueAppForm extends Component {
 					<Field
 						label={"Account Password*"}
 						className="input"
-						component={this.renderFieldWithLabel}
+						component={this.props.renderFieldWithLabel}
 						name={"password"}
 						type={"password"}
 						autoComplete={"none"}
@@ -298,18 +268,23 @@ class RescueAppForm extends Component {
 					<Field
 						label={"Confirm Password*"}
 						className="input"
-						component={this.renderFieldWithLabel}
+						component={this.props.renderFieldWithLabel}
 						name={"passwordConfirm"}
 						type={"password"}
 						autoComplete={"none"}
 					/>
-					<Field name={"coverCosts"} type="checkbox" component={this.renderCheckbox}>
+					<Field name={"coverCosts"} type="checkbox" component={this.props.renderCheckbox}>
 						<b>YES!</b> My organization covers 100% foster care costs for food and vet care.
 					</Field>
-					<Field name={"termsConditions"} type="checkbox" component={this.renderCheckbox}>
+					<Field name={"termsConditions"} type="checkbox" component={this.props.renderCheckbox}>
 						<b>YES!</b> I have read and agree to all <a>terms and conditions</a>.
 					</Field>
-					<input className="button is-warning is-medium" type="submit" value="Submit" />
+					<button
+						className={`button is-warning is-medium ${submitting ? "is-loading" : ""}`}
+						type="submit"
+						value="Submit">
+						Submit
+					</button>
 				</form>
 				<span>{this.props.errorMessage}</span>
 			</div>
@@ -380,7 +355,7 @@ function validate(values) {
 	}
 
 	if (errors) console.log(errors);
-	console.log(values);
+	// console.log(values);
 	return errors;
 }
 
@@ -389,6 +364,7 @@ function mapStateToProps(state) {
 }
 
 export default compose(
+	formFields,
 	connect(
 		mapStateToProps,
 		actions

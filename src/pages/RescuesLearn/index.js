@@ -1,8 +1,8 @@
 import React from "react";
-import Banner from "../../components/Banner";
+// import Banner from "../../components/Banner";
 import Sidebar from "../../components/Sidebar";
 import "./RescuesLearn.css";
-import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
+// import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
 import Button from "../../components/Button";
 
 class RescuesLearn extends React.Component {
