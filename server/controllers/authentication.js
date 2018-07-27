@@ -7,7 +7,8 @@ function tokenForUser(user) {
 	const timeStamp = new Date().getTime();
 	const payload = {
 		sub: user.id,
-		iat: timeStamp
+		iat: timeStamp,
+		type: user.type
 	};
 	return jwt.encode(payload, process.env.JWT_SECRET);
 }

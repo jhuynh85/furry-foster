@@ -354,7 +354,7 @@ function validate(values) {
 		errors.termsConditions = "Please read and agree to the terms and conditions";
 	}
 
-	if (errors) console.log(errors);
+	// if (errors) console.log(errors);
 	// console.log(values);
 	return errors;
 }

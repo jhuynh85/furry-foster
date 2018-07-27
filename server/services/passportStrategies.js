@@ -15,13 +15,13 @@ passport.use(
 		User.findOne({ email: email }, function(err, user) {
 			if (err) return doneCallback(err);
 			// Email not found
-			if (!user) return doneCallback(null, false, { error: "Email does not exist" });
+			if (!user) return doneCallback(null, false);
 
 			// Compare passwords
 			user.comparePassword(password, function(err, isMatch) {
 				if (err) return doneCallback(err);
 				// Password incorrect
-				if (!isMatch) return doneCallback(null, false, { error: "Incorrect password" });
+				if (!isMatch) return doneCallback(null, false);
 				// Email and password matches
 				return doneCallback(null, user);
 			});
@@ -61,18 +61,36 @@ passport.use(
 		function(payload, doneCallback) {
 			console.log("JWT payload: ", payload);
 
-			// Check if user ID in payload exists
-			User.findById(payload.sub, function(err, user) {
-				if (err) return doneCallback(err, false);
-				// If it exists, call "doneCallback" with that
-				if (user) {
-					doneCallback(null, user);
-				}
-				// Otherwise, call "doneCallback" without a user object
-				else {
-					doneCallback(null, false);
-				}
-			});
+			// Check for user
+			if (payload.type === "user") {
+				// Check if user ID in payload exists
+				User.findById(payload.sub, function(err, user) {
+					if (err) return doneCallback(err, false);
+					// If it exists, call "doneCallback" with that
+					if (user) {
+						doneCallback(null, user);
+					}
+					// Otherwise, call "doneCallback" without a user object
+					else {
+						doneCallback(null, false);
+					}
+				});
+			}
+			// Check for rescue
+			else {
+				// Check if rescue ID in payload exists
+				Rescue.findById(payload.sub, function(err, user) {
+					if (err) return doneCallback(err, false);
+					// If it exists, call "doneCallback" with that
+					if (user) {
+						doneCallback(null, user);
+					}
+					// Otherwise, call "doneCallback" without a rescue object
+					else {
+						doneCallback(null, false);
+					}
+				});
+			}
 		}
 	)
 );

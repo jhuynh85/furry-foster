@@ -50,6 +50,7 @@ app.use(express.static(path.resolve(__dirname, "..", "build")));
 //=============== ROUTES SETUP ===============//
 require("./routes/testRoutes")(app);
 require("./routes/authRoutes")(app);
+require("./routes/petRoutes")(app);
 
 //=============== API ROUTES ===============//
 app.get("*", (req, res) => {

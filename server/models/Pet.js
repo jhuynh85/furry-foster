@@ -7,15 +7,15 @@ const PetSchema = new Schema(
 		name: { type: String, required: true },
 		type: { type: String, required: true },
 		description: String,
-		features: { type: String, required: true },
-		images: [{ type: String }],
-		breeds: [{ type: String }],
-		ageInMonths: Number,
 		gender: String,
-		color: [{ type: String }],
 		weightInOz: Number,
-		availability: String,
-		rescue: { type: Schema.Types.ObjectId, ref: "Rescue" }
+		ageInMonths: Number,
+		breed: [{ type: String }],
+		color: [{ type: String }],
+		features: { type: String },
+		images: [{ type: String }],
+		availability: [{ type: String }],
+		rescue: { type: Schema.Types.ObjectId, ref: "Rescue", required: true }
 	},
 	{ timestamps: true }
 );

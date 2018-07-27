@@ -5,6 +5,8 @@ import { reduxForm, Field } from "redux-form";
 import * as actions from "../../actions";
 import "./AddPetForm.css";
 import formFields from "../HigherOrderComponents/formFields";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const breeds = require("../../assets/js/breeds");
 const animalTypes = require("../../assets/js/animalTypes").types;
@@ -14,7 +16,6 @@ class AddPetForm extends React.Component {
 		super(props);
 
 		this.state = {
-			submitting: false,
 			selectedAnimalType: null,
 			currentlySelectedBreed: null,
 			currentlySelectedColor: null,
@@ -86,18 +87,87 @@ class AddPetForm extends React.Component {
 		});
 	};
 
-	onMonthChange = event => {};
-
-	onSubmit = formProps => {
-		this.setState({ submitting: true });
-		const { animalType, petName, gender, weight_lbs, weight_oz, age_years, age_months } = formProps;
-		console.log("formProps: ", formProps);
-		const newPet = {
-			name: petName,
+	onSubmit = async formProps => {
+		const {
+			petName,
+			animalType,
+			petDescription,
 			gender,
-			weightInOz: parseInt(10, weight_lbs) * 16 + parseInt(10, weight_oz) || undefined,
-			ageInMonths: parseInt(10, age_years) * 12 + parseInt(10, age_months) || undefined
-		};
+			weight_lbs,
+			weight_oz,
+			age_years,
+			age_months
+		} = formProps;
+
+		const availability = [];
+		if (formProps.needsFoster) {
+			availability.push("Foster");
+		}
+		if (formProps.needsAdopter) {
+			availability.push("Adopter");
+		}
+
+		const features = [];
+		if (formProps.isAltered) {
+			features.push("Altered");
+		}
+		if (formProps.isHouseTrained) {
+			features.push("House-trained");
+		}
+		if (formProps.isMicrochipped) {
+			features.push("Microchipped");
+		}
+		if (formProps.isChildFriendly) {
+			features.push("Child-friendly");
+		}
+		if (formProps.isDogFriendly) {
+			features.push("Dog-friendly");
+		}
+		if (formProps.isCatFriendly) {
+			features.push("Cat-friendly");
+		}
+
+		if (localStorage.getItem("user")) {
+			const loggedInRescue = JSON.parse(localStorage.getItem("user"));
+
+			// Make sure we only submit the form if the logged in user is a Rescue
+			if (loggedInRescue.userType !== "rescue") {
+				console.log(
+					'ERROR: Invalid userType, expected "rescue" but got "' + loggedInRescue.userType + '"'
+				);
+				toast.error("Sign in as a rescue to add pet");
+			} else {
+				// console.log("formProps: ", formProps);
+				const newPet = {
+					name: petName,
+					type: animalType,
+					description: petDescription,
+					gender,
+					weightInOz: parseInt(weight_lbs, 10) * 16 + parseInt(weight_oz, 10) || undefined,
+					ageInMonths: parseInt(age_years, 10) * 12 + parseInt(age_months, 10) || undefined,
+					breed: this.state.breeds,
+					color: this.state.colors,
+					features,
+					availability,
+					rescue: loggedInRescue._id
+				};
+				console.log("Submitting new pet: ", newPet);
+				// Attempt post request to add new pet
+				try {
+					// Set authorization header because /addpet route is protected
+					const header = { authorization: localStorage.getItem("token") };
+					let response = await axios.post("/addpet", newPet, { headers: header });
+					toast.success("New pet added");
+					console.log("New pet added: ", response.data);
+				} catch (e) {
+					console.log(e);
+					console.log("API error: ", e.response);
+				}
+			}
+		} else {
+			console.log("ERROR: Must be signed in as a rescue to add a pet");
+			toast.error("Sign in as a rescue to add pet");
+		}
 	};
 
 	render() {
@@ -140,12 +210,13 @@ class AddPetForm extends React.Component {
 							</label>
 						</div>
 					</div>
-					<div className="field">
-						<label className="label">Name</label>
-						<div className="control">
-							<Field className="input" component={"input"} type="text" name="petName" />
-						</div>
-					</div>
+					<Field
+						className={"input"}
+						component={this.props.renderFieldWithLabel}
+						label={"Name*"}
+						type={"text"}
+						name={"petName"}
+					/>
 					<div className="field">
 						<label className="label">Description</label>
 						<div className="control">
@@ -301,7 +372,6 @@ class AddPetForm extends React.Component {
 							</Field>
 						</div>
 					</div>
-					<div className={"form-error-message"}>{this.props.errorMessage}</div>
 					<button
 						className={`button is-warning is-medium ${submitting ? "is-loading" : ""}`}
 						type="submit"
@@ -316,6 +386,11 @@ class AddPetForm extends React.Component {
 
 function validate(values) {
 	const errors = {};
+	// Check for name
+	if (!values.petName) {
+		errors.petName = "A pet name is required";
+	}
+
 	// Check that pet type is selected
 	if (!values.animalType) {
 		errors.type = "A pet type is required";

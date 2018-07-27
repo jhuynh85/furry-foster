@@ -24,28 +24,12 @@ export const signup = ({ type, ...input }, callback) => async dispatch => {
 		let response;
 		//----------- USER SIGNUP -------//
 		if (type === "user") {
-			response = await axios.post("/signup/user", {
-				email: input.email,
-				password: input.password
-			});
+			response = await axios.post("/signup/user", input);
 		}
 
 		//----------- RESCUE SIGNUP -------//
 		else if (type === "rescue") {
-			response = await axios.post("/signup/rescue", {
-				orgName: input.orgName,
-				orgEmail: input.orgEmail,
-				phone: input.phone,
-				email: input.email,
-				password: input.password,
-				address1: input.address1,
-				address2: input.address2,
-				city: input.city,
-				state: input.state,
-				zip: input.zip,
-				websiteURL: input.websiteURL,
-				ein: input.ein
-			});
+			response = await axios.post("/signup/rescue", input);
 		}
 
 		const { user, token } = response.data;
@@ -60,7 +44,7 @@ export const signup = ({ type, ...input }, callback) => async dispatch => {
 		console.log("Signup successful");
 		callback();
 	} catch (e) {
-		console.log("Error: ", e.response);
+		console.log("API error: ", e.response);
 		dispatch({ type: AUTH_ERROR, payload: e.response.data.error });
 	}
 };
