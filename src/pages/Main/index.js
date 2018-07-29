@@ -9,6 +9,7 @@ import donateIcon from "../../assets/images/ff_website2018_icons_donate.png";
 //----------------Child components------- ---//
 import Button from "../../components/Button";
 import ImageButton from "../../components/ImageButton";
+import NewsletterBanner from "../../components/NewsletterBanner";
 
 class Main extends React.Component {
 	componentDidMount() {
@@ -18,49 +19,64 @@ class Main extends React.Component {
 	render() {
 		return (
 			<div>
-				<div className="main-background-image has-text-centered">
-					<div>
-						<div className="title title-case has-text-white">You can make a difference</div>
-						<Button link="/about" text="MORE INFO" />
-					</div>
-				</div>
-				<br />
-				<div className="has-text-centered">
-					<div className="subtitle title-case">You can make a difference</div>
-					<div className="columns container is-fluid is-centered">
-						<div className="column is-one-quarter">
-							<ImageButton
-								className="main-image-button"
-								link="/pets"
-								image={findIcon}
-								text="FIND A FOSTER PET"
-								infoText="MORE INFO"
-								infoLink="/about"
-							/>
-						</div>
-						<div className="column is-one-quarter">
-							<ImageButton
-								className="main-image-button"
-								link="/fosters/learn"
-								image={learnIcon}
-								text="LEARN ABOUT FOSTERING"
-								infoText="MORE INFO"
-								infoLink="/about"
-							/>
-						</div>
-						<div className="column is-one-quarter">
-							<ImageButton
-								className="main-image-button"
-								link="/donate"
-								image={donateIcon}
-								text="MAKE A DONATION"
-								infoText="MORE INFO"
-								infoLink="/about"
-							/>
+				<section className="hero is-light is-medium main-background-image">
+					<div className="hero-body">
+						<div className="container">
+							<div className="has-text-centered">
+								<div>
+									<h1 className="title is-1 has-text-white">You can make a difference</h1>
+									<p className="subtitle is-4 has-text-white">
+										Fostering is free, fun, and fulfilling
+									</p>
+									<Button link="/about" text="MORE INFO" />
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<br />
+				</section>
+				<section className="hero is-light is-medium">
+					<div className="hero-body">
+						<div className="container">
+							<div className="has-text-centered">
+								<h2 className="title is-2">It's easy to help</h2>
+								<p className="subtitle is-4">There are plenty of ways to get involved!</p>
+								<div className="columns container is-fluid is-centered">
+									<div className="column is-one-quarter">
+										<ImageButton
+											className="main-image-button"
+											link="/pets"
+											image={findIcon}
+											text="FIND A FOSTER PET"
+											infoText="MORE INFO"
+											infoLink="/about"
+										/>
+									</div>
+									<div className="column is-one-quarter">
+										<ImageButton
+											className="main-image-button"
+											link="/fosters/learn"
+											image={learnIcon}
+											text="LEARN ABOUT FOSTERING"
+											infoText="MORE INFO"
+											infoLink="/about"
+										/>
+									</div>
+									<div className="column is-one-quarter">
+										<ImageButton
+											className="main-image-button"
+											link="/donate"
+											image={donateIcon}
+											text="MAKE A DONATION"
+											infoText="MORE INFO"
+											infoLink="/about"
+										/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<NewsletterBanner />
 			</div>
 		);
 	}

@@ -8,7 +8,7 @@ const NewsletterBanner = props => {
 				<section className="hero is-primary is-medium has-text-centered">
 					<div className="hero-body">
 						<div className="container ">
-							<h1 className="title is-1">Stay up to date with foster news!</h1>
+							<h2 className="title is-2">Stay up to date with foster news!</h2>
 							<div className="level">
 								<div className="level-item">
 									<div className="field has-addons">

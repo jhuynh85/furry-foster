@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import footerIcon from "../../assets/images/ff_website2018_icons_footer.png";
 
 import "./Footer.css";
 
@@ -10,9 +11,14 @@ const currentYear = currentDate.getFullYear();
 const Footer = () => (
 	<footer className="page-footer title-case">
 		<br />
-		<div className="container has-text-left">
+		<div className="container">
+			<div className="container">
+				<div className="has-text-centered">
+					<img alt="Furry foster home icon" src={footerIcon} style={{ width: 50 }} />
+				</div>
+			</div>
 			<section className="section">
-				<div className="columns is-left is-mobile">
+				<div className="has-text-left columns is-left is-mobile">
 					<div className="column" />
 					<div className="column">
 						<h6 className="subtitle is-6 is-uppercase">Furry Foster</h6>
