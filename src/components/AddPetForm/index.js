@@ -35,8 +35,13 @@ class AddPetForm extends React.Component {
 				<div
 					className="control"
 					onChange={event => {
-						this.setState({ selectedAnimalType: event.target.value });
-						this.setState({ breeds: [] });
+						this.setState({
+							selectedAnimalType: event.target.value,
+							currentlySelectedBreed: null,
+							currentlySelectedColor: null,
+							breeds: [],
+							colors: []
+						});
 					}}>
 					{animalTypes.map(type => {
 						return (
@@ -57,13 +62,7 @@ class AddPetForm extends React.Component {
 		const { selectedAnimalType } = this.state;
 		if (selectedAnimalType) {
 			const breedList = breeds[selectedAnimalType];
-			return breedList.map(breed => {
-				return (
-					<option key={breed} value={breed}>
-						{breed}
-					</option>
-				);
-			});
+			return this.renderDropdownOptions(breedList);
 		}
 		return <option value={""} />;
 	};
