@@ -9,6 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const breeds = require("../../assets/js/breeds");
+const colors = require("../../assets/js/colors");
 const animalTypes = require("../../assets/js/animalTypes").types;
 
 class AddPetForm extends React.Component {
@@ -67,9 +68,35 @@ class AddPetForm extends React.Component {
 		return <option value={""} />;
 	};
 
+	// Populates dropdown with all the colors of the select animal type
+	renderColorDropdown = () => {
+		const { selectedAnimalType } = this.state;
+		if (selectedAnimalType) {
+			const colorList = colors[selectedAnimalType];
+			return this.renderDropdownOptions(colorList);
+		}
+		return <option value={""} />;
+	};
+
+	// Renders dropdown options from given list
+	renderDropdownOptions = list => {
+		return list.map(item => {
+			return (
+				<option key={item} value={item}>
+					{item}
+				</option>
+			);
+		});
+	};
+
 	// Sets the current breed when user selects from dropdown
 	onBreedChange = event => {
 		this.setState({ currentlySelectedBreed: event.target.value });
+	};
+
+	// Sets the current color when user selects from dropdown
+	onColorChange = event => {
+		this.setState({ currentlySelectedColor: event.target.value });
 	};
 
 	// Adds breed currently selected in the dropdown to the breed array if it isn't already in there
@@ -80,10 +107,25 @@ class AddPetForm extends React.Component {
 		}
 	};
 
+	// Adds color currently selected in the dropdown to the color array if it isn't already in there
+	addColor = event => {
+		const { colors, currentlySelectedColor } = this.state;
+		if (currentlySelectedColor && colors.indexOf(currentlySelectedColor) === -1) {
+			this.setState({ colors: [...colors, currentlySelectedColor] });
+		}
+	};
+
 	// Removes the selected breed from the breeds array
 	removeBreed = breedToRemove => {
 		this.setState({
 			breeds: this.state.breeds.filter(breed => breed !== breedToRemove)
+		});
+	};
+
+	// Removes the selected color from the colors array
+	removeColor = colorToRemove => {
+		this.setState({
+			colors: this.state.colors.filter(color => color !== colorToRemove)
 		});
 	};
 
@@ -303,12 +345,34 @@ class AddPetForm extends React.Component {
 						<label className="label">Color</label>
 						<div className="field has-addons">
 							<div className="control">
-								<input className="input" type="text" placeholder="Color" />
+								<div className={"select"} onChange={this.onColorChange}>
+									<Field component={"select"} name={"colors"}>
+										<option value={""} />
+										{this.renderColorDropdown()}
+									</Field>
+								</div>
 							</div>
 							<div className="control">
-								<a className="button is-warning">Add Color</a>
+								<a className="button is-warning" onClick={this.addColor}>
+									Add Color
+								</a>
 							</div>
 						</div>
+					</div>
+					<div className={"tags"}>
+						{this.state.colors.map(color => {
+							return (
+								<span key={color} className={"tag is-warning"}>
+									<strong>{color}</strong>
+									<button
+										className="delete is-small"
+										onClick={() => {
+											this.removeColor(color);
+										}}
+									/>
+								</span>
+							);
+						})}
 					</div>
 					<div className="field">
 						<label className="label">Weight</label>
