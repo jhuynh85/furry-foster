@@ -43,10 +43,16 @@ class Profile extends Component {
 
 	// Renders the different content pages that can be selected in the submenu
 	renderContentArea = () => {
+		const loggedInRescue = JSON.parse(localStorage.getItem("user"));
+		console.log("loggedInRescue: ", loggedInRescue);
 		return (
 			<section className="section">
 				<Switch>
-					<Route exact path={`${this.props.match.path}/info`} component={ProfileInfo} />
+					<Route
+						exact
+						path={`${this.props.match.path}/info`}
+						render={() => <ProfileInfo email={loggedInRescue.email} />}
+					/>
 					<Route exact path={`${this.props.match.path}/settings`} component={ProfileSettings} />
 					<Route exact path={`${this.props.match.path}/add`} component={AddPetForm} />
 				</Switch>
