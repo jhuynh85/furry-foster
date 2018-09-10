@@ -51,7 +51,7 @@ class Profile extends Component {
 					<Route
 						exact
 						path={`${this.props.match.path}/info`}
-						render={() => <ProfileInfo email={loggedInRescue.email} />}
+						render={() => <ProfileInfo {...loggedInRescue} />}
 					/>
 					<Route exact path={`${this.props.match.path}/settings`} component={ProfileSettings} />
 					<Route exact path={`${this.props.match.path}/add`} component={AddPetForm} />
