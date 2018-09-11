@@ -10,6 +10,11 @@ import ProfileSettings from "../../components/ProfileSettings";
 import AddPetForm from "../../components/AddPetForm";
 
 class Profile extends Component {
+	constructor() {
+		super();
+		this.loggedInRescue = JSON.parse(localStorage.getItem("user"));
+		console.log("loggedInRescue: ", this.loggedInRescue);
+	}
 	// Renders the submenu for this profile
 	renderSubmenuArea = () => {
 		return (
@@ -43,15 +48,13 @@ class Profile extends Component {
 
 	// Renders the different content pages that can be selected in the submenu
 	renderContentArea = () => {
-		const loggedInRescue = JSON.parse(localStorage.getItem("user"));
-		console.log("loggedInRescue: ", loggedInRescue);
 		return (
 			<section className="section">
 				<Switch>
 					<Route
 						exact
 						path={`${this.props.match.path}/info`}
-						render={() => <ProfileInfo {...loggedInRescue} />}
+						render={() => <ProfileInfo {...this.loggedInRescue} />}
 					/>
 					<Route exact path={`${this.props.match.path}/settings`} component={ProfileSettings} />
 					<Route exact path={`${this.props.match.path}/add`} component={AddPetForm} />
@@ -65,9 +68,9 @@ class Profile extends Component {
 		return (
 			<ProfileContainer
 				match={this.props.match}
-				profilePic={""}
-				name={"Red Cat Rescue"}
-				location={"Los Angeles, CA"}
+				profilePic={this.loggedInRescue.images[0]}
+				name={this.loggedInRescue.orgName}
+				location={this.loggedInRescue.city + ", " + this.loggedInRescue.state}
 				submenu={this.renderSubmenuArea()}
 				content={this.renderContentArea()}
 			/>
