@@ -6,6 +6,7 @@ import requireAuth from "../../components/HigherOrderComponents/requireAuth"; //
 
 import ProfileContainer from "../../components/ProfileContainer";
 import ProfileInfo from "../../components/ProfileInfo";
+import AccountInfo from "../../components/AccountInfo";
 import ProfileSettings from "../../components/ProfileSettings";
 import AddPetForm from "../../components/AddPetForm";
 
@@ -23,10 +24,10 @@ class Profile extends Component {
 					<p className="menu-label">Manage Account</p>
 					<ul className="menu-list">
 						<li>
-							<Link to={`${this.props.match.url}/info`}>Account</Link>
+							<Link to={`${this.props.match.url}/info`}>Profile</Link>
 						</li>
 						<li>
-							<a>Profile</a>
+							<Link to={`${this.props.match.url}/account`}>Account</Link>
 						</li>
 						<li>
 							<Link to={`${this.props.match.url}/settings`}>Settings</Link>
@@ -55,6 +56,11 @@ class Profile extends Component {
 						exact
 						path={`${this.props.match.path}/info`}
 						render={() => <ProfileInfo {...this.loggedInRescue} />}
+					/>
+					<Route
+						exact
+						path={`${this.props.match.path}/account`}
+						render={() => <AccountInfo {...this.loggedInRescue} />}
 					/>
 					<Route exact path={`${this.props.match.path}/settings`} component={ProfileSettings} />
 					<Route exact path={`${this.props.match.path}/add`} component={AddPetForm} />
