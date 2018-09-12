@@ -7,8 +7,15 @@ import US_states from "../../assets/js/states";
 import "./RescueAppForm.css";
 import { toast } from "react-toastify";
 import formFields from "../HigherOrderComponents/formFields";
+import { Redirect } from "react-router-dom";
 
 class RescueAppForm extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isRegistered: false
+		};
+	}
 	//----------- Field rendering functions ------------//
 	// These functions are generally only used for fields that require input validation because it allows access
 	// to the field.meta.error property from the <Field> component, which can be used to display any errors
@@ -68,7 +75,7 @@ class RescueAppForm extends Component {
 	renderAddressFields = field => {
 		return (
 			<div className="field">
-				<label className="label">Organization Address</label>
+				<label className="label">Organization Address*</label>
 				<div className="control">
 					<Field
 						className="input"
@@ -194,13 +201,17 @@ class RescueAppForm extends Component {
 			},
 			() => {
 				toast.success("RESCUE ACCOUNT CREATED");
-				// this.props.history.push("/redirect");
+				this.setState({ isRegistered: true });
 			}
 		);
 	};
 
 	render() {
 		const { handleSubmit, submitting } = this.props;
+
+		if (this.state.isRegistered) {
+			return <Redirect to={"/profile"} />;
+		}
 
 		return (
 			<div className="">

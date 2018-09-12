@@ -5,24 +5,36 @@ import { compose } from "redux";
 import * as actions from "../../actions";
 import { toast } from "react-toastify";
 import formFields from "../../components/HigherOrderComponents/formFields";
+import { Redirect } from "react-router-dom";
 
 import "./LoginRescues.css";
 
-// import RescueSignIn from "../../components/RescueSignIn";
-
 class LoginRescues extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			loggedIn: false
+		};
+	}
+
 	onSubmit = formProps => {
 		this.props.signin(
 			{ email: formProps.email, password: formProps.password, type: "rescue" },
-			() => {
-				toast.info("RESCUE SIGNED IN");
-				// this.props.history.push("/redirect");
-			}
+			this.displayToastAndRedirect
 		);
+	};
+
+	displayToastAndRedirect = () => {
+		toast.info("RESCUE SIGNED IN");
+		this.setState({ loggedIn: true });
 	};
 
 	render() {
 		const { handleSubmit, submitting } = this.props;
+
+		if (this.state.loggedIn) {
+			return <Redirect to="/profile" />;
+		}
 
 		return (
 			<div className="container">

@@ -24,7 +24,7 @@ class Profile extends Component {
 					<p className="menu-label">Manage Account</p>
 					<ul className="menu-list">
 						<li>
-							<Link to={`${this.props.match.url}/info`}>Profile</Link>
+							<Link to={`${this.props.match.url}`}>Profile</Link>
 						</li>
 						<li>
 							<Link to={`${this.props.match.url}/account`}>Account</Link>
@@ -54,7 +54,7 @@ class Profile extends Component {
 				<Switch>
 					<Route
 						exact
-						path={`${this.props.match.path}/info`}
+						path={`${this.props.match.path}`}
 						render={() => <ProfileInfo {...this.loggedInRescue} />}
 					/>
 					<Route
@@ -70,6 +70,9 @@ class Profile extends Component {
 	};
 
 	render() {
+		if (!this.loggedInRescue) {
+			return null;
+		}
 		// IMPORTANT: Set the match prop to this.props.match in order for submenu links to work
 		return (
 			<ProfileContainer
