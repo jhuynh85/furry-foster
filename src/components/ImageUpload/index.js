@@ -24,7 +24,7 @@ class ImageUpload extends Component {
 					{this.state.accepted.map((file, index) => {
 						return (
 							<figure className={"imagePreview"} key={file.name + index}>
-								<img src={file.data} alt={"Preview image " + index} />
+								<img src={file.data} alt={file.name} />
 								<button
 									className="delete is-small imagePreviewDelete"
 									aria-label="delete"
