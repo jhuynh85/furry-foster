@@ -4,6 +4,7 @@
 	"private": true,
 	"author": "Joseph Huynh, Margaret Choi",
 	"dependencies": {
+		"aws-sdk": "^2.312.0",
 		"axios": "^0.18.0",
 		"bcrypt-nodejs": "^0.0.3",
 		"body-parser": "^1.18.3",
@@ -25,6 +26,7 @@
 		"prop-types": "^15.6.2",
 		"react": "^16.3.2",
 		"react-dom": "^16.3.2",
+		"react-dropzone": "^5.1.0",
 		"react-redux": "^5.0.7",
 		"react-router-dom": "^4.3.1",
 		"react-scripts": "1.1.4",

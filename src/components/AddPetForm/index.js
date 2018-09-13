@@ -7,6 +7,7 @@ import "./AddPetForm.css";
 import formFields from "../HigherOrderComponents/formFields";
 import axios from "axios";
 import { toast } from "react-toastify";
+import ImageUpload from "../ImageUpload";
 
 const breeds = require("../../assets/js/breeds");
 const colors = require("../../assets/js/colors");
@@ -47,7 +48,8 @@ class AddPetForm extends React.Component {
 						return (
 							<label key={type + "Label"} className="radio">
 								<Field type="radio" component={"input"} value={type} name="animalType" />
-								&nbsp;{type.charAt(0).toUpperCase() + type.slice(1)} &nbsp;
+								&nbsp;
+								{type.charAt(0).toUpperCase() + type.slice(1)} &nbsp;
 							</label>
 						);
 					})}
@@ -237,20 +239,6 @@ class AddPetForm extends React.Component {
 							</Field>
 						</div>
 					</div>
-					<div className="field">
-						<label className="label">Upload Photos</label>
-						<div className="file is-boxed">
-							<label className="file-label">
-								<input className="file-input" type="file" name="petPhotos" />
-								<span className="file-cta">
-									<span className="file-icon">
-										<i className="fa fa-upload" />
-									</span>
-									<span className="file-label">Choose a file…</span>
-								</span>
-							</label>
-						</div>
-					</div>
 					<Field
 						className={"input"}
 						component={this.props.renderFieldWithLabel}
@@ -263,6 +251,11 @@ class AddPetForm extends React.Component {
 						<div className="control">
 							<Field className="textarea" component={"textarea"} name="petDescription" />
 						</div>
+					</div>
+
+					<div className="field">
+						<label className="label">Upload Photos</label>
+						<ImageUpload name={"petUpload"} pictype={"rescue"} />
 					</div>
 
 					<div className="field">
