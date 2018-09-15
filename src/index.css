@@ -59,6 +59,12 @@ h6 {
 	margin-bottom: auto;
 }
 
+.is-vertical-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 /* Fix for .is-fluid not having 32px margins below 1087px width */
 @media screen and (max-width: 1087px) {
 	.container.is-fluid {
