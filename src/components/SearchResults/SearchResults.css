@@ -1,0 +1,12 @@
+.search-results {
+	flex-wrap: wrap;
+}
+
+.search-results figure:first-child {
+	margin: 0px;
+	margin-bottom: 0px;
+}
+
+.search-tile {
+	background: #ececec;
+}

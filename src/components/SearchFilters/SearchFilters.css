@@ -8,3 +8,22 @@
 	background: #eee;
 	cursor: pointer;
 }
+
+.hide-input {
+	display: none;
+}
+
+.search-filter-form {
+	font-size: 0.8em;
+}
+
+.search-filter-form input {
+}
+
+.search-filter-form .field {
+	margin-right: 10px;
+}
+
+.search-filter-form span.select {
+	font-size: 0.8em;
+}

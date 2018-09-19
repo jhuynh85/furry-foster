@@ -6,13 +6,16 @@
 	height: 300px;
 	background-size: cover;
 	border-radius: 4px;
+	filter: blur(1px) grayscale(100%);
 }
 
 .tile-header {
+	color: #ffffff;
+	text-transform: uppercase;
 }
 
 .tile-overlay {
-	background: rgba(0, 0, 0, 0.5);
+	background: rgba(75, 61, 52, 0.5);
 	height: 100%;
 	width: 100%;
 	display: flex;
@@ -23,5 +26,5 @@
 }
 
 .tile-overlay:hover {
-	background: rgba(0, 0, 0, 0.1);
+	background: rgba(75, 61, 52, 0.1);
 }
