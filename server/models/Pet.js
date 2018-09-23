@@ -12,7 +12,7 @@ const PetSchema = new Schema(
 		ageInMonths: Number,
 		breed: [{ type: String }],
 		color: [{ type: String }],
-		features: { type: String },
+		features: [{ type: String }],
 		images: [{ type: String }],
 		availability: [{ type: String }],
 		rescue: { type: Schema.Types.ObjectId, ref: "Rescue", required: true }
