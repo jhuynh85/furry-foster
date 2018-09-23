@@ -18,8 +18,9 @@ class ImageUpload extends Component {
 				<Dropzone
 					{...this.props}
 					className="dropzone"
-					acceptClassName={"dropzone-accepted"}
 					activeClassName={"dropzone-active"}
+					acceptClassName={"dropzone-accepted"}
+					rejectClassName={"dropzone-rejected"}
 					onDrop={this.onDrop}
 					accept="image/*">
 					<p>Drop photos here</p>

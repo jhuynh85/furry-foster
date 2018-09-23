@@ -11,14 +11,15 @@
 }
 
 .dropzone:hover,
-.dropzone-active {
+.dropzone-active,
+.dropzone-accepted {
 	cursor: pointer;
 	background-color: lightgoldenrodyellow;
 }
 
-.dropzone-accepted {
-	background-color: #ffdd57;
-	border: 3px dashed #ffdd57;
+.dropzone-rejected {
+	border: 3px dashed red;
+	background-color: #fddce1;
 }
 
 .imagePreviewContainer {
