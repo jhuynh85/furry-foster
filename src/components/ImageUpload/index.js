@@ -15,10 +15,14 @@ class ImageUpload extends Component {
 	render() {
 		return (
 			<div>
-				<Dropzone {...this.props} onDrop={this.onDrop} accept="image/*">
-					<center>
-						<p>Drop photos here</p>
-					</center>
+				<Dropzone
+					{...this.props}
+					className="dropzone"
+					acceptClassName={"dropzone-accepted"}
+					activeClassName={"dropzone-active"}
+					onDrop={this.onDrop}
+					accept="image/*">
+					<p>Drop photos here</p>
 				</Dropzone>
 				<div className={"imagePreviewContainer"}>
 					{this.state.accepted.map((file, index) => {

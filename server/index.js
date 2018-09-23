@@ -2,10 +2,10 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-require("dotenv").config();
 const cors = require("cors");
+require("dotenv").config();
 
-//=============== INITIALIZE EXPRESS APP & SETUP FOR DATA PARSING===============//
+//=============== INITIALIZE EXPRESS APP & SETUP FOR DATA PARSING ===============//
 const app = express();
 const PORT = process.env.PORT || 5000;
 

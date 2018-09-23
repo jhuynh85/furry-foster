@@ -1,3 +1,26 @@
+.dropzone {
+	display: flex;
+	font-weight: bold;
+	justify-content: center;
+	align-items: center;
+	width: 150px;
+	height: 100px;
+	border: 3px dashed #ffdd57;
+	border-radius: 5%;
+	font-size: 0.75rem;
+}
+
+.dropzone:hover,
+.dropzone-active {
+	cursor: pointer;
+	background-color: lightgoldenrodyellow;
+}
+
+.dropzone-accepted {
+	background-color: #ffdd57;
+	border: 3px dashed #ffdd57;
+}
+
 .imagePreviewContainer {
 	display: flex;
 }
