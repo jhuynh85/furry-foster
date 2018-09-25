@@ -24,7 +24,7 @@ app.use(cors());
 
 //=============== DATABASE PACKAGES & CONFIG ===============//
 const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/furry-foster-test");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/furry-foster-test");
 
 //=============== PASSPORT CONFIGURATION ===============//
 // require('./config/passport')(passport) //pass passport for configuration
