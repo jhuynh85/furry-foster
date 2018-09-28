@@ -8,6 +8,7 @@ import formFields from "../HigherOrderComponents/formFields";
 import axios from "axios";
 import { toast } from "react-toastify";
 import ImageUpload from "../ImageUpload";
+import { uploadImage } from "../../utils/uploadImage";
 
 const breeds = require("../../assets/js/breeds");
 const colors = require("../../assets/js/colors");
@@ -21,10 +22,17 @@ class AddPetForm extends React.Component {
 			selectedAnimalType: null,
 			currentlySelectedBreed: null,
 			currentlySelectedColor: null,
+			imageUploadQueue: [],
 			breeds: [],
 			colors: []
 		};
 	}
+
+	// Callback to be passed to ImageUpload component so that it can add and remove selected images
+	// from our image upload queue
+	setImageUploadQueue = acceptedImages => {
+		this.setState({ imageUploadQueue: acceptedImages });
+	};
 
 	// Renders radio button fields for all animals listed in the animalTypes.js file
 	renderAnimalTypesFields = field => {
@@ -200,6 +208,21 @@ class AddPetForm extends React.Component {
 					// Set authorization header because /addpet route is protected
 					const header = { authorization: localStorage.getItem("token") };
 					let response = await axios.post("/addpet", newPet, { headers: header });
+
+					// Upload images
+					let petImageURLs = [];
+					for (let i = 0; i < this.state.imageUploadQueue.length; i++) {
+						let image = this.state.imageUploadQueue[i];
+						let imageURL = await uploadImage({
+							type: "pet",
+							filename: image.name,
+							data: image.data,
+							id: response.data.pet._id
+						});
+						console.log("image url: ", imageURL);
+						petImageURLs.push(imageURL);
+					}
+
 					toast.success("New pet added");
 					console.log("New pet added: ", response.data);
 				} catch (e) {
@@ -255,7 +278,7 @@ class AddPetForm extends React.Component {
 
 					<div className="field">
 						<label className="label">Upload Photos</label>
-						<ImageUpload name={"petUpload"} pictype={"rescue"} />
+						<ImageUpload setImageUploadQueue={this.setImageUploadQueue} />
 					</div>
 
 					<div className="field">

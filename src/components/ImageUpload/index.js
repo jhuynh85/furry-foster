@@ -16,7 +16,6 @@ class ImageUpload extends Component {
 		return (
 			<div>
 				<Dropzone
-					{...this.props}
 					className="dropzone"
 					activeClassName={"dropzone-active"}
 					acceptClassName={"dropzone-accepted"}
@@ -49,12 +48,11 @@ class ImageUpload extends Component {
 		acceptedFiles.forEach(file => {
 			const reader = new FileReader();
 			reader.onload = () => {
-				const fileAsDataURL = reader.result;
 				// do whatever you want with the file content
 				// console.log("File data: ", fileAsBinaryString);
-				this.setState({
-					accepted: [...this.state.accepted, { name: file.name, data: reader.result }]
-				});
+				let newState = [...this.state.accepted, { name: file.name, data: reader.result }];
+				this.setState({ accepted: newState });
+				this.props.setImageUploadQueue(newState);
 			};
 			reader.onabort = () => console.log("File reading was aborted");
 			reader.onerror = () => console.log("File reading has failed");
@@ -65,9 +63,9 @@ class ImageUpload extends Component {
 	};
 
 	removeImage = imageIndexToRemove => {
-		this.setState({
-			accepted: this.state.accepted.filter((file, index) => index !== imageIndexToRemove)
-		});
+		let newState = this.state.accepted.filter((file, index) => index !== imageIndexToRemove);
+		this.setState({ accepted: newState });
+		this.props.setImageUploadQueue(newState);
 	};
 }
 
