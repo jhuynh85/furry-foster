@@ -4,10 +4,10 @@ import US_states from "../../assets/js/states";
 class ProfileInfo extends Component {
 	render() {
 		return (
-			<div class="content">
+			<div className="content">
 				<h1>Profile</h1>
 				<p>Your profile information is public.</p>
-				<section class="">
+				<section>
 					<form>
 						<div className="field">
 							<label className="label">Organization Name*</label>
