@@ -213,15 +213,20 @@ class AddPetForm extends React.Component {
 					let petImageURLs = [];
 					for (let i = 0; i < this.state.imageUploadQueue.length; i++) {
 						let image = this.state.imageUploadQueue[i];
-						let imageURL = await uploadImage({
+						let uploadResponse = await uploadImage({
 							type: "pet",
 							filename: image.name,
 							data: image.data,
 							id: response.data.pet._id
 						});
-						console.log("image url: ", imageURL);
-						petImageURLs.push(imageURL);
+						console.log("image url: ", uploadResponse);
+						petImageURLs.push(uploadResponse.data);
 					}
+
+					// TODO: MAKE SURE IMAGES ARE 2MB OR LESS!!!
+
+					// Update pet with image urls
+					console.log("petImageURLs: ", petImageURLs);
 
 					toast.success("New pet added");
 					console.log("New pet added: ", response.data);

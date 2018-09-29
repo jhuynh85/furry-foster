@@ -1,7 +1,7 @@
 const passport = require("passport");
 const Pet = require("../models/Pet");
 
-module.exports = app => {
+module.exports = function(app) {
 	// JWT middleware for protected routes
 	const requireJWT = passport.authenticate("jwt", { session: false });
 

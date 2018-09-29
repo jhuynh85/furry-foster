@@ -36,7 +36,7 @@ class FostersLearn extends React.Component {
 									<h2>Qualifications</h2>
 									<ul>
 										<li>18+ Years Old</li>
-										<li>Pet Friendly Housing</li>
+										<li>Pet-friendly Housing</li>
 										<li>Reliable Transportation</li>
 										<li>Ability and Time to Care For, Train & Socialize a Pet</li>
 										<li>Commitment to Fostering Until Your Pet is Adopted</li>
