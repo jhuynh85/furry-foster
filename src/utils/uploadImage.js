@@ -5,7 +5,8 @@ import axios from "axios";
 export const uploadImage = async ({ type, filename, data, id }) => {
 	try {
 		if (type === "user" || type === "rescue" || type === "pet") {
-			let path = `images/${type}s/${id}/${filename}`;
+			let path = `images/${type}s/${id}/${Date.now() + "_" + filename}`;
+			console.log("path: ", path);
 			let uploadedImageURL = await axios.post(`/upload/image/${type}`, { id, path, data });
 			return uploadedImageURL;
 		}
