@@ -15,7 +15,8 @@ const PetSchema = new Schema(
 		features: [{ type: String }],
 		images: [{ type: String }],
 		availability: [{ type: String }],
-		rescue: { type: Schema.Types.ObjectId, ref: "Rescue", required: true }
+		rescue: { type: Schema.Types.ObjectId, ref: "Rescue", required: true },
+		active: { type: Boolean, default: true }
 	},
 	{ timestamps: true }
 );
