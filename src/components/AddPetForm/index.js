@@ -9,6 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import ImageUpload from "../ImageUpload";
 import { uploadImage } from "../../utils/uploadImage";
+import petAPI from "../../utils/petAPI";
 
 const breeds = require("../../assets/js/breeds");
 const colors = require("../../assets/js/colors");
@@ -208,6 +209,8 @@ class AddPetForm extends React.Component {
 					// Set authorization header because /addpet route is protected
 					const header = { authorization: localStorage.getItem("token") };
 					let response = await axios.post("/addpet", newPet, { headers: header });
+					console.log("/addpet response: ", response);
+					const petID = response.data._id;
 
 					// Upload images
 					let petImageURLs = [];
@@ -217,9 +220,10 @@ class AddPetForm extends React.Component {
 							type: "pet",
 							filename: image.name,
 							data: image.data,
-							id: response.data.pet._id
+							id: petID
 						});
-						console.log("image url: ", uploadResponse);
+						toast.info(image.name + " uploaded");
+						// console.log("image url: ", uploadResponse);
 						petImageURLs.push(uploadResponse.data);
 					}
 
@@ -227,6 +231,10 @@ class AddPetForm extends React.Component {
 
 					// Update pet with image urls
 					console.log("petImageURLs: ", petImageURLs);
+					let imageUploadResponse = await petAPI.addPetImage(petID, petImageURLs, {
+						headers: header
+					});
+					console.log("imageUploadResponse: ", imageUploadResponse);
 
 					toast.success("New pet added");
 					console.log("New pet added: ", response.data);

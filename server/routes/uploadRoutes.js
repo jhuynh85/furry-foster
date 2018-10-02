@@ -28,7 +28,7 @@ const uploadFile = function(id, path, data, cb) {
 	};
 
 	console.log("key: ", path);
-	console.log("bucket: ", process.env.S3_BUCKET_ARN);
+	console.log("bucket: ", process.env.S3_BUCKET_NAME);
 	console.log("type: ", `image/${type}`);
 	s3.upload(params, function(err, data) {
 		cb(err, data);

@@ -1,5 +1,6 @@
 const passport = require("passport");
 const Pet = require("../models/Pet");
+const Rescue = require("../models/Rescue");
 
 module.exports = function(app) {
 	// JWT middleware for protected routes
@@ -16,11 +17,30 @@ module.exports = function(app) {
 			return res.status(422).send({ error: "You must specify an animal type" });
 		}
 
-		// If given email does not exist, create and save rescue record
 		const newPet = new Pet(pet);
-		newPet.save(function(err) {
+		newPet.save(function(err, doc) {
 			if (err) return next(err);
-			res.json({ pet: newPet });
+			// Add pet to Rescue
+			Rescue.findByIdAndUpdate(
+				pet.rescue,
+				{
+					$push: {
+						pets: doc._id
+					}
+				},
+				{ new: true },
+				(err, updatedRescue) => {
+					// Send any errors to the browser
+					if (err) {
+						console.log("Error: ", err);
+						res.send(err);
+					} else {
+						console.log("Pet added to rescue: ", JSON.stringify(updatedRescue, null, 2));
+						// Or send the doc (newly-added pet) to the browser
+						res.json(doc);
+					}
+				}
+			);
 		});
 	});
 
@@ -30,5 +50,17 @@ module.exports = function(app) {
 			if (err) return next(err);
 			res.json(pets);
 		});
+	});
+
+	// Updates specified pet
+	app.patch("/api/update/pet/:petID", requireJWT, function(req, res) {
+		Pet.findByIdAndUpdate(req.params.petID, req.body, { new: true })
+			.then(function(updatedPet) {
+				console.log("Success, pet updated: ", JSON.stringify(updatedPet, null, 2));
+				res.json(updatedPet);
+			})
+			.catch(function(err) {
+				res.json(err);
+			});
 	});
 };
