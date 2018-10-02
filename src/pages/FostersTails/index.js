@@ -20,42 +20,94 @@ class FostersTails extends React.Component {
 		description: "lkjsdfoi",
 		gender: "female",
 		weightInOz: 150,
-		ageInMonths: 30,
+		ageInMonths: 20,
 		rescue: "5b5bf31de0f37d072251faee",
 		createdAt: "2018-07-28T04:38:52.220Z",
 		updatedAt: "2018-07-28T04:38:52.220Z",
 		__v: 0
 	};
 
+	currentRescue = {
+		__v: 0,
+		_id: "5b9705296fa9d706dc333d35",
+		address1: "Somewhere here",
+		city: "San Diego",
+		createdAt: "2018-09-10T23:58:33.656Z",
+		ein: "12-4243522",
+		email: "rescue@gmail.com",
+		images: Array[0],
+		isApproved: true,
+		orgEmail: "rescue@gmail.com",
+		orgName: "Dog Rescue",
+		password: "$2a$10$vr9tY0T.KNpun5oPGfpXHOB.2hB4gfynXr4pne3kz0L1INa44mxYC",
+		pets: Array[0],
+		phone: "757-284-9817",
+		state: "CA",
+		updatedAt: "2018-09-10T23:58:33.656Z",
+		userType: "rescue",
+		websiteURL: "www.rescues.com",
+		zip: 92126
+	};
+
+	calculateAge = ageInMonths => {
+		let newAge = years;
+
+		console.log(newAge);
+
+		let years = Math.floor(ageInMonths / 12);
+		let months = ageInMonths % 12;
+
+		let m = { one: "month", other: "months" };
+		let y = { one: "year", other: "years" };
+
+		let result = [];
+
+		function getPlural(number, word) {
+			return (number === 1 && word.one) || word.other;
+		}
+
+		years && result.push(years + " " + getPlural(years, y));
+		months && result.push(months + " " + getPlural(months, m));
+		return (result = result.join(" and "));
+
+		return result;
+	};
+
 	render() {
 		return (
 			<div>
-				<div className="container">
-					<div className="section content">
-						<div className="columns">
-							<div className="column is-one-half">
-								<img src="https://via.placeholder.com/3000x2000" />
-							</div>
-							<div className="column is-one-half">
-								<h1 className="is-size-1">{this.currentPet.name}</h1>
-								<h3 className="is-size-3">
-									{this.currentPet.ageInMonths} | {this.currentPet.gender} |{" "}
-									{this.currentPet.weightInOz}
-								</h3>
-								<span className="icon">
-									<i className="fa fa-map-marker" />
-								</span>
-								<span>San Diego, CA</span>
-								<h3 className="is-size-3">{this.currentPet.rescue}</h3>
-								<div>
-									<p>
-										<Button link="/" text="Foster" />
-										<Button link="/" text="Adopt" />
-									</p>
+				<div>Age: {this.calculateAge(this.currentPet.ageInMonths)}</div>
+				<section className="hero is-primary">
+					<div className="hero-body">
+						<div className="container">
+							<div className="section content">
+								<div className="columns">
+									<div className="column is-one-half">
+										<img src="https://via.placeholder.com/3000x2000" />
+									</div>
+									<div className="column is-one-half">
+										<h1 className="is-size-1">{this.currentPet.name}</h1>
+										<h3 className="is-size-3">
+											{this.currentPet.ageInMonths} | {this.currentPet.gender} |{" "}
+											{this.currentPet.weightInOz}
+										</h3>
+										<span className="icon">
+											<i className="fa fa-map-marker" />
+										</span>
+										<span>San Diego, CA</span>
+										<h3 className="is-size-3">{this.currentRescue.orgName}</h3>
+										<div className="one-line">
+											<Button link="/" text="FOSTER" />
+											&nbsp;&nbsp;&nbsp;
+											<Button link="/" text="ADOPT" />
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+				</section>
+				<div className="container">
 					<div className="section content">
 						<h2 className="is-size-2">Ivy's Info</h2>
 						<div className="columns">
@@ -111,13 +163,13 @@ class FostersTails extends React.Component {
 									Mauris id felis sit amet neque faucibus dictum et et velit ... Read More
 								</p>
 								<h4 className="is-size-4">
-									<a href="">Rescue Phone</a>
+									<a href="">{this.currentRescue.phone}</a>
 								</h4>
 								<h4 className="is-size-4">
-									<a href="">Rescue Email</a>
+									<a href="">{this.currentRescue.email}</a>
 								</h4>
 								<h4 className="is-size-4">
-									<a href="">Rescue Website</a>
+									<a href="">{this.currentRescue.website}</a>
 								</h4>
 							</div>
 							<div className="column">
