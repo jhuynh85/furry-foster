@@ -19,7 +19,7 @@ class FostersTails extends React.Component {
 		type: "dog",
 		description: "lkjsdfoi",
 		gender: "female",
-		weightInOz: 150,
+		weightInOz: 100,
 		ageInMonths: 20,
 		rescue: "5b5bf31de0f37d072251faee",
 		createdAt: "2018-07-28T04:38:52.220Z",
@@ -68,7 +68,31 @@ class FostersTails extends React.Component {
 
 		years && result.push(years + " " + getPlural(years, y));
 		months && result.push(months + " " + getPlural(months, m));
-		return (result = result.join(" and "));
+		return (result = result.join(" "));
+
+		return result;
+	};
+
+	calculateWeight = weightInOz => {
+		let newWeight = pounds;
+
+		console.log(newWeight);
+
+		let pounds = Math.floor(weightInOz / 16);
+		let ounces = weightInOz % 16;
+
+		let lb = { one: "lb", other: "lbs" };
+		let oz = { one: "oz", other: "oz" };
+
+		let result = [];
+
+		function getPlural(number, word) {
+			return (number === 1 && word.one) || word.other;
+		}
+
+		pounds && result.push(pounds + " " + getPlural(pounds, lb));
+		ounces && result.push(ounces + " " + getPlural(ounces, oz));
+		return (result = result.join(" "));
 
 		return result;
 	};
@@ -76,7 +100,6 @@ class FostersTails extends React.Component {
 	render() {
 		return (
 			<div>
-				<div>Age: {this.calculateAge(this.currentPet.ageInMonths)}</div>
 				<section className="hero is-primary">
 					<div className="hero-body">
 						<div className="container">
@@ -87,16 +110,20 @@ class FostersTails extends React.Component {
 									</div>
 									<div className="column is-one-half">
 										<h1 className="is-size-1">{this.currentPet.name}</h1>
-										<h3 className="is-size-3">
-											{this.currentPet.ageInMonths} | {this.currentPet.gender} |{" "}
-											{this.currentPet.weightInOz}
-										</h3>
+										<p className="is-size-4">
+											<span>{this.calculateAge(this.currentPet.ageInMonths)}</span> <br />
+											<span>{this.currentPet.gender}</span>
+											<br />
+											<span>{this.calculateWeight(this.currentPet.weightInOz)}</span>
+										</p>
 										<span className="icon">
 											<i className="fa fa-map-marker" />
 										</span>
 										<span>San Diego, CA</span>
-										<h3 className="is-size-3">{this.currentRescue.orgName}</h3>
-										<div className="one-line">
+										<br />
+										<a>Cared for by: {this.currentRescue.orgName}</a>
+										<br />
+										<div className="one-line-align-left">
 											<Button link="/" text="FOSTER" />
 											&nbsp;&nbsp;&nbsp;
 											<Button link="/" text="ADOPT" />
@@ -150,7 +177,7 @@ class FostersTails extends React.Component {
 					<div className="section content">
 						<div className="columns">
 							<div className="column">
-								<h2 className="is-size-2">Rescue Name</h2>
+								<h2 className="is-size-2">{this.currentRescue.orgName}</h2>
 								<p>
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a ipsum
 									viverra metus scelerisque gravida eu non lacus. Nunc sodales dictum semper.
@@ -162,15 +189,13 @@ class FostersTails extends React.Component {
 									diam at felis blandit efficitur. Suspendisse scelerisque feugiat velit in aliquet.
 									Mauris id felis sit amet neque faucibus dictum et et velit ... Read More
 								</p>
-								<h4 className="is-size-4">
-									<a href="">{this.currentRescue.phone}</a>
-								</h4>
-								<h4 className="is-size-4">
-									<a href="">{this.currentRescue.email}</a>
-								</h4>
-								<h4 className="is-size-4">
-									<a href="">{this.currentRescue.website}</a>
-								</h4>
+								<p className="">
+									<span>{this.currentRescue.phone}</span>
+									<br />
+									<span>{this.currentRescue.email}</span>
+									<br />
+									<a href={this.currentRescue.websiteURL}>{this.currentRescue.websiteURL}</a>
+								</p>
 							</div>
 							<div className="column">
 								<div>Google maps here</div>
