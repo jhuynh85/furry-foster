@@ -208,7 +208,7 @@ class AddPetForm extends React.Component {
 				try {
 					// Set authorization header because /addpet route is protected
 					const header = { authorization: localStorage.getItem("token") };
-					let response = await axios.post("/addpet", newPet, { headers: header });
+					let response = await axios.post("/api/add/pet", newPet, { headers: header });
 					console.log("/addpet response: ", response);
 					const petID = response.data._id;
 
