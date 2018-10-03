@@ -7,7 +7,7 @@ module.exports = function(app) {
 	const requireJWT = passport.authenticate("jwt", { session: false });
 
 	// Add a pet to the DB
-	app.post("/addpet", requireJWT, function(req, res, next) {
+	app.post("/api/add/pet", requireJWT, function(req, res, next) {
 		const pet = req.body;
 
 		if (!pet.name) {
@@ -45,8 +45,9 @@ module.exports = function(app) {
 	});
 
 	// Retrieve a specified pet. Otherwise, get all pets
-	app.get("/getpet", function(req, res, next) {
-		Pet.find({}, function(err, pets) {
+	app.get("/api/pet/:petID?", function(req, res, next) {
+		let query = req.params.petID ? { _id: req.params.petID } : {};
+		Pet.find(query, function(err, pets) {
 			if (err) return next(err);
 			res.json(pets);
 		});

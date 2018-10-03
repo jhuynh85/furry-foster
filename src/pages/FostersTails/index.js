@@ -96,7 +96,7 @@ class FostersTails extends React.Component {
 										</span>
 										<span>San Diego, CA</span>
 										<h3 className="is-size-3">{this.currentRescue.orgName}</h3>
-										<div className="one-line">
+										<div className="one-line-align-left">
 											<Button link="/" text="FOSTER" />
 											&nbsp;&nbsp;&nbsp;
 											<Button link="/" text="ADOPT" />
