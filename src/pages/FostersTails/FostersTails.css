@@ -1,3 +1,15 @@
-.one-line-align-left {
-	display: flex;
+#pet-profile-content {
+}
+
+#pet-profile-content .detail-label {
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-right: 8px;
+}
+
+.content-card {
+	margin: 3em 0em;
+	padding: 3em;
+	border-radius: 6px;
+	background: #f5f5f5;
 }
