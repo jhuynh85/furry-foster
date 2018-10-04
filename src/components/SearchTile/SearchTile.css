@@ -1,0 +1,32 @@
+.searchtile-container {
+	width: 100%;
+	border-radius: 6px;
+}
+
+.searchtile-image {
+	height: 300px;
+	background-size: cover;
+	display: flex;
+	border-radius: 6px;
+}
+
+.searchtile-overlay {
+	background: rgba(0, 0, 0, 0.8);
+	height: 20%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	border-radius: 4px;
+	align-self: flex-end;
+}
+
+.searchtile-header {
+	color: #ffffff;
+	text-transform: uppercase;
+}
+
+.searchtile-overlay:hover {
+	background: rgba(75, 61, 52, 0.1);
+}
