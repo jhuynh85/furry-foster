@@ -14,6 +14,7 @@ import petAPI from "../../utils/petAPI";
 const breeds = require("../../assets/js/breeds");
 const colors = require("../../assets/js/colors");
 const animalTypes = require("../../assets/js/animalTypes").types;
+const toastDuration = 5000; // Time in ms that toasts should stay up
 
 class AddPetForm extends React.Component {
 	constructor(props) {
@@ -222,7 +223,7 @@ class AddPetForm extends React.Component {
 							data: image.data,
 							id: petID
 						});
-						toast.info(image.name + " uploaded");
+						toast.info(image.name + " uploaded", { autoClose: toastDuration });
 						// console.log("image url: ", uploadResponse);
 						petImageURLs.push(uploadResponse.data);
 					}
@@ -236,7 +237,7 @@ class AddPetForm extends React.Component {
 					});
 					console.log("imageUploadResponse: ", imageUploadResponse);
 
-					toast.success("New pet added");
+					toast.success("New pet added", { autoClose: toastDuration });
 					console.log("New pet added: ", response.data);
 				} catch (e) {
 					console.log(e);
