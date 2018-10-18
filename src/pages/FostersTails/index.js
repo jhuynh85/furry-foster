@@ -155,7 +155,10 @@ class FostersTails extends React.Component {
 					<div className="container">
 						<div className="content">
 							<div className="content-card">
-								<h2 className="is-size-2">{this.currentPet.name}'s Info</h2>
+								<h2 className="is-size-2">
+									{this.currentPet.name}
+									's Info
+								</h2>
 								<div className="columns">
 									<div className="column is-one-fourth">
 										<p>Altered: {this.currentPet.features[0]}</p>

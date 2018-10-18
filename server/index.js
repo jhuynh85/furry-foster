@@ -51,6 +51,7 @@ app.use(express.static(path.resolve(__dirname, "..", "build")));
 require("./routes/testRoutes")(app);
 require("./routes/authRoutes")(app);
 require("./routes/petRoutes")(app);
+require("./routes/rescueRoutes")(app);
 require("./routes/uploadRoutes")(app);
 
 //=============== API ROUTES ===============//

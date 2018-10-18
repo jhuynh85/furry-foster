@@ -16,13 +16,14 @@ class ImageUpload extends Component {
 		return (
 			<div>
 				<Dropzone
-					className="dropzone"
+					className="dropzone has-text-centered"
 					activeClassName={"dropzone-active"}
 					acceptClassName={"dropzone-accepted"}
 					rejectClassName={"dropzone-rejected"}
 					onDrop={this.onDrop}
 					accept="image/*">
-					<p>Drop photos here</p>
+					Drop photos here <br />
+					(File size limit: 2MB)
 				</Dropzone>
 				<div className={"imagePreviewContainer"}>
 					{this.state.accepted.map((file, index) => {
