@@ -32,6 +32,7 @@ import Login from "./pages/Login";
 import LoginRescues from "./pages/LoginRescues";
 import Profile from "./pages/Profile";
 import Unauthorized from "./pages/Unauthorized";
+import PetProfile from "./pages/PetProfile";
 
 class App extends Component {
 	render() {
@@ -55,7 +56,8 @@ class App extends Component {
 						<Header />
 						<Switch>
 							<Route exact path="/" component={Main} />
-							<Route path="/pets" component={Pets} />
+							<Route exact path="/pets/:petID" component={PetProfile} />
+							<Route exact path="/pets" component={Pets} />
 							<Route exact path="/fosters" component={Fosters} />
 							<Route exact path="/fosters/learn" component={FostersLearn} />
 							<Route exact path="/fosters/happytails" component={FostersTails} />

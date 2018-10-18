@@ -47,10 +47,12 @@ module.exports = function(app) {
 	// Retrieve a specified pet. Otherwise, get all pets
 	app.get("/api/pet/:petID?", function(req, res, next) {
 		let query = req.params.petID ? { _id: req.params.petID } : {};
-		Pet.find(query, function(err, pets) {
-			if (err) return next(err);
-			res.json(pets);
-		});
+		Pet.find(query)
+			.populate("rescue")
+			.exec(function(err, pets) {
+				if (err) return next(err);
+				res.json(pets);
+			});
 	});
 
 	// Updates specified pet
