@@ -52,6 +52,8 @@ class PetProfile extends React.Component {
 	};
 
 	async componentDidMount() {
+		// Scroll to the top when page is mounted
+		document.body.scrollTop = 0;
 		// Get pet data
 		const petID = this.props.match.params.petID;
 		console.log("petID: ", petID);

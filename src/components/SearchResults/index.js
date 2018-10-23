@@ -33,6 +33,7 @@ class SearchResults extends React.Component {
 						this.state.results.map(pet => {
 							return (
 								<SearchTile
+									key={pet._id}
 									className="tile is-parent is-3"
 									searchTileURL={`/pets/${pet._id}`}
 									searchTileImage={pet.images[0] || "https://via.placeholder.com/200x200"}
