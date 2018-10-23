@@ -46,7 +46,7 @@ class SearchTile extends Component {
 											<br />
 											{this.props.searchTileLocation}
 										</p>
-										<Button link="/" text="More Info" />
+										<Button link={this.props.searchTileURL} text="More Info" />
 									</div>
 								)}
 							</div>

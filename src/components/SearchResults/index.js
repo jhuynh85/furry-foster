@@ -1,48 +1,48 @@
 import React from "react";
 import "./SearchResults.css";
 import SearchTile from "../../components/SearchTile";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 class SearchResults extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			results: []
+		};
+	}
+
+	// When the component is mounted, make an API call to backend to get all pets in database
+	async componentDidMount() {
+		try {
+			const petList = await axios.get("/api/pet");
+			console.log("petList: ", petList.data);
+			this.setState({ results: petList.data });
+		} catch (err) {
+			toast.error(err);
+			console.log("ERROR: ", err);
+		}
+	}
+
+	// Displays all pets in our current results
 	render() {
 		return (
 			<div>
 				<div className="tile is-ancestor search-results">
-					<SearchTile
-						className="tile is-parent is-3"
-						searchTileURL="/pets"
-						searchTileImage="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42753794/1/?bust=1536929975&width=1439"
-						searchTileName="Platinum"
-						searchTileAge="5"
-						searchTileGender="female"
-						searchTileLocation="San Diego, CA"
-					/>
-					<SearchTile
-						className="tile is-parent is-3"
-						searchTileURL="/pets"
-						searchTileImage="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42753794/1/?bust=1536929975&width=1439"
-						searchTileName="Platinum"
-						searchTileAge="5"
-						searchTileGender="female"
-						searchTileLocation="San Diego, CA"
-					/>
-					<SearchTile
-						className="tile is-parent is-3"
-						searchTileURL="/pets"
-						searchTileImage="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42753794/1/?bust=1536929975&width=1439"
-						searchTileName="Platinum"
-						searchTileAge="5"
-						searchTileGender="female"
-						searchTileLocation="San Diego, CA"
-					/>
-					<SearchTile
-						className="tile is-parent is-3"
-						searchTileURL="/pets"
-						searchTileImage="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42753794/1/?bust=1536929975&width=1439"
-						searchTileName="Platinum"
-						searchTileAge="5"
-						searchTileGender="female"
-						searchTileLocation="San Diego, CA"
-					/>
+					{this.state.results &&
+						this.state.results.map(pet => {
+							return (
+								<SearchTile
+									className="tile is-parent is-3"
+									searchTileURL={`/pets/${pet._id}`}
+									searchTileImage={pet.images[0] || "https://via.placeholder.com/200x200"}
+									searchTileName={pet.name}
+									searchTileAge={Math.floor(pet.ageInMonths / 12) || ""}
+									searchTileGender={pet.gender || ""}
+									searchTileLocation={`${pet.rescue.city}, ${pet.rescue.state}`}
+								/>
+							);
+						})}
 				</div>
 			</div>
 		);
