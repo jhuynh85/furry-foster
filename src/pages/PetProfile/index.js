@@ -10,47 +10,6 @@ class PetProfile extends React.Component {
 		this.state = { currentPet: {} };
 	}
 
-	currentPet = {
-		breed: ["Aidi", "Australian Shepherd"],
-		color: [],
-		features: ["House-trained"],
-		images: [],
-		availability: ["Foster"],
-		_id: "5b5bf35ce0f37d072251faef",
-		name: "Sherlock Bones",
-		type: "dog",
-		description: "lkjsdfoi",
-		gender: "female",
-		weightInOz: 100,
-		ageInMonths: 20,
-		rescue: "5b5bf31de0f37d072251faee",
-		createdAt: "2018-07-28T04:38:52.220Z",
-		updatedAt: "2018-07-28T04:38:52.220Z",
-		__v: 0
-	};
-
-	currentRescue = {
-		__v: 0,
-		_id: "5b9705296fa9d706dc333d35",
-		address1: "Somewhere here",
-		city: "San Diego",
-		createdAt: "2018-09-10T23:58:33.656Z",
-		ein: "12-4243522",
-		email: "rescue@gmail.com",
-		images: Array[0],
-		isApproved: true,
-		orgEmail: "rescue@gmail.com",
-		orgName: "Dog Rescue",
-		password: "$2a$10$vr9tY0T.KNpun5oPGfpXHOB.2hB4gfynXr4pne3kz0L1INa44mxYC",
-		pets: Array[0],
-		phone: "757-284-9817",
-		state: "CA",
-		updatedAt: "2018-09-10T23:58:33.656Z",
-		userType: "rescue",
-		websiteURL: "www.rescues.com",
-		zip: 92126
-	};
-
 	async componentDidMount() {
 		// Get pet data
 		const petID = this.props.match.params.petID;
@@ -67,10 +26,6 @@ class PetProfile extends React.Component {
 	}
 
 	calculateAge = ageInMonths => {
-		let newAge = years;
-
-		console.log(newAge);
-
 		let years = Math.floor(ageInMonths / 12);
 		let months = ageInMonths % 12;
 
@@ -89,10 +44,6 @@ class PetProfile extends React.Component {
 	};
 
 	calculateWeight = weightInOz => {
-		let newWeight = pounds;
-
-		console.log(newWeight);
-
 		let pounds = Math.floor(weightInOz / 16);
 		let ounces = weightInOz % 16;
 
@@ -186,14 +137,74 @@ class PetProfile extends React.Component {
 								</h2>
 								<div className="columns">
 									<div className="column is-one-fourth">
-										<p>Altered: {this.currentPet.features[0]}</p>
-										<p>Microchipped: {this.currentPet.features[1]}</p>
-										<p>Housetrained: {this.currentPet.features[2]}</p>
+										<p>
+											<span className="icon has-text-warning">
+												{this.state.currentPet.features &&
+												this.state.currentPet.features.includes("Altered") ? (
+													<i className="fa fa-check-square" />
+												) : (
+													<i className="fa fa-square-o" />
+												)}
+											</span>
+											Altered
+										</p>
+										<p>
+											<span className="icon has-text-warning">
+												{this.state.currentPet.features &&
+												this.state.currentPet.features.includes("Microchipped") ? (
+													<i className="fa fa-check-square" />
+												) : (
+													<i className="fa fa-square-o" />
+												)}
+											</span>
+											Microchipped
+										</p>
+										<p>
+											<span className="icon has-text-warning">
+												{this.state.currentPet.features &&
+												this.state.currentPet.features.includes("House-trained") ? (
+													<i className="fa fa-check-square" />
+												) : (
+													<i className="fa fa-square-o" />
+												)}
+											</span>
+											House-trained
+										</p>
 									</div>
 									<div className="column is-one-fourth">
-										<p>Good With Children: {this.currentPet.features[3]}</p>
-										<p>Good With Cats: {this.currentPet.features[4]}</p>
-										<p>Good With Dogs: {this.currentPet.features[5]}</p>
+										<p>
+											<span className="icon has-text-warning">
+												{this.state.currentPet.features &&
+												this.state.currentPet.features.includes("Child-friendly") ? (
+													<i className="fa fa-check-square" />
+												) : (
+													<i className="fa fa-square-o" />
+												)}
+											</span>
+											Good With Children
+										</p>
+										<p>
+											<span className="icon has-text-warning">
+												{this.state.currentPet.features &&
+												this.state.currentPet.features.includes("Cat-friendly") ? (
+													<i className="fa fa-check-square" />
+												) : (
+													<i className="fa fa-square-o" />
+												)}
+											</span>
+											Good With Cats
+										</p>
+										<p>
+											<span className="icon has-text-warning">
+												{this.state.currentPet.features &&
+												this.state.currentPet.features.includes("Dog-friendly") ? (
+													<i className="fa fa-check-square" />
+												) : (
+													<i className="fa fa-square-o" />
+												)}
+											</span>
+											Good With Dogs
+										</p>
 									</div>
 								</div>
 							</div>
@@ -245,7 +256,9 @@ class PetProfile extends React.Component {
 											</span>
 											<br />
 											<span>
-												{currentRescue && currentRescue.email ? currentRescue.email : "{email}"}
+												{currentRescue && currentRescue.orgEmail
+													? currentRescue.orgEmail
+													: "{orgEmail}"}
 											</span>
 											<br />
 											<a
