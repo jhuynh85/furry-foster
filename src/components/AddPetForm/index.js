@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import ImageUpload from "../ImageUpload";
 import { uploadImage } from "../../utils/uploadImage";
 import petAPI from "../../utils/petAPI";
+import { Redirect } from "react-router-dom";
 
 const breeds = require("../../assets/js/breeds");
 const colors = require("../../assets/js/colors");
@@ -21,6 +22,7 @@ class AddPetForm extends React.Component {
 		super(props);
 
 		this.state = {
+			petAdded: null,
 			selectedAnimalType: null,
 			currentlySelectedBreed: null,
 			currentlySelectedColor: null,
@@ -239,6 +241,7 @@ class AddPetForm extends React.Component {
 
 					toast.success("New pet added", { autoClose: toastDuration });
 					console.log("New pet added: ", response.data);
+					this.setState({ petAdded: response.data });
 				} catch (e) {
 					console.log(e);
 					console.log("API error: ", e.response);
@@ -252,6 +255,10 @@ class AddPetForm extends React.Component {
 
 	render() {
 		const { handleSubmit, submitting } = this.props;
+
+		if (this.state.petAdded) {
+			return <Redirect to={`/pets/${this.state.petAdded._id}`} />;
+		}
 
 		return (
 			<div className="container is-fluid">
