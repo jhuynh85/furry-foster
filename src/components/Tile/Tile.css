@@ -6,7 +6,8 @@
 	height: 300px;
 	background-size: cover;
 	border-radius: 4px;
-	filter: blur(1px) grayscale(100%);
+	width: 100%;
+	/*	filter: blur(1px) grayscale(100%);*/
 }
 
 .tile-header {
