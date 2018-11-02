@@ -30,8 +30,8 @@ const Header = ({ auth }) => {
 	return (
 		<div>
 			<SocialMediaBar />
-			<div className="columns">
-				<div className="column has-text-centered">
+			<div className="columns margin10">
+				<div className="column has-text-left">
 					<Link to={"/"}>
 						<img src={ffLogo} className="ff-logo" alt="Furry Foster logo" />
 					</Link>
@@ -39,7 +39,7 @@ const Header = ({ auth }) => {
 				<div className="column align-mid header-search-input-bar">
 					<Search />
 				</div>
-				<div className="column has-text-centered align-mid">{renderSignInOrSignOut()}</div>
+				<div className="column has-text-right align-mid">{renderSignInOrSignOut()}</div>
 			</div>
 			<Navbar />
 		</div>
