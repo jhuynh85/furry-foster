@@ -25,6 +25,17 @@ class PetProfile extends React.Component {
 		}
 	}
 
+	renderGoogleMap = rescue => {
+		const MODE = "place";
+		const { address1, city, state, zip } = rescue;
+		const params = `${address1}+${city}+${state}+${zip}`;
+		const URL = `https://www.google.com/maps/embed/v1/${MODE}?key=${
+			process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+		}&q=${params}`;
+		console.log("Google maps URL: ", URL);
+		return <iframe width="400" height="400" frameBorder="0" src={URL} allowFullScreen />;
+	};
+
 	calculateAge = ageInMonths => {
 		let years = Math.floor(ageInMonths / 12);
 		let months = ageInMonths % 12;
@@ -272,7 +283,8 @@ class PetProfile extends React.Component {
 										</p>
 									</div>
 									<div className="column">
-										<div>Google maps here</div>
+										{this.state.currentPet.rescue &&
+											this.renderGoogleMap(this.state.currentPet.rescue)}
 									</div>
 								</div>
 							</div>
