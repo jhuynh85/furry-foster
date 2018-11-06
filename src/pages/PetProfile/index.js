@@ -32,7 +32,7 @@ class PetProfile extends React.Component {
 		const URL = `https://www.google.com/maps/embed/v1/${MODE}?key=${
 			process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 		}&q=${params}`;
-		console.log("Google maps URL: ", URL);
+		// console.log("Google maps URL: ", URL);
 		return <iframe width="400" height="400" frameBorder="0" src={URL} allowFullScreen />;
 	};
 
