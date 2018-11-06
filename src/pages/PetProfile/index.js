@@ -28,7 +28,7 @@ class PetProfile extends React.Component {
 	renderGoogleMap = rescue => {
 		const MODE = "place";
 		const { address1, city, state, zip } = rescue;
-		const params = `${address1}+${city}+${state}+${zip}`;
+		const params = encodeURIComponent(`${address1} ${city} ${state} ${zip}`);
 		const URL = `https://www.google.com/maps/embed/v1/${MODE}?key=${
 			process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 		}&q=${params}`;
@@ -73,6 +73,8 @@ class PetProfile extends React.Component {
 	};
 
 	render() {
+		const LOREM =
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a ipsum viverra metus scelerisque gravida eu non lacus. Nunc sodales dictum semper. Aliquam erat nunc, consectetur ac lobortis in, venenatis sit amet arcu. Nulla faucibus lectus sed quam efficitur, ullamcorper placerat nisl lobortis. Sed placerat quis ex posuere posuere. Nunc tincidunt rutrum lectus, eu pretium tortor scelerisque vitae. Fusce cursus quis mi at feugiat. Duis fringilla sagittis neque, id euismod magna ultricies sit amet. Aliquam ut est arcu. Suspendisse tincidunt diam at felis blandit efficitur. Suspendisse scelerisque feugiat velit in aliquet. Mauris id felis sit amet neque faucibus dictum et et velit. In pellentesque turpis felis, ac rhoncus nunc varius sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam aliquam lobortis sodales. Aenean at vehicula justo. Curabitur quis lacus et sapien sodales suscipit. Aliquam non tortor mattis, rhoncus massa vitae, ornare enim. Nullam vitae dictum lacus. Cras posuere mollis justo ut dictum. In laoreet leo magna, et luctus massa varius sed. Curabitur non tortor blandit, facilisis purus non, ultrices lacus. Aenean eleifend et tellus quis vestibulum. Praesent ut sapien sed orci ultricies scelerisque nec et arcu. Nullam et ante vitae metus posuere tempus eget id nibh. Quisque nisi magna, gravida nec dignissim cursus, congue non augue. Mauris blandit diam eros, in volutpat est pretium ut.";
 		let currentPet = this.state.currentPet;
 		let currentRescue = this.state.currentPet.rescue;
 
@@ -221,61 +223,41 @@ class PetProfile extends React.Component {
 							</div>
 							<div className="content-card">
 								<h2 className="is-size-2">About {this.state.currentPet.name}</h2>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a ipsum
-									viverra metus scelerisque gravida eu non lacus. Nunc sodales dictum semper.
-									Aliquam erat nunc, consectetur ac lobortis in, venenatis sit amet arcu. Nulla
-									faucibus lectus sed quam efficitur, ullamcorper placerat nisl lobortis. Sed
-									placerat quis ex posuere posuere. Nunc tincidunt rutrum lectus, eu pretium tortor
-									scelerisque vitae. Fusce cursus quis mi at feugiat. Duis fringilla sagittis neque,
-									id euismod magna ultricies sit amet. Aliquam ut est arcu. Suspendisse tincidunt
-									diam at felis blandit efficitur. Suspendisse scelerisque feugiat velit in aliquet.
-									Mauris id felis sit amet neque faucibus dictum et et velit. In pellentesque turpis
-									felis, ac rhoncus nunc varius sit amet. Pellentesque habitant morbi tristique
-									senectus et netus et malesuada fames ac turpis egestas. Etiam aliquam lobortis
-									sodales. Aenean at vehicula justo. Curabitur quis lacus et sapien sodales
-									suscipit. Aliquam non tortor mattis, rhoncus massa vitae, ornare enim. Nullam
-									vitae dictum lacus. Cras posuere mollis justo ut dictum. In laoreet leo magna, et
-									luctus massa varius sed. Curabitur non tortor blandit, facilisis purus non,
-									ultrices lacus. Aenean eleifend et tellus quis vestibulum. Praesent ut sapien sed
-									orci ultricies scelerisque nec et arcu. Nullam et ante vitae metus posuere tempus
-									eget id nibh. Quisque nisi magna, gravida nec dignissim cursus, congue non augue.
-									Mauris blandit diam eros, in volutpat est pretium ut.
-								</p>
+								<p>{this.state.currentPet.description || LOREM}</p>
 							</div>
 							<div className="content-card">
 								<div className="columns">
 									<div className="column">
 										<h2 className="is-size-2">{currentRescue ? currentRescue.orgName : "?"}</h2>
 										<p>
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a ipsum
-											viverra metus scelerisque gravida eu non lacus. Nunc sodales dictum semper.
-											Aliquam erat nunc, consectetur ac lobortis in, venenatis sit amet arcu. Nulla
-											faucibus lectus sed quam efficitur, ullamcorper placerat nisl lobortis. Sed
-											placerat quis ex posuere posuere. Nunc tincidunt rutrum lectus, eu pretium
-											tortor scelerisque vitae. Fusce cursus quis mi at feugiat. Duis fringilla
-											sagittis neque, id euismod magna ultricies sit amet. Aliquam ut est arcu.
-											Suspendisse tincidunt diam at felis blandit efficitur. Suspendisse scelerisque
-											feugiat velit in aliquet. Mauris id felis sit amet neque faucibus dictum et et
-											velit ... Read More
+											{(this.state.currentPet.rescue && this.state.currentPet.rescue.description) ||
+												LOREM}
 										</p>
 										<p className="">
 											<span>
-												{currentRescue && currentRescue.phone
-													? currentRescue.phone
-													: "??? - ??? - ????"}
+												{currentRescue && currentRescue.phone ? (
+													<a href={`tel:${currentRescue.phone}`}>{currentRescue.phone}</a>
+												) : (
+													"??? - ??? - ????"
+												)}
 											</span>
 											<br />
 											<span>
-												{currentRescue && currentRescue.orgEmail
-													? currentRescue.orgEmail
-													: "{orgEmail}"}
+												{currentRescue && currentRescue.orgEmail ? (
+													<a href={`mailto:${currentRescue.orgEmail}`}>{currentRescue.orgEmail}</a>
+												) : (
+													"{orgEmail}"
+												)}
 											</span>
 											<br />
 											<a
 												href={
-													currentRescue && currentRescue.websiteURL ? currentRescue.websiteURL : "/"
-												}>
+													currentRescue && currentRescue.websiteURL
+														? `http://${currentRescue.websiteURL}`
+														: "/"
+												}
+												target="_blank"
+												rel="noopener noreferrer">
 												{currentRescue && currentRescue.websiteURL
 													? currentRescue.websiteURL
 													: "{website}"}
