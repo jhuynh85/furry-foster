@@ -34,7 +34,8 @@ class SearchTile extends Component {
 						className="searchtile-image"
 						style={{
 							backgroundImage: "url(" + this.props.searchTileImage + ")",
-							backgroundRepeat: "no-repeat"
+							backgroundRepeat: "no-repeat",
+							backgroundPosition: "center"
 						}}>
 						<div className="searchtile-overlay">
 							<div className="searchtile-header">
