@@ -75,7 +75,7 @@ class PetProfile extends React.Component {
 	render() {
 		const AGE_ADULT = 36; // Min age in months ADULT pets
 		const WEIGHT_LARGE = 896; // Min weight in oz for LARGE pets (896oz = 56lbs)
-		const WEIGHT_MEDIUM = 352; // Min weight in oz for MEDIUM pets (352oz = 22lbs)
+		const WEIGHT_MEDIUM = 384; // Min weight in oz for MEDIUM pets (384oz = 24lbs)
 		const LOREM =
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a ipsum viverra metus scelerisque gravida eu non lacus. Nunc sodales dictum semper. Aliquam erat nunc, consectetur ac lobortis in, venenatis sit amet arcu. Nulla faucibus lectus sed quam efficitur, ullamcorper placerat nisl lobortis. Sed placerat quis ex posuere posuere. Nunc tincidunt rutrum lectus, eu pretium tortor scelerisque vitae. Fusce cursus quis mi at feugiat. Duis fringilla sagittis neque, id euismod magna ultricies sit amet. Aliquam ut est arcu. Suspendisse tincidunt diam at felis blandit efficitur. Suspendisse scelerisque feugiat velit in aliquet. Mauris id felis sit amet neque faucibus dictum et et velit. In pellentesque turpis felis, ac rhoncus nunc varius sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam aliquam lobortis sodales. Aenean at vehicula justo. Curabitur quis lacus et sapien sodales suscipit. Aliquam non tortor mattis, rhoncus massa vitae, ornare enim. Nullam vitae dictum lacus. Cras posuere mollis justo ut dictum. In laoreet leo magna, et luctus massa varius sed. Curabitur non tortor blandit, facilisis purus non, ultrices lacus. Aenean eleifend et tellus quis vestibulum. Praesent ut sapien sed orci ultricies scelerisque nec et arcu. Nullam et ante vitae metus posuere tempus eget id nibh. Quisque nisi magna, gravida nec dignissim cursus, congue non augue. Mauris blandit diam eros, in volutpat est pretium ut.";
 		let currentPet = this.state.currentPet;
@@ -89,13 +89,15 @@ class PetProfile extends React.Component {
 							<div className=" content" id="pet-profile-content">
 								<div className="columns">
 									<div className="column is-two-thirds">
-										<img
-											src={
-												this.state.currentPet.images && this.state.currentPet.images.length > 0
-													? this.state.currentPet.images[0]
-													: "https://via.placeholder.com/3000x2000"
-											}
-										/>
+										<div className="pet-profile-image is-horizontal-center">
+											<img
+												src={
+													this.state.currentPet.images && this.state.currentPet.images.length > 0
+														? this.state.currentPet.images[0]
+														: "https://via.placeholder.com/3000x2000"
+												}
+											/>
+										</div>
 									</div>
 									<div className="column is-one-third">
 										<h1 className="is-size-1">{this.state.currentPet.name}</h1>
