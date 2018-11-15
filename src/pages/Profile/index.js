@@ -13,8 +13,8 @@ import AddPetForm from "../../components/AddPetForm";
 class Profile extends Component {
 	constructor() {
 		super();
-		this.loggedInRescue = JSON.parse(localStorage.getItem("user"));
-		console.log("loggedInRescue: ", this.loggedInRescue);
+		this.loggedInUser = JSON.parse(localStorage.getItem("user"));
+		console.log("loggedInUser: ", this.loggedInUser);
 	}
 	// Renders the submenu for this profile
 	renderSubmenuArea = () => {
@@ -55,12 +55,12 @@ class Profile extends Component {
 					<Route
 						exact
 						path={`${this.props.match.path}`}
-						render={() => <ProfileInfo {...this.loggedInRescue} />}
+						render={() => <ProfileInfo loggedInUser={this.loggedInUser} />}
 					/>
 					<Route
 						exact
 						path={`${this.props.match.path}/account`}
-						render={() => <AccountInfo {...this.loggedInRescue} />}
+						render={() => <AccountInfo {...this.loggedInUser} />}
 					/>
 					<Route exact path={`${this.props.match.path}/settings`} component={ProfileSettings} />
 					<Route exact path={`${this.props.match.path}/add`} component={AddPetForm} />
@@ -70,16 +70,16 @@ class Profile extends Component {
 	};
 
 	render() {
-		if (!this.loggedInRescue) {
+		if (!this.loggedInUser) {
 			return null;
 		}
 		// IMPORTANT: Set the match prop to this.props.match in order for submenu links to work
 		return (
 			<ProfileContainer
 				match={this.props.match}
-				profilePic={this.loggedInRescue.images[0]}
-				name={this.loggedInRescue.orgName}
-				location={this.loggedInRescue.city + ", " + this.loggedInRescue.state}
+				profilePic={this.loggedInUser.images[0]}
+				name={this.loggedInUser.orgName}
+				location={this.loggedInUser.city + ", " + this.loggedInUser.state}
 				submenu={this.renderSubmenuArea()}
 				content={this.renderContentArea()}
 			/>

@@ -1,131 +1,64 @@
 import React, { Component } from "react";
-import US_states from "../../assets/js/states";
+import { compose } from "redux";
+import { reduxForm, Field } from "redux-form";
+import { connect } from "react-redux";
+import { toast } from "react-toastify";
+import formFields from "../HigherOrderComponents/formFields";
+import * as actions from "../../actions";
 
 class ProfileInfo extends Component {
 	render() {
+		const { loggedInUser } = this.props;
+
 		return (
 			<div className="content">
 				<h1>Profile</h1>
 				<p>Your profile information is public.</p>
 				<section>
 					<form>
+						<Field
+							label={"Organization Name*"}
+							className="input"
+							component={this.props.renderFieldWithLabel}
+							name={"orgName"}
+							type={"text"}
+							autoComplete={"none"}
+						/>
 						<div className="field">
-							<label className="label">Organization Name*</label>
+							<label className="label">Organization Email</label>
 							<div className="control">
-								<input className="input" name="orgName" type="text" value={this.props.orgName} />
+								<Field
+									className="input"
+									component={"input"}
+									name={"orgEmail"}
+									type={"email"}
+									autoComplete={"none"}
+								/>
 							</div>
 						</div>
+						<Field name="orgPhone" component={this.props.renderPhoneField} />
+						<Field name="orgAddress" component={this.props.renderAddressFields} />
 						<div className="field">
-							<label className="label">Organization Email*</label>
-							<div className="control">
-								<input className="input" name="orgEmail" type="email" value={this.props.orgEmail} />
-							</div>
-						</div>
-						<div className="field">
-							<label className="label">Organization Phone Number*</label>
-							<div className="field is-grouped">
-								<div className="control">
-									<input
+							<label className="label">Organization Website</label>
+							<div className="field has-addons">
+								<p className="control">
+									<a className="button is-static">
+										<b>http://</b>
+									</a>
+								</p>
+								<p className="control is-expanded">
+									<Field
 										className="input"
-										name="phone1"
-										type="text"
-										autoComplete="none"
-										size="3"
-										maxLength="3"
-										placeholder={this.props.phone}
+										component={"input"}
+										name={"websiteURL"}
+										type={"text"}
+										autoComplete={"none"}
+										placeholder={"www.yourrescue.com"}
 									/>
-								</div>
-								<span className="center-label-text-vertically">-&nbsp;&nbsp;&nbsp;</span>
-								<div className="control">
-									<input
-										className="input"
-										name="phone2"
-										type="text"
-										autoComplete="none"
-										size="3"
-										maxLength="3"
-										value={this.props.phone2}
-									/>
-								</div>
-								<span className="center-label-text-vertically">-&nbsp;&nbsp;&nbsp;</span>
-								<div className="control">
-									<input
-										className="input"
-										name="phone3"
-										type="text"
-										autoComplete="none"
-										size="3"
-										maxLength="3"
-										value={this.props.phone3}
-									/>
-								</div>
+								</p>
 							</div>
 						</div>
-						<div className="field">
-							<label className="label">Organization Address*</label>
-							<div className="control">
-								<input className="input" type="text" value={this.props.address1} />
-							</div>
-						</div>
-						<div className="field">
-							<div className="control">
-								<input className="input" type="text" value={this.props.address2} />
-							</div>
-						</div>
-						<div className="field is-grouped">
-							<div className="field">
-								<label className="label">City*</label>
-								<div className="control">
-									<input className="input" type="text" value={this.props.city} />
-								</div>
-							</div>
-							<div className="field">
-								<label className="label">State*</label>
-								<div className="control select">
-									<input className="input" type="text" value={this.props.state} />
-								</div>
-							</div>
-							<div className="field">
-								<label className="label">Zip Code*</label>
-								<div className="control">
-									<input className="input" type="text" value={this.props.zip} />
-								</div>
-							</div>
-						</div>
-						<div className="field">
-							<label className="label">Organization Website*</label>
-							<div className="control">
-								<input className="input" type="text" value={this.props.websiteURL} />
-							</div>
-						</div>
-						<div className="field">
-							<label className="label">501(c)3 EIN*</label>
-							<div className="field is-grouped">
-								<div className="control">
-									<input
-										name="ein1"
-										className="input "
-										type="text"
-										autocomplete="none"
-										size="2"
-										maxlength="2"
-										value=""
-									/>
-								</div>
-								<span className="center-label-text-vertically">-&nbsp;&nbsp;&nbsp;</span>
-								<div className="control">
-									<input
-										name="ein2"
-										className="input "
-										type="text"
-										autocomplete="none"
-										size="7"
-										maxlength="7"
-										value=""
-									/>
-								</div>
-							</div>
-						</div>
+						<Field name={"EINField"} component={this.props.renderEINField} />
 
 						<div>
 							<a className="button is-warning">
@@ -139,4 +72,77 @@ class ProfileInfo extends Component {
 	}
 }
 
-export default ProfileInfo;
+// Validates input fields
+function validate(values) {
+	const errors = {};
+
+	// Check for org name
+	if (!values.orgName) {
+		errors.orgName = "Organization name is required";
+	}
+
+	// Check for valid phone number
+	if (
+		(values.phone1 && (isNaN(values.phone1) || values.phone1.length !== 3)) ||
+		(values.phone2 && (isNaN(values.phone2) || values.phone2.length !== 3)) ||
+		(values.phone3 && (isNaN(values.phone3) || values.phone3.length !== 4))
+	) {
+		errors.orgPhone = "Please enter a valid phone number";
+	}
+
+	// Check for valid city
+	if (values.city && !isNaN(values.city)) {
+		errors.orgAddress = "Invalid city";
+	}
+
+	// Check for valid zip
+	if (values.zip && (isNaN(values.zip) || values.zip.length !== 5)) {
+		errors.orgAddress = "Invalid zip code";
+	}
+
+	// Check for EIN
+	if (
+		!values.ein1 ||
+		!values.ein2 ||
+		(values.ein1.length !== 2 || values.ein2.length !== 7) ||
+		(isNaN(values.ein1) || isNaN(values.ein2))
+	) {
+		errors.EINField = "A valid EIN is required";
+	}
+
+	// Check for email
+	if (!values.email) {
+		errors.email = "An email address is required";
+	}
+
+	// if (errors) console.log(errors);
+	// console.log(values);
+	return errors;
+}
+
+// initialValues: initial values for the form, loaded from component's props
+// errorMessage: error message returned if there is a submission error
+function mapStateToProps(state, props) {
+	const ein = props.loggedInUser.ein.split("-");
+	const phone = props.loggedInUser.phone.split("-");
+	return {
+		errorMessage: state.auth.errorMessage,
+		initialValues: {
+			...props.loggedInUser,
+			ein1: ein[0],
+			ein2: ein[1],
+			phone1: phone[0],
+			phone2: phone[1],
+			phone3: phone[2]
+		}
+	};
+}
+
+export default compose(
+	formFields,
+	connect(
+		mapStateToProps,
+		actions
+	),
+	reduxForm({ validate, form: "userUpdate" })
+)(ProfileInfo);
