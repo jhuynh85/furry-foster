@@ -71,7 +71,7 @@ class FostersLearn extends React.Component {
 									All of our rescue partners pay for food and vet care. Requirements for each rescue
 									are different, so double check with the organization you volunteer for.
 								</p>
-								<Button link="/" text="Find a foster pet" />
+								<Button link="/pets" text="Find a foster pet" />
 							</section>
 							<section className="section">
 								<h2>How Fostering a Pet Works</h2>

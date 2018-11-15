@@ -83,7 +83,7 @@ const Footer = () => (
 								</li>
 								<li>
 									<a
-										href="http://www.facebook.com/furryfoster"
+										href="http://www.instagram.com/furryfosterpets"
 										target="_blank"
 										rel="noopener noreferrer">
 										<i className="fa fa-instagram icon is-small" aria-hidden="true" />
@@ -92,7 +92,7 @@ const Footer = () => (
 								</li>
 								<li>
 									<a
-										href="http://www.facebook.com/furryfoster"
+										href="http://www.twitter.com/furryfoster"
 										target="_blank"
 										rel="noopener noreferrer">
 										<i className="fa fa-twitter icon is-small" aria-hidden="true" />
