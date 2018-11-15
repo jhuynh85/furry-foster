@@ -10,8 +10,8 @@ const userObj = JSON.parse(localStorage.getItem("user"));
 const store = createStore(
 	reducers,
 	{
+		user: { loggedInUser: userObj },
 		auth: {
-			user: userObj,
 			authenticated: localStorage.getItem("token")
 		}
 	},

@@ -1,5 +1,11 @@
 import axios from "axios";
-import { PAGE_CLICKED, AUTH_USER, AUTH_ERROR, CLEAR_AUTH_ERROR } from "./types";
+import {
+	PAGE_CLICKED,
+	AUTH_USER,
+	AUTH_ERROR,
+	CLEAR_AUTH_ERROR,
+	UPDATE_LOGGED_IN_USER
+} from "./types";
 
 export const clickPage = page => {
 	return {
@@ -33,11 +39,8 @@ export const signup = ({ type, ...input }, callback) => async dispatch => {
 		}
 
 		const { user, token } = response.data;
-		const payload = {
-			user,
-			token
-		};
-		dispatch({ type: AUTH_USER, payload });
+		dispatch({ type: UPDATE_LOGGED_IN_USER, payload: user });
+		dispatch({ type: AUTH_USER, payload: token });
 		// Store token to localStorage
 		localStorage.setItem("user", JSON.stringify(user));
 		localStorage.setItem("token", token);
@@ -69,11 +72,8 @@ export const signin = ({ email, password, type }, callback) => async dispatch =>
 		}
 
 		const { user, token } = response.data;
-		const payload = {
-			user,
-			token
-		};
-		dispatch({ type: AUTH_USER, payload });
+		dispatch({ type: UPDATE_LOGGED_IN_USER, payload: user });
+		dispatch({ type: AUTH_USER, payload: token });
 		// Store token to localStorage
 		localStorage.setItem("user", JSON.stringify(user));
 		localStorage.setItem("token", token);
@@ -91,6 +91,28 @@ export const signout = signoutCallback => dispatch => {
 	// Clear localStorage
 	localStorage.removeItem("user");
 	localStorage.removeItem("token");
+	dispatch({ type: UPDATE_LOGGED_IN_USER, payload: "" });
 	dispatch({ type: AUTH_USER, payload: "" });
 	signoutCallback();
+};
+
+// Updates user information and updates "user" state and localstorage variables
+export const updateUser = (userID, updatedUser, callback) => async dispatch => {
+	try {
+		// Set authorization header because /api/update/rescue route is protected
+		const header = { authorization: localStorage.getItem("token") };
+		let response = await axios.patch(`/api/update/rescue/${userID}`, updatedUser, {
+			headers: header
+		});
+		console.log("/api/update/rescue response: ", response);
+		// UPDATE LOGGEDINUSER HERE
+		const loggedInUser = response.data;
+		localStorage.setItem("user", JSON.stringify(loggedInUser));
+		dispatch({ type: UPDATE_LOGGED_IN_USER, payload: loggedInUser });
+		// TOAST HERE
+		callback();
+	} catch (e) {
+		console.log(e);
+		console.log("API error: ", e.response);
+	}
 };

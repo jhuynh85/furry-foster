@@ -27,7 +27,7 @@ module.exports = function(app) {
 
 	// Updates specified rescue
 	app.patch("/api/update/rescue/:rescueID", requireJWT, function(req, res) {
-		Rescue.findByIdAndUpdate(req.params.rescueID, req.body, { new: true })
+		Rescue.findByIdAndUpdate(req.params.rescueID, { $set: req.body }, { new: true })
 			.then(function(updatedRescue) {
 				console.log("Success, rescue updated: ", JSON.stringify(updatedRescue, null, 2));
 				res.json(updatedRescue);

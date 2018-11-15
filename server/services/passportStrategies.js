@@ -68,6 +68,7 @@ passport.use(
 					if (err) return doneCallback(err, false);
 					// If it exists, call "doneCallback" with that
 					if (user) {
+						// console.log("user jwt authed: ", user);
 						doneCallback(null, user);
 					}
 					// Otherwise, call "doneCallback" without a user object
@@ -83,6 +84,7 @@ passport.use(
 					if (err) return doneCallback(err, false);
 					// If it exists, call "doneCallback" with that
 					if (user) {
+						// console.log("rescue jwt authed: ", user);
 						doneCallback(null, user);
 					}
 					// Otherwise, call "doneCallback" without a rescue object
