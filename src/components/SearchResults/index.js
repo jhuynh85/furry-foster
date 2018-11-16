@@ -4,6 +4,9 @@ import SearchTile from "../../components/SearchTile";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+import defaultCatAvatar from "../../assets/images/default_cat_avatar.png";
+import defaultDogAvatar from "../../assets/images/default_dog_avatar.png";
+
 class SearchResults extends React.Component {
 	constructor(props) {
 		super(props);
@@ -36,7 +39,9 @@ class SearchResults extends React.Component {
 									key={pet._id}
 									className="tile is-parent is-3"
 									searchTileURL={`/pets/${pet._id}`}
-									searchTileImage={pet.images[0] || "https://via.placeholder.com/200x200"}
+									searchTileImage={
+										pet.images[0] || (pet.type === "cat" ? defaultCatAvatar : defaultDogAvatar)
+									}
 									searchTileName={pet.name}
 									searchTileAge={Math.floor(pet.ageInMonths / 12) || ""}
 									searchTileGender={pet.gender || ""}

@@ -16,10 +16,14 @@ import Button from "../Button";
 const Header = ({ auth }) => {
 	const renderSignInOrSignOut = () => {
 		if (!auth) {
-			return <SignInUp />;
+			return (
+				<div className="one-line">
+					<SignInUp />
+				</div>
+			);
 		}
 		return (
-			<div className={"one-line"}>
+			<div className="one-line">
 				<Button link={"/profile"} text={"PROFILE"} />
 				&nbsp;&nbsp;&nbsp;
 				<SignOut />
