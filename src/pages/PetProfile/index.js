@@ -4,6 +4,10 @@ import Button from "../../components/Button";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+// Import image assets
+import defaultCatAvatar from "../../assets/images/default_cat_avatar.png";
+import defaultDogAvatar from "../../assets/images/default_dog_avatar.png";
+
 class PetProfile extends React.Component {
 	constructor(props) {
 		super(props);
@@ -89,12 +93,14 @@ class PetProfile extends React.Component {
 							<div className=" content" id="pet-profile-content">
 								<div className="columns">
 									<div className="column is-two-thirds">
-										<div className="pet-profile-image is-horizontal-center">
+										<div className="pet-profile-image is-horizontal-center is-vertical-center has-text-centered">
 											<img
 												src={
 													this.state.currentPet.images && this.state.currentPet.images.length > 0
 														? this.state.currentPet.images[0]
-														: "https://via.placeholder.com/3000x2000"
+														: this.state.currentPet.type === "cat"
+															? defaultCatAvatar
+															: defaultDogAvatar
 												}
 											/>
 										</div>
