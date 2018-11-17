@@ -12,6 +12,7 @@ class PetProfile extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { currentPet: {} };
+		this.rescueRef = React.createRef();
 	}
 
 	async componentDidMount() {
@@ -37,7 +38,7 @@ class PetProfile extends React.Component {
 			process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 		}&q=${params}`;
 		// console.log("Google maps URL: ", URL);
-		return <iframe width="400" height="400" frameBorder="0" src={URL} allowFullScreen />;
+		return <iframe width="100%" height="100%" frameBorder="0" src={URL} allowFullScreen />;
 	};
 
 	calculateAge = ageInMonths => {
@@ -76,6 +77,10 @@ class PetProfile extends React.Component {
 		return (result = result.join(" "));
 	};
 
+	scrollToRescue = () => {
+		this.rescueRef.current.scrollIntoView({ block: "start", behavior: "smooth" });
+	};
+
 	render() {
 		const AGE_ADULT = 36; // Min age in months ADULT pets
 		const WEIGHT_LARGE = 896; // Min weight in oz for LARGE pets (896oz = 56lbs)
@@ -105,7 +110,7 @@ class PetProfile extends React.Component {
 											/>
 										</div>
 									</div>
-									<div className="column is-one-third">
+									<div className="column is-one-third pet-details-container">
 										<h1 className="is-size-1">{this.state.currentPet.name}</h1>
 										<p className="is-size-4">
 											<span className="detail-label">{this.state.currentPet.gender}</span>
@@ -136,7 +141,9 @@ class PetProfile extends React.Component {
 											</b>
 										</p>
 										<p>
-											<a>Rescued by {currentRescue ? currentRescue.orgName : "?"}</a>
+											<a onClick={this.scrollToRescue}>
+												Rescued by {currentRescue ? currentRescue.orgName : "?"}
+											</a>
 										</p>
 										<div className="section">
 											<div className="columns">
@@ -244,7 +251,7 @@ class PetProfile extends React.Component {
 								<h2 className="is-size-2">About {this.state.currentPet.name}</h2>
 								<p>{this.state.currentPet.description || LOREM}</p>
 							</div>
-							<div className="content-card">
+							<div className="content-card" ref={this.rescueRef}>
 								<div className="columns">
 									<div className="column">
 										<h2 className="is-size-2">{currentRescue ? currentRescue.orgName : "?"}</h2>
@@ -284,8 +291,10 @@ class PetProfile extends React.Component {
 										</p>
 									</div>
 									<div className="column">
-										{this.state.currentPet.rescue &&
-											this.renderGoogleMap(this.state.currentPet.rescue)}
+										<div className={"google-maps-container is-horizontal-center"}>
+											{this.state.currentPet.rescue &&
+												this.renderGoogleMap(this.state.currentPet.rescue)}
+										</div>
 									</div>
 								</div>
 							</div>

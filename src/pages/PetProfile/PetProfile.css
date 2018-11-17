@@ -8,3 +8,24 @@
 	max-width: 400px;
 	border: 3px solid lightgray;
 }
+
+.google-maps-container {
+	height: 100%;
+	width: 100%;
+	max-width: 400px;
+	max-height: 400px;
+}
+
+.google-maps-container > iframe {
+	display: block;
+}
+
+@media screen and (max-width: 768px) {
+	.pet-details-container {
+		text-align: center;
+	}
+
+	.google-maps-container {
+		height: 300px;
+	}
+}
