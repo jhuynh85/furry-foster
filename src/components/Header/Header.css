@@ -18,6 +18,11 @@
 		margin-right: 15px;
 	}
 
+	.ff-logo-container {
+		display: flex;
+		justify-content: center;
+	}
+
 	.ff-logo {
 		height: 55px;
 	}

@@ -35,7 +35,7 @@ const Header = ({ auth }) => {
 		<div>
 			<SocialMediaBar />
 			<div className="columns margin10">
-				<div className="column has-text-left">
+				<div className="column ff-logo-container">
 					<Link to={"/"}>
 						<img src={ffLogo} className="ff-logo" alt="Furry Foster logo" />
 					</Link>
