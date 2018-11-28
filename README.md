@@ -36,11 +36,11 @@ API keys are required from the following services:
 - Google Maps
 - Amazon Web Services (AWS)
 
-### Environmental variables
+### Environment variables
 
-An `.env` file containing the following environmental variables must also be placed in the application's root directory:
+An `.env` file containing the following environment variables must also be placed in the application's root directory:
 
-| Environmental variable          | Description                                                                         |
+| Environment variable          | Description                                                                         |
 | ------------------------------- | ----------------------------------------------------------------------------------- |
 | `GOOGLE_CLIENT_ID`              | Google client ID. Required for Google OAuth.                                        |
 | `GOOGLE_CLIENT_SECRET`          | Google client secret. Required for Google Oauth.                                    |
@@ -53,7 +53,6 @@ An `.env` file containing the following environmental variables must also be pla
 ## Setup
 
 - Install NPM dependencies using `npm install` or `yarn install` while in the app's root directory
-
 - In a separate terminal, start the mongo server using the `mongod` command
 
 ##### For development
