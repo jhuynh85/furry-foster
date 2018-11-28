@@ -40,15 +40,15 @@ API keys are required from the following services:
 
 An `.env` file containing the following environmental variables must also be placed in the application's root directory:
 
-| Environmental variable        | Description                                                                         |
-| ----------------------------- | ----------------------------------------------------------------------------------- |
-| GOOGLE_CLIENT_ID              | Google client ID. Required for Google OAuth.                                        |
-| GOOGLE_CLIENT_SECRET          | Google client secret. Required for Google Oauth.                                    |
-| JWT_SECRET                    | A random string. Used to generate JWT tokens for user authentication                |
-| AWS_ACCESS_KEY_ID             | AWS access key. Required to upload images to Amazon S3 bucket.                      |
-| AWS_SECRET_ACCESS_KEY         | AWS secret access key. Required to upload images to Amazon S3 bucket.               |
-| S3_BUCKET_NAME                | The name of the Amazon S3 bucket where pet photos uploaded by users will be stored. |
-| REACT_APP_GOOGLE_MAPS_API_KEY | Google Maps API key used for the embedded Google Maps.                              |
+| Environmental variable          | Description                                                                         |
+| ------------------------------- | ----------------------------------------------------------------------------------- |
+| `GOOGLE_CLIENT_ID`              | Google client ID. Required for Google OAuth.                                        |
+| `GOOGLE_CLIENT_SECRET`          | Google client secret. Required for Google Oauth.                                    |
+| `JWT_SECRET`                    | A random string. Used to generate JWT tokens for user authentication                |
+| `AWS_ACCESS_KEY_ID`             | AWS access key. Required to upload images to Amazon S3 bucket.                      |
+| `AWS_SECRET_ACCESS_KEY`         | AWS secret access key. Required to upload images to Amazon S3 bucket.               |
+| `S3_BUCKET_NAME`                | The name of the Amazon S3 bucket where pet photos uploaded by users will be stored. |
+| `REACT_APP_GOOGLE_MAPS_API_KEY` | Google Maps API key used for the embedded Google Maps.                              |
 
 ## Setup
 
