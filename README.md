@@ -2,6 +2,14 @@
 
 Website for Furry Foster, a 501(c)3 federal non-profit organization dedicated to ending the euthanasia of adoptable pets by connecting them with loving foster families.
 
+##### Features
+
+- User/Rescue accounts
+- Posting of pets available for adoption
+- Pet search engine (under development)
+- User messaging (under development)
+- Event calendar (under development)
+
 ## Technologies
 
 - React
@@ -34,7 +42,7 @@ An `.env` file containing the following environmental variables must also be pla
 
 | Environmental variable        | Description                                                                         |
 | ----------------------------- | ----------------------------------------------------------------------------------- |
-| GOOGLE_CLIENT_ID              | Google client ID. Required fo Google OAuth.                                         |
+| GOOGLE_CLIENT_ID              | Google client ID. Required for Google OAuth.                                        |
 | GOOGLE_CLIENT_SECRET          | Google client secret. Required for Google Oauth.                                    |
 | JWT_SECRET                    | A random string. Used to generate JWT tokens for user authentication                |
 | AWS_ACCESS_KEY_ID             | AWS access key. Required to upload images to Amazon S3 bucket.                      |
@@ -62,4 +70,4 @@ Now navigate to your browser and open <http://localhost:5000>.
 
 ## Style guide
 
-Code style is automatically enforced via a git precommit hook. A slightly modified version of the Prettier config is used.
+Code is automatically formatted to the appropriate style via a git precommit hook. A slightly modified version of the [default Prettier config](https://prettier.io/docs/en/options.html) is used (tabs used instead of spaces).
