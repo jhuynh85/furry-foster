@@ -38,7 +38,16 @@ class PetProfile extends React.Component {
 			process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 		}&q=${params}`;
 		// console.log("Google maps URL: ", URL);
-		return <iframe width="100%" height="100%" frameBorder="0" src={URL} allowFullScreen />;
+		return (
+			<iframe
+				title="Rescue Google map"
+				width="100%"
+				height="100%"
+				frameBorder="0"
+				src={URL}
+				allowFullScreen
+			/>
+		);
 	};
 
 	calculateAge = ageInMonths => {
@@ -100,6 +109,7 @@ class PetProfile extends React.Component {
 									<div className="column is-two-thirds">
 										<div className="pet-profile-image is-horizontal-center is-vertical-center has-text-centered">
 											<img
+												alt={"Pet avatar"}
 												src={
 													this.state.currentPet.images && this.state.currentPet.images.length > 0
 														? this.state.currentPet.images[0]

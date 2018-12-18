@@ -40,7 +40,7 @@ API keys are required from the following services:
 
 An `.env` file containing the following environment variables must also be placed in the application's root directory:
 
-| Environment variable          | Description                                                                         |
+| Environment variable            | Description                                                                         |
 | ------------------------------- | ----------------------------------------------------------------------------------- |
 | `GOOGLE_CLIENT_ID`              | Google client ID. Required for Google OAuth.                                        |
 | `GOOGLE_CLIENT_SECRET`          | Google client secret. Required for Google Oauth.                                    |

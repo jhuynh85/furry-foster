@@ -34,9 +34,6 @@ class Search extends React.Component {
 					<p className="control">
 						<span className="select is-hover">
 							<select onChange={this.handleSelectChange}>
-								<option selected disabled>
-									FIND
-								</option>
 								<option value="dogs">DOGS</option>
 								<option value="cats">CATS</option>
 							</select>

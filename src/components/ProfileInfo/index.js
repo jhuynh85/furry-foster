@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import formFields from "../HigherOrderComponents/formFields";
 import * as actions from "../../actions";
-import axios from "axios";
 
 class ProfileInfo extends Component {
 	onSubmit = formProps => {

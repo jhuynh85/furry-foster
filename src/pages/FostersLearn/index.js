@@ -1,7 +1,6 @@
 import React from "react";
 import "./FostersLearn.css";
 import Button from "../../components/Button";
-import Tile from "../../components/Tile";
 import Banner from "../../components/Banner";
 import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
 
@@ -30,7 +29,7 @@ class FostersLearn extends React.Component {
 										<div className="column">
 											<div className="card">
 												<div className="card-image">
-													<img src={bannerImage} alt="Placeholder image" />
+													<img src={bannerImage} alt="Placeholder banner" />
 												</div>
 												<div className="card-content">
 													<div className="content">
@@ -48,7 +47,7 @@ class FostersLearn extends React.Component {
 										<div className="column">
 											<div className="card">
 												<div className="card-image">
-													<img src={bannerImage} alt="Placeholder image" />
+													<img src={bannerImage} alt="Placeholder banner" />
 												</div>
 												<div className="card-content">
 													<div className="content">

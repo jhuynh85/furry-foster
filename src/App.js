@@ -37,7 +37,6 @@ import PetProfile from "./pages/PetProfile";
 
 class App extends Component {
 	render() {
-		console.log("Created by Joseph Huynh & Margaret Choi 2018");
 		return (
 			<BrowserRouter>
 				<ScrollToTop>
