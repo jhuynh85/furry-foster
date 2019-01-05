@@ -17,11 +17,10 @@ class FostersLearn extends React.Component {
 						<div className="content">
 							<h2 className="subtitle">Fostering a pet is free, fun, and fulfilling.</h2>
 							<p>
-								There's a rescue animal who needs you. It doesn't cost you anything to save a dog or
-								cat, rescues will pay for food and vet care. All of our rescue partners pay for food
-								and vet care. Requirements for foster families varies for each rescue, so double
-								check with the organization you volunteer for their policy. Together we can bring
-								every homeless pet home
+								There's a rescue animal who needs you. It doesn't cost anything to save a dog or
+								cat, rescues will pay for food and vet care. Requirements for foster families varies
+								for each rescue, so double check with the organization you volunteer for their
+								policy. Together we can bring every homeless pet home
 							</p>
 						</div>
 					</div>
@@ -32,59 +31,39 @@ class FostersLearn extends React.Component {
 							<div className="column">
 								<div className="content">
 									<h3>Foster Responsibilities</h3>
-									<div className="checked">
-										<p>
-											<b>Housing & Care</b>
-										</p>
-										<p>A roof over their head and bed to rest their paws.</p>
-									</div>
-									<div className="checked">
-										<p>
-											<b>Basic Training</b>
-										</p>
-										<p>Training your pet to be a good family member.</p>
-									</div>
-									<div className="checked">
-										<p>
-											<b>Transportation</b>
-										</p>
-										<p>Transporting your pet to events or vet appointments.</p>
-									</div>
-									<div className="checked">
-										<p>
-											<b>Love & Family</b>
-										</p>
-										<p>Plenty of affection for a lonely pet.</p>
-									</div>
+									<CheckedTile
+										checkedTitle="Housing & Care"
+										checkedBody="A roof over their head and bed to rest their paws."
+									/>
+									<CheckedTile
+										checkedTitle="Basic Training"
+										checkedBody="Training your pet to be a good family member."
+									/>
+									<CheckedTile
+										checkedTitle="Transportation"
+										checkedBody="Transporting your pet to events or vet appointments."
+									/>
+									<CheckedTile
+										checkedTitle="Love & Family"
+										checkedBody="Plenty of affection for a lonely pet."
+									/>
 								</div>
 							</div>
 							<div className="column">
 								<div className="content">
 									<h3>Foster Qualifications</h3>
-									<div className="checked">
-										<p>
-											<b>18+ Years Old</b>
-										</p>
-										<p>Be 18 years or older and have valid ID.</p>
-									</div>
-									<div className="checked">
-										<p>
-											<b>Pet-friendly Housing</b>
-										</p>
-										<p>Have appropriate housing and landlord approval for a pet.</p>
-									</div>
-									<div className="checked">
-										<p>
-											<b>Ability and Time</b>
-										</p>
-										<p>Enough ability and time to care for, train, and socialize a pet.</p>
-									</div>
-									<div className="checked">
-										<p>
-											<b>Commitment to Fostering</b>
-										</p>
-										<p>Commit to caring for a pet until they are adopted.</p>
-									</div>
+									<CheckedTile
+										checkedTitle="18+ Years Old"
+										checkedBody="Be 18 years or older and have valid ID."
+									/>
+									<CheckedTile
+										checkedTitle="Pet-friendly Housing"
+										checkedBody="Have appropriate housing and landlord approval for a pet."
+									/>
+									<CheckedTile
+										checkedTitle="Ability and Time"
+										checkedBody="Enough ability and time to care for, train, and socialize a pet."
+									/>
 									<CheckedTile
 										checkedTitle="Commitment to Fostering"
 										checkedBody="Commit to caring for a pet until they are adopted."
