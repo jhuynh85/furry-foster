@@ -10,18 +10,18 @@ class Fosters extends React.Component {
 	render() {
 		return (
 			<div>
-				<Banner image={bannerImage} text="Fosters" />
+				<Banner image={bannerImage} text="Foster Families" />
 				<div className="container">
 					<div className="columns">
 						<div className="column">
 							<section className="section content">
-								<h1 className="title is-1">Foster Families</h1>
+								<h1 className="title is-1">Get Free Foster Resources</h1>
 								<div>
 									<Button link="/" text="MORE INFO" />
 								</div>
 							</section>
 							<section className="section content">
-								<h1 className="title is-1">Get Free Foster Resources</h1>
+								<h1 className="title is-1">Feature your foster pets on social media</h1>
 								<div>
 									<Button link="/" text="MORE INFO" />
 								</div>
@@ -44,6 +44,7 @@ class Fosters extends React.Component {
 											<div className="content">
 												<h3>Foster Qualifications</h3>
 												<CheckedTile
+													checkedImg={[<i class="fas fa-home" />]}
 													checkedTitle="18+ Years Old"
 													checkedBody="Be 18 years or older and have valid ID."
 												/>

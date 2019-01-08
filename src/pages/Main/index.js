@@ -7,6 +7,7 @@ import learnIcon from "../../assets/images/ff_website2018_icons_learn.png";
 import donateIcon from "../../assets/images/ff_website2018_icons_donate.png";
 
 //----------------Child components------- ---//
+import Banner from "../../components/Banner";
 import Button from "../../components/Button";
 import ImageButton from "../../components/ImageButton";
 import NewsletterBanner from "../../components/NewsletterBanner";

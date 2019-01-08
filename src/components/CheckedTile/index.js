@@ -6,10 +6,7 @@ const CheckedTile = props => {
 		<div>
 			<div className="checked">
 				<div className="columns">
-					<div className="column is-one-quarter">
-						&#x2714;
-						<img src={props.checkedImg} />
-					</div>
+					<div className="column is-one-quarter">{props.checkedImg ? <p>&#x2714</p> : ""}</div>
 					<div className="column">
 						<p>
 							<b>{props.checkedTitle}</b>
