@@ -1,0 +1,12 @@
+.recent-pets {
+	flex-wrap: wrap;
+}
+
+.recent-pets figure:first-child {
+	margin: 0px;
+	margin-bottom: 0px;
+}
+
+.search-tile {
+	background: #ececec;
+}

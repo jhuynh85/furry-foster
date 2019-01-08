@@ -4,15 +4,17 @@
 	padding-right: 5%;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	background-color: #e6e6e6;
+	background-color: rgb(75, 61, 52);
+	color: #fff;
+	font-size: 0.9em;
 }
 
 .social-media-bar a {
-	color: #4a4a4a;
+	color: #fff;
 }
 
 .social-media-bar a:hover {
-	color: #4a4a4ab0;
+	color: #4a4a4a;
 }
 
 @media screen and (max-width: 768px) {

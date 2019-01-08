@@ -43,7 +43,7 @@ class Navbar extends React.Component {
 
 	render() {
 		return (
-			<nav ref={navMenu => (this.navMenu = navMenu)} className="navbar is-warning">
+			<nav ref={navMenu => (this.navMenu = navMenu)} className="navbar">
 				<div className="navbar-brand">
 					<div
 						className={

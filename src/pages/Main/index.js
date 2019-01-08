@@ -11,6 +11,7 @@ import Banner from "../../components/Banner";
 import Button from "../../components/Button";
 import ImageButton from "../../components/ImageButton";
 import NewsletterBanner from "../../components/NewsletterBanner";
+import RecentPets from "../../components/RecentPets";
 
 class Main extends React.Component {
 	componentDidMount() {
@@ -31,6 +32,16 @@ class Main extends React.Component {
 									</p>
 									<Button link="/about" text="MORE INFO" />
 								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section className="hero is-warning is-medium">
+					<div className="hero-body">
+						<div className="container">
+							<div className="has-text-centered">
+								<h2>4 most recent pets added?</h2>
+								<RecentPets />
 							</div>
 						</div>
 					</div>
@@ -73,6 +84,15 @@ class Main extends React.Component {
 										/>
 									</div>
 								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section className="hero is-warning is-medium">
+					<div className="hero-body">
+						<div className="container">
+							<div className="has-text-centered">
+								<h2>Happy Foster Stories</h2>
 							</div>
 						</div>
 					</div>
