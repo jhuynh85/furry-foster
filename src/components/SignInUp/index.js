@@ -28,7 +28,7 @@ class SignInUp extends Component {
 	render() {
 		return (
 			<span className={"signinupComponent"}>
-				<Button text={"SIGN IN"} onClick={this.toggleModal} />
+				<a onClick={this.toggleModal}>Sign In</a> | <a onClick={this.toggleModal}>Sign Up</a>
 				<Modal closeModal={this.toggleModal} modalState={this.state.modalState} title="" footer="">
 					<Tabs>
 						<Pane label="Sign In">

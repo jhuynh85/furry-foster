@@ -34,18 +34,20 @@ const Header = ({ auth }) => {
 	return (
 		<div>
 			<SocialMediaBar />
-			<div className="columns margin10">
-				<div className="column ff-logo-container">
+			<div className="level margin10 main-header">
+				<div className="level-left ff-logo-container">
 					<Link to={"/"}>
 						<img src={ffLogo} className="ff-logo" alt="Furry Foster logo" />
 					</Link>
 				</div>
-				<div className="column align-mid header-search-input-bar">
-					<Search />
+				<div className="level-right">
+					<div className=" header-search-input-bar">
+						<Search />
+					</div>
+
+					<Navbar />
 				</div>
-				<div className="column has-text-right align-mid">{renderSignInOrSignOut()}</div>
 			</div>
-			<Navbar />
 		</div>
 	);
 };

@@ -12,6 +12,10 @@
 	padding-left: 5%;
 }
 
+.main-header {
+	margin-bottom: 1.5em;
+}
+
 @media screen and (max-width: 768px) {
 	.header-search-input-bar {
 		margin-left: 15px;

@@ -1,0 +1,17 @@
+.card {
+	border-radius: 4px;
+}
+
+.card-header {
+	background: green;
+	padding: 1.5rem;
+}
+
+.card-body {
+	padding: 1.5rem 1rem;
+}
+
+.checked {
+	padding: 10px 0px;
+	text-align: left;
+}
