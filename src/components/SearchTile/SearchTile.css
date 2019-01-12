@@ -1,10 +1,13 @@
 .searchtile-container {
 	width: 100%;
 	border-radius: 6px;
+	display: flex;
+	justify-content: center;
 }
 
 .searchtile-image {
-	height: 300px;
+	height: 200px;
+	width: 200px;
 	background-size: cover;
 	display: flex;
 	border-radius: 6px;
@@ -14,7 +17,7 @@
 }
 
 .searchtile-overlay {
-	background: rgba(0, 0, 0, 0.8);
+	background: rgba(75, 61, 52, 0.9);
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -31,4 +34,18 @@
 }
 
 .searchtile-overlay:hover {
+}
+
+@media screen and (max-width: 1087px) {
+	.searchtile-image {
+		height: 170px;
+		width: 170px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.searchtile-image {
+		height: 400px;
+		width: 400px;
+	}
 }
