@@ -9,9 +9,12 @@ import donateIcon from "../../assets/images/ff_website2018_icons_donate.png";
 //----------------Child components------- ---//
 import Banner from "../../components/Banner";
 import Button from "../../components/Button";
+import Search from "../../components/Search";
+import Pane from "../../components/Pane";
 import ImageButton from "../../components/ImageButton";
 import NewsletterBanner from "../../components/NewsletterBanner";
 import RecentPets from "../../components/RecentPets";
+import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
 
 class Main extends React.Component {
 	componentDidMount() {
@@ -24,14 +27,15 @@ class Main extends React.Component {
 				<section className="hero is-light is-medium main-background-image">
 					<div className="hero-body">
 						<div className="container">
-							<div className="has-text-centered">
-								<div>
+							<div className="columns">
+								<div className="column">
 									<h1 className="title is-1 has-text-white">You can make a difference</h1>
-									<p className="subtitle is-4 has-text-white">
-										Fostering is free, fun, and fulfilling
-									</p>
-									<Button link="/about" text="MORE INFO" />
+									<p className="subtitle is-4 has-text-white">Find a pet who needs your help.</p>
+									<Pane>
+										<Search />
+									</Pane>
 								</div>
+								<div className="column" />
 							</div>
 						</div>
 					</div>
@@ -40,8 +44,11 @@ class Main extends React.Component {
 					<div className="hero-body">
 						<div className="container">
 							<div className="has-text-centered">
-								<h2>4 most recent pets added?</h2>
+								<h2 className="title is-2">Homeless Pets Who Need You</h2>
+								<br />
 								<RecentPets />
+								<br />
+								<Button className="" link="/pets" text="Find A Foster Pet" />
 							</div>
 						</div>
 					</div>
@@ -51,7 +58,9 @@ class Main extends React.Component {
 						<div className="container">
 							<div className="has-text-centered">
 								<h2 className="title is-2">It's easy to help</h2>
+
 								<p className="subtitle is-4">There are plenty of ways to get involved!</p>
+								<br />
 								<div className="columns container is-fluid is-centered">
 									<div className="column is-one-quarter">
 										<ImageButton
@@ -92,7 +101,27 @@ class Main extends React.Component {
 					<div className="hero-body">
 						<div className="container">
 							<div className="has-text-centered">
-								<h2>Happy Foster Stories</h2>
+								<h2 className="title is-2">Happy Foster Stories</h2>
+								<div className="columns">
+									<div className="column">
+										<div className="main-testimonial-sq">
+											<img src={bannerImage} />
+										</div>
+									</div>
+									<div className="column has-text-left">
+										<div className="main-testimonial-quote">
+											"I love animals. I thought about volunteering at an animal shelter, but felt I
+											had to do something more. After moving back to San Diego from Switzerland, I
+											decided I wanted to foster as many dogs as I could, but was wondering how to
+											go about it ..."
+										</div>
+										<section className="section">
+											<div className="main-testimonial-name ">
+												<h3>Foster Mom Alisa & Darcy</h3> with Chihuahua Rescue of San Diego
+											</div>
+										</section>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

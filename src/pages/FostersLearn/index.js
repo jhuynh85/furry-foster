@@ -15,7 +15,7 @@ class FostersLearn extends React.Component {
 				<section className="section">
 					<div className="container">
 						<div className="content">
-							<h2 className="subtitle">Fostering a pet is free, fun, and fulfilling.</h2>
+							<h2 className="title is-2">Fostering a pet is free, fun, and fulfilling.</h2>
 							<p>
 								There's a rescue animal who needs you. It doesn't cost anything to save a dog or
 								cat, rescues will pay for food and vet care. Requirements for foster families varies
@@ -30,7 +30,7 @@ class FostersLearn extends React.Component {
 						<div className="columns">
 							<div className="column">
 								<div className="content">
-									<h3>Foster Responsibilities</h3>
+									<h3 className="title is-3">Foster Responsibilities</h3>
 									<CheckedTile
 										checkedTitle="Housing & Care"
 										checkedBody="A roof over their head and bed to rest their paws."
@@ -51,7 +51,7 @@ class FostersLearn extends React.Component {
 							</div>
 							<div className="column">
 								<div className="content">
-									<h3>Foster Qualifications</h3>
+									<h3 className="title is-3">Foster Qualifications</h3>
 									<CheckedTile
 										checkedTitle="18+ Years Old"
 										checkedBody="Be 18 years or older and have valid ID."
@@ -114,7 +114,7 @@ class FostersLearn extends React.Component {
 				</section>
 				<section className="section">
 					<div className="container content">
-						<h2>Join our network of furry foster families for support.</h2>
+						<h2 className="title is-2">Join our network of furry foster families for support.</h2>
 						<div>
 							<img src={bannerImage} className="circled" />
 							<img src={bannerImage} className="circled" />
@@ -129,7 +129,7 @@ class FostersLearn extends React.Component {
 				</section>
 				<section className="section">
 					<div className="container content">
-						<h2>Steps to start fostering</h2>
+						<h2 className="title is-2">Steps to start fostering</h2>
 						<div className="content">
 							<div className="columns">
 								<div className="column">

@@ -4,8 +4,27 @@
 	background-size: 100% auto;
 	height: 420px;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	align-items: center;
+}
+
+.main-testimonial-sq {
+	width: 100%;
+	background: none;
+	padding: 20px;
+	border: 1px solid #000;
+	border-radius: 6px;
+}
+
+.main-testimonial-quote {
+	width: 100%;
+	background: #ececec;
+	padding: 20px;
+	border-radius: 6px;
+	font-weight: bold;
+}
+
+.main-testimonial-name {
 }
 
 @media screen and (max-width: 1024px) {
