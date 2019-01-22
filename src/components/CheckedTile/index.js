@@ -6,9 +6,11 @@ const CheckedTile = props => {
 		<div>
 			<div className="checked">
 				<div className="columns">
-					<div className="column is-one-quarter has-text-right">{props.checkedImg || <p>✔</p>}</div>
+					<div className="column is-one-quarter has-text-right checked-mark">
+						{props.checkedImg || <p>✔</p>}
+					</div>
 					<div className="column">
-						<p>
+						<p className="checked-title">
 							<b>{props.checkedTitle}</b>
 						</p>
 						<p>{props.checkedBody}</p>

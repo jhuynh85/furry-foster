@@ -11,9 +11,9 @@
 }
 
 .circled {
-	width: 100px;
-	height: 100px;
+	width: 200px;
+	height: 200px;
 	border-radius: 50%;
-	border: 1px solid yellow;
-	padding: 5px;
+	border: 4px solid #ffdd57;
+	margin: 10px;
 }
