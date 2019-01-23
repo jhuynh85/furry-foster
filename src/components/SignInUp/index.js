@@ -9,7 +9,6 @@ import Pane from "../Pane";
 
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
-import Button from "../Button";
 
 class SignInUp extends Component {
 	constructor(props) {

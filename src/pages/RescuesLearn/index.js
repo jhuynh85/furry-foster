@@ -1,8 +1,5 @@
 import React from "react";
-// import Banner from "../../components/Banner";
-import Sidebar from "../../components/Sidebar";
 import "./RescuesLearn.css";
-// import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
 import Button from "../../components/Button";
 
 import PawTile from "../../components/PawTile";
@@ -28,7 +25,6 @@ class RescuesLearn extends React.Component {
 					<div className="columns">
 						<div className="column">
 							<section className="section content has-text-centered">
-								<h1 className="title is-1" />
 								<div>
 									<h2>Find new foster families with Furry Foster.</h2>
 									<p>
@@ -89,7 +85,7 @@ class RescuesLearn extends React.Component {
 									<div className="columns">
 										<div className="column is-one-quarter">
 											<div className="main-testimonial-sq">
-												<img src={bannerImage} />
+												<img src={bannerImage} alt="Happy rescue" />
 											</div>
 										</div>
 										<div className="column has-text-left">
@@ -114,9 +110,9 @@ class RescuesLearn extends React.Component {
 						<div className="container content">
 							<h2 className="title is-2">Join our rescue partners for support.</h2>
 							<div>
-								<img src={bannerImage} className="circled" />
-								<img src={bannerImage} className="circled" />
-								<img src={bannerImage} className="circled" />
+								<img src={bannerImage} className="circled" alt="circle" />
+								<img src={bannerImage} className="circled" alt="circle" />
+								<img src={bannerImage} className="circled" alt="circle" />
 							</div>
 							<p>
 								Our partners are made of rescues, shelters, and pet friendly businesses. Together,

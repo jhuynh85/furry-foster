@@ -1,9 +1,9 @@
 import React from "react";
 import "./FostersLearn.css";
 import Button from "../../components/Button";
-import PawTile from "../../components/PawTile";
 import CheckedTile from "../../components/CheckedTile";
 import Banner from "../../components/Banner";
+import FosterSteps from "../../components/FosterSteps";
 import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
 import NewsletterBanner from "../../components/NewsletterBanner";
 
@@ -88,7 +88,7 @@ class FostersLearn extends React.Component {
 								<div className="columns">
 									<div className="column is-one-quarter">
 										<div className="main-testimonial-sq">
-											<img src={bannerImage} />
+											<img src={bannerImage} alt="Happy foster family" />
 										</div>
 									</div>
 									<div className="column has-text-left">
@@ -115,17 +115,17 @@ class FostersLearn extends React.Component {
 						<div className="columns">
 							<div className="column is-one-fifth" />
 							<div className="column is-one-fifth">
-								<img src={bannerImage} className="circled" />
+								<img src={bannerImage} className="circled" alt="circle" />
 								<h4 className="">Margaret</h4>
 								<p>San Diego, CA</p>
 							</div>
 							<div className="column is-one-fifth">
-								<img src={bannerImage} className="circled" />
+								<img src={bannerImage} className="circled" alt="circle" />
 								<h4 className="">Margaret</h4>
 								<p>San Diego, CA</p>
 							</div>
 							<div className="column is-one-fifth">
-								<img src={bannerImage} className="circled" />
+								<img src={bannerImage} className="circled" alt="circle" />
 								<h4 className="">Margaret</h4>
 								<p>San Diego, CA</p>
 							</div>
@@ -138,43 +138,7 @@ class FostersLearn extends React.Component {
 						<Button link="/pets" text="Find a foster pet" />
 					</div>
 				</section>
-				<section className="section">
-					<div className="container content">
-						<h2 className="title is-2">Steps to start fostering</h2>
-						<div className="content">
-							<div className="columns">
-								<div className="column">
-									<PawTile
-										cardTitle="Find a Pet"
-										cardContent={[
-											"Use the ",
-											<a href=""> foster finder </a>,
-											" to search and inquire about pets"
-										]}
-									/>
-								</div>
-								<div className="column">
-									<PawTile
-										cardTitle="Apply to Foster"
-										cardContent={["Submit an application when you find the right pet"]}
-									/>
-								</div>
-								<div className="column">
-									<PawTile
-										cardTitle="Meet and Greet"
-										cardContent={["Meet the pet in person (the most fun step)"]}
-									/>
-								</div>
-								<div className="column">
-									<PawTile
-										cardTitle="Start Fostering"
-										cardContent={["Welcome your new pet home, temporarily!"]}
-									/>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+				<FosterSteps />
 				<NewsletterBanner />
 			</div>
 		);

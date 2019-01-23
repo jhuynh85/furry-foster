@@ -7,7 +7,6 @@ import learnIcon from "../../assets/images/ff_website2018_icons_learn.png";
 import donateIcon from "../../assets/images/ff_website2018_icons_donate.png";
 
 //----------------Child components------- ---//
-import Banner from "../../components/Banner";
 import Button from "../../components/Button";
 import Search from "../../components/Search";
 import Pane from "../../components/Pane";
@@ -105,7 +104,7 @@ class Main extends React.Component {
 								<div className="columns">
 									<div className="column">
 										<div className="main-testimonial-sq">
-											<img src={bannerImage} />
+											<img src={bannerImage} alt="Happy foster family" />
 										</div>
 									</div>
 									<div className="column has-text-left">

@@ -1,7 +1,6 @@
 import React from "react";
 import Banner from "../../components/Banner";
 import CheckedTile from "../../components/CheckedTile";
-import Sidebar from "../../components/Sidebar";
 import "./Fosters.css";
 import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
 import Button from "../../components/Button";

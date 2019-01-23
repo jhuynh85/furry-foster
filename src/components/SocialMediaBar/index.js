@@ -1,7 +1,6 @@
 import React from "react";
 import "./SocialMediaBar.css";
 
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import SignOut from "../SignOut";

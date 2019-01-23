@@ -32,7 +32,7 @@ class FostersTails extends React.Component {
 								<div className="columns">
 									<div className="column is-one-quarter">
 										<div className="main-testimonial-sq">
-											<img src={bannerImage} />
+											<img src={bannerImage} alt="Happy foster family" />
 										</div>
 									</div>
 									<div className="column has-text-left">
@@ -54,7 +54,7 @@ class FostersTails extends React.Component {
 								<div className="columns">
 									<div className="column is-one-quarter">
 										<div className="main-testimonial-sq">
-											<img src={bannerImage} />
+											<img src={bannerImage} alt="Happy foster family" />
 										</div>
 									</div>
 									<div className="column has-text-left">
@@ -76,7 +76,7 @@ class FostersTails extends React.Component {
 								<div className="columns">
 									<div className="column is-one-quarter">
 										<div className="main-testimonial-sq">
-											<img src={bannerImage} />
+											<img src={bannerImage} alt="Happy foster family" />
 										</div>
 									</div>
 									<div className="column has-text-left">

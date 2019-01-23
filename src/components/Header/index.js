@@ -9,28 +9,8 @@ import { connect } from "react-redux";
 import SocialMediaBar from "../SocialMediaBar";
 import Search from "../Search";
 import Navbar from "../Navbar";
-import SignOut from "../SignOut";
-import SignInUp from "../SignInUp";
-import Button from "../Button";
 
 const Header = ({ auth }) => {
-	const renderSignInOrSignOut = () => {
-		if (!auth) {
-			return (
-				<div className="one-line">
-					<SignInUp />
-				</div>
-			);
-		}
-		return (
-			<div className="one-line">
-				<Button link={"/profile"} text={"PROFILE"} />
-				&nbsp;&nbsp;&nbsp;
-				<SignOut />
-			</div>
-		);
-	};
-
 	return (
 		<div>
 			<SocialMediaBar />
