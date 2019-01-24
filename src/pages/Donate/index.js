@@ -11,8 +11,8 @@ class Donate extends React.Component {
 						<div className="content">
 							<h1 className="title is-1 has-text-centered">Donate</h1>
 							<h2 className="sibtitle is-2 has-text-centered">
-								Furry Foster doesn't exist without your support.<br /> If you can't foster, please
-								donate to help our programs and pets.
+								Furry Foster doesn't exist without your support.
+								<br /> If you can't foster, please donate to help our programs and pets.
 							</h2>
 						</div>
 					</div>

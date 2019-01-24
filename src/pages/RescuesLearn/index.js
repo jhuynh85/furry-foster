@@ -28,8 +28,8 @@ class RescuesLearn extends React.Component {
 								<div>
 									<h2>Find new foster families with Furry Foster.</h2>
 									<p>
-										Our purpose is to help you find new foster families and provide free services<br />{" "}
-										and resources to make sure they're successful.
+										Our purpose is to help you find new foster families and provide free services
+										<br /> and resources to make sure they're successful.
 									</p>
 									<br />
 								</div>

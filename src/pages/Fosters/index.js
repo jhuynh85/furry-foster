@@ -14,8 +14,8 @@ class Fosters extends React.Component {
 					<div className="container">
 						<div className="content">
 							<h2 className="sibtitle is-2 has-text-centered">
-								Fostering is free, fun, and fulfilling. <br />We make it easier with support and
-								resources.
+								Fostering is free, fun, and fulfilling. <br />
+								We make it easier with support and resources.
 							</h2>
 						</div>
 					</div>

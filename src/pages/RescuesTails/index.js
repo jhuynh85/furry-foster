@@ -19,8 +19,8 @@ class RescuesTails extends React.Component {
 						<div className="content">
 							<h1 className="title is-1 has-text-centered">Rescue Tails</h1>
 							<h2 className="sibtitle is-2 has-text-centered">
-								We are proud to share stories of our happy rescue partners.<br /> Are you a happy
-								rescue partner? Share your story with us!
+								We are proud to share stories of our happy rescue partners.
+								<br /> Are you a happy rescue partner? Share your story with us!
 							</h2>
 						</div>
 					</div>
