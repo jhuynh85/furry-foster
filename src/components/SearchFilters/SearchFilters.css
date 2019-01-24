@@ -1,7 +1,9 @@
 .filter-checkbox {
 	border: 1px solid #ccc;
-	padding: 10px;
+	padding: 5px;
 	display: block;
+	height: 2.2em;
+	text-transform: uppercase;
 }
 
 .filter-checkbox:hover {
