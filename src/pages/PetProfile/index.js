@@ -163,9 +163,7 @@ class PetProfile extends React.Component {
 									<div className="column is-one-third pet-details-container">
 										<h1 className="is-size-1">{this.state.currentPet.name}</h1>
 										<p className="is-size-4">
-											<span className="detail-label">
-												{this.state.currentPet.gender || "GENDER ?"}
-											</span>
+											<span className="detail-label">{currentPet.gender || "GENDER ?"}</span>
 											<br />
 											<span className="detail-label">
 												{this.getAgeBracket(currentPet.ageInMonths)}
