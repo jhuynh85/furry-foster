@@ -20,6 +20,8 @@ const RescueSchema = new Schema(
 		images: [{ type: String }],
 		description: String,
 		fosterRequirements: String,
+		fosterInstructions: String,
+		adoptionInstructions: String,
 		facebookURL: { type: String, lowercase: true },
 		twitterURL: { type: String, lowercase: true },
 		instagramURL: { type: String, lowercase: true },
