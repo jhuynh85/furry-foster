@@ -8,6 +8,17 @@ import { toast } from "react-toastify";
 import defaultCatAvatar from "../../assets/images/default_cat_avatar.png";
 import defaultDogAvatar from "../../assets/images/default_dog_avatar.png";
 
+// Import constants
+const ageBrackets = require("../../assets/js/ageBrackets");
+const sizeBrackets = require("../../assets/js/sizeBrackets");
+
+const AGE_YOUNG = ageBrackets.young; // Min age in months for YOUNG pets
+const AGE_ADULT = ageBrackets.adult; // Min age in months for ADULT pets
+const AGE_SENIOR = ageBrackets.senior; // Min age in months for SENIOR pets
+const WEIGHT_MEDIUM = sizeBrackets.medium; // Min weight in oz for MEDIUM pets
+const WEIGHT_LARGE = sizeBrackets.large; // Min weight in oz for LARGE pets
+const WEIGHT_XLARGE = sizeBrackets.xlarge; // Min weight in oz for XLARGE pets
+
 class PetProfile extends React.Component {
 	constructor(props) {
 		super(props);
@@ -65,7 +76,7 @@ class PetProfile extends React.Component {
 
 		years && result.push(years + " " + getPlural(years, y));
 		months && result.push(months + " " + getPlural(months, m));
-		return (result = result.join(" "));
+		return result.join(" ");
 	};
 
 	calculateWeight = weightInOz => {
@@ -83,7 +94,48 @@ class PetProfile extends React.Component {
 
 		pounds && result.push(pounds + " " + getPlural(pounds, lb));
 		ounces && result.push(ounces + " " + getPlural(ounces, oz));
-		return (result = result.join(" "));
+		return result.join(" ");
+	};
+
+	// Determines which age bracket the pet belongs to
+	getAgeBracket = ageInMonths => {
+		if (ageInMonths >= AGE_SENIOR) {
+			return "SENIOR";
+		} else if (ageInMonths >= AGE_ADULT) {
+			return "ADULT";
+		} else if (ageInMonths >= AGE_YOUNG) {
+			return "YOUNG";
+		} else if (ageInMonths >= 0 && ageInMonths < AGE_YOUNG) {
+			return "BABY";
+		} else {
+			return "AGE";
+		}
+	};
+
+	// Determines which size bracket the pet belongs to
+	getWeightBracket = weightInOz => {
+		if (weightInOz >= WEIGHT_XLARGE) {
+			return "X-LARGE";
+		} else if (weightInOz >= WEIGHT_LARGE) {
+			return "LARGE";
+		} else if (weightInOz >= WEIGHT_MEDIUM) {
+			return "MEDIUM";
+		} else if (weightInOz >= 0 && weightInOz < WEIGHT_MEDIUM) {
+			return "SMALL";
+		} else {
+			return "WEIGHT";
+		}
+	};
+
+	// Selects a picture that was uploaded or a default avatar if no picture is available
+	getProfilePicture = () => {
+		if (this.state.currentPet.images && this.state.currentPet.images.length > 0) {
+			return this.state.currentPet.images[0];
+		}
+		if (this.state.currentPet.type === "cat") {
+			return defaultCatAvatar;
+		}
+		return defaultDogAvatar;
 	};
 
 	scrollToRescue = () => {
@@ -91,9 +143,6 @@ class PetProfile extends React.Component {
 	};
 
 	render() {
-		const AGE_ADULT = 36; // Min age in months ADULT pets
-		const WEIGHT_LARGE = 896; // Min weight in oz for LARGE pets (896oz = 56lbs)
-		const WEIGHT_MEDIUM = 384; // Min weight in oz for MEDIUM pets (384oz = 24lbs)
 		const LOREM =
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a ipsum viverra metus scelerisque gravida eu non lacus. Nunc sodales dictum semper. Aliquam erat nunc, consectetur ac lobortis in, venenatis sit amet arcu. Nulla faucibus lectus sed quam efficitur, ullamcorper placerat nisl lobortis. Sed placerat quis ex posuere posuere. Nunc tincidunt rutrum lectus, eu pretium tortor scelerisque vitae. Fusce cursus quis mi at feugiat. Duis fringilla sagittis neque, id euismod magna ultricies sit amet. Aliquam ut est arcu. Suspendisse tincidunt diam at felis blandit efficitur. Suspendisse scelerisque feugiat velit in aliquet. Mauris id felis sit amet neque faucibus dictum et et velit. In pellentesque turpis felis, ac rhoncus nunc varius sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam aliquam lobortis sodales. Aenean at vehicula justo. Curabitur quis lacus et sapien sodales suscipit. Aliquam non tortor mattis, rhoncus massa vitae, ornare enim. Nullam vitae dictum lacus. Cras posuere mollis justo ut dictum. In laoreet leo magna, et luctus massa varius sed. Curabitur non tortor blandit, facilisis purus non, ultrices lacus. Aenean eleifend et tellus quis vestibulum. Praesent ut sapien sed orci ultricies scelerisque nec et arcu. Nullam et ante vitae metus posuere tempus eget id nibh. Quisque nisi magna, gravida nec dignissim cursus, congue non augue. Mauris blandit diam eros, in volutpat est pretium ut.";
 		let currentPet = this.state.currentPet;
@@ -108,16 +157,7 @@ class PetProfile extends React.Component {
 								<div className="columns">
 									<div className="column is-two-thirds">
 										<div className="pet-profile-image is-horizontal-center is-vertical-center has-text-centered">
-											<img
-												alt={"Pet avatar"}
-												src={
-													this.state.currentPet.images && this.state.currentPet.images.length > 0
-														? this.state.currentPet.images[0]
-														: this.state.currentPet.type === "cat"
-															? defaultCatAvatar
-															: defaultDogAvatar
-												}
-											/>
+											<img alt={"Pet avatar"} src={this.getProfilePicture()} />
 										</div>
 									</div>
 									<div className="column is-one-third pet-details-container">
@@ -126,17 +166,13 @@ class PetProfile extends React.Component {
 											<span className="detail-label">{this.state.currentPet.gender}</span>
 											<br />
 											<span className="detail-label">
-												{currentPet.ageInMonths > AGE_ADULT ? "ADULT" : "YOUNG"}
+												{this.getAgeBracket(currentPet.ageInMonths)}
 											</span>
 											&nbsp;
 											{currentPet.ageInMonths ? this.calculateAge(currentPet.ageInMonths) : "?"}
 											<br />
 											<span className="detail-label">
-												{currentPet.weightInOz >= WEIGHT_LARGE
-													? "LARGE"
-													: currentPet.weightInOz >= WEIGHT_MEDIUM
-														? "MEDIUM"
-														: "SMALL"}
+												{this.getWeightBracket(currentPet.weightInOz)}
 											</span>
 											&nbsp;
 											{currentPet.weightInOz ? this.calculateWeight(currentPet.weightInOz) : "?"}
