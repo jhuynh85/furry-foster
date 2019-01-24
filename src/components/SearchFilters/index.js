@@ -83,7 +83,10 @@ class SearchFilters extends React.Component {
 					</div>
 				</form>
 				<section>
-					Sort By <br />Newest<br />Closest
+					Sort By <br />
+					Newest
+					<br />
+					Closest
 				</section>
 			</div>
 		);

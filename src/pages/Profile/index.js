@@ -77,7 +77,7 @@ class Profile extends Component {
 		return (
 			<ProfileContainer
 				match={this.props.match}
-				profilePic={this.loggedInUser.images[0]}
+				profilePic={this.loggedInUser.images ? this.loggedInUser.images[0] : null}
 				name={this.loggedInUser.orgName}
 				location={this.loggedInUser.city + ", " + this.loggedInUser.state}
 				submenu={this.renderSubmenuArea()}

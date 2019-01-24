@@ -11,7 +11,6 @@ const currentYear = currentDate.getFullYear();
 const Footer = () => (
 	<footer className="page-footer title-case">
 		<br />
-
 		<div className="has-text-centered">
 			<img alt="Furry foster home icon" src={footerIcon} style={{ width: 50 }} />
 		</div>

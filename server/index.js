@@ -50,6 +50,7 @@ app.use(express.static(path.resolve(__dirname, "..", "build")));
 //=============== ROUTES SETUP ===============//
 require("./routes/testRoutes")(app);
 require("./routes/authRoutes")(app);
+require("./routes/searchRoute")(app);
 require("./routes/petRoutes")(app);
 require("./routes/rescueRoutes")(app);
 require("./routes/uploadRoutes")(app);
