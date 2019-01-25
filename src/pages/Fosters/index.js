@@ -1,7 +1,6 @@
 import React from "react";
 import Banner from "../../components/Banner";
 import CheckedTile from "../../components/CheckedTile";
-import Sidebar from "../../components/Sidebar";
 import "./Fosters.css";
 import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
 import Button from "../../components/Button";
@@ -11,7 +10,17 @@ class Fosters extends React.Component {
 		return (
 			<div>
 				<Banner image={bannerImage} text="Foster Families" />
-				<div className="container">
+				<section className="section">
+					<div className="container">
+						<div className="content">
+							<h2 className="sibtitle is-2 has-text-centered">
+								Fostering is free, fun, and fulfilling. <br />
+								We make it easier with support and resources.
+							</h2>
+						</div>
+					</div>
+				</section>
+				<div className="container has-text-centered">
 					<div className="columns">
 						<div className="column">
 							<section className="section content">

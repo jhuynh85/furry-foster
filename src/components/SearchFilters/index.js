@@ -34,7 +34,16 @@ class SearchFilters extends React.Component {
 								</span>
 							</p>
 						</div>
-
+						<div className="field has-addons has-text-centered">
+							<label className="checkbox filter-checkbox">
+								<input type="checkbox" className="hide-input" />
+								Male
+							</label>
+							<label className="checkbox filter-checkbox">
+								<input type="checkbox" className="hide-input" />
+								Female
+							</label>
+						</div>
 						<div className="field has-addons has-text-centered">
 							<label className="checkbox filter-checkbox">
 								<input type="checkbox" className="hide-input" />
@@ -53,8 +62,11 @@ class SearchFilters extends React.Component {
 								X-Large
 							</label>
 						</div>
-
 						<div className="field has-addons has-text-centered">
+							<label className="checkbox filter-checkbox">
+								<input type="checkbox" className="hide-input" />
+								Baby
+							</label>
 							<label className="checkbox filter-checkbox">
 								<input type="checkbox" className="hide-input" />
 								Young
@@ -68,18 +80,14 @@ class SearchFilters extends React.Component {
 								Senior
 							</label>
 						</div>
-						<div className="field has-addons has-text-centered">
-							<label className="checkbox filter-checkbox">
-								<input type="checkbox" className="hide-input" />
-								Male
-							</label>
-							<label className="checkbox filter-checkbox">
-								<input type="checkbox" className="hide-input" />
-								Female
-							</label>
-						</div>
 					</div>
 				</form>
+				<section>
+					Sort By <br />
+					Newest
+					<br />
+					Closest
+				</section>
 			</div>
 		);
 	}

@@ -6,11 +6,19 @@ class Donate extends React.Component {
 	render() {
 		return (
 			<div>
-				<div className="container">
-					<section className="section content">
-						<h1 className="title is-1">Donate</h1>
-						<h2>Support our programs and pets.</h2>
-
+				<section className="section">
+					<div className="container">
+						<div className="content">
+							<h1 className="title is-1 has-text-centered">Donate</h1>
+							<h2 className="sibtitle is-2 has-text-centered">
+								Furry Foster doesn't exist without your support.
+								<br /> If you can't foster, please donate to help our programs and pets.
+							</h2>
+						</div>
+					</div>
+				</section>
+				<section className="section content">
+					<div className="container">
 						<div className="columns">
 							<div className="column">
 								<section className="content">
@@ -35,18 +43,28 @@ class Donate extends React.Component {
 						</div>
 						<div className="columns">
 							<div className="column">
-								<section className="section content">
+								<section className="section content has-text-centered">
 									<h2>Furry Foster relies on generous donations and grants.</h2>
 									<p>
 										Furry Foster is a 501(c)3 federal non-profit organization. Our EIN is
 										45-4818752. Your donation is 100% tax deductible and will be applied towards our
 										programs and mission, it's why we're here.
 									</p>
+									<p>
+										Your contribution helps us save the lives of shelter pets and support furry
+										foster families with free services.
+									</p>
+									<p>
+										We spend these funds quickly and efficiently, to make the most impact for pets
+										at risk. You can help us fund local programs like daycare and training and
+										deliver food and accessories to furry foster homes that keep animals out of the
+										shelter.
+									</p>
 								</section>
 							</div>
 						</div>
-					</section>
-				</div>
+					</div>
+				</section>
 			</div>
 		);
 	}

@@ -1,11 +1,19 @@
 import React from "react";
 import "./FostersLearn.css";
 import Button from "../../components/Button";
-import PawTile from "../../components/PawTile";
 import CheckedTile from "../../components/CheckedTile";
 import Banner from "../../components/Banner";
+import FosterSteps from "../../components/FosterSteps";
 import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
 import NewsletterBanner from "../../components/NewsletterBanner";
+
+import pawPattern from "../../assets/images/ff_pattern_white.png";
+
+var sectionStyle = {
+	backgroundImage: "url(" + pawPattern + ")",
+	backgroundRepeat: "repeat",
+	backgroundSize: "10%"
+};
 
 class FostersLearn extends React.Component {
 	render() {
@@ -14,8 +22,8 @@ class FostersLearn extends React.Component {
 				<Banner image={bannerImage} text="Foster a Pet For a Local Rescue" />
 				<section className="section">
 					<div className="container">
+						<h2 className="title is-2">Fostering a pet is free, fun, and fulfilling.</h2>
 						<div className="content">
-							<h2 className="title is-2">Fostering a pet is free, fun, and fulfilling.</h2>
 							<p>
 								There's a rescue animal who needs you. It doesn't cost anything to save a dog or
 								cat, rescues will pay for food and vet care. Requirements for foster families varies
@@ -73,39 +81,28 @@ class FostersLearn extends React.Component {
 						</div>
 					</div>
 				</section>
-				<section className="section">
-					<div className="container">
-						<div className="columns">
-							<div className="column">
-								<div className="card">
-									<div className="card-image">
-										<img src={bannerImage} alt="Placeholder banner" />
-									</div>
-									<div className="card-content">
-										<div className="content">
-											<p>
-												You cannot know how much joy Canela has given me sine she arrived. She still
-												has her fear of men but I am using some training methods I got on the
-												internet and she is slowly coming around! She is smart as a whip and never
-												leaves my side. I am totally and completely in love. We are taking it one
-												day at a time! Thank you for my little princess.
-											</p>
+				<section className="hero is-warning is-medium " style={sectionStyle}>
+					<div className="hero-body ">
+						<div className="container">
+							<div className="has-text-centered">
+								<div className="columns">
+									<div className="column is-one-quarter">
+										<div className="main-testimonial-sq">
+											<img src={bannerImage} alt="Happy foster family" />
 										</div>
 									</div>
-								</div>
-							</div>
-							<div className="column">
-								<div className="card">
-									<div className="card-image">
-										<img src={bannerImage} alt="Placeholder banner" />
-									</div>
-									<div className="card-content">
-										<div className="content">
-											<p>
-												Furry Foster has helped a homeless cat in my neightborhood to get foster
-												care and (hopefully soon) a forever home
-											</p>
+									<div className="column has-text-left">
+										<div className="main-testimonial-quote">
+											"I love animals. I thought about volunteering at an animal shelter, but felt I
+											had to do something more. After moving back to San Diego from Switzerland, I
+											decided I wanted to foster as many dogs as I could, but was wondering how to
+											go about it ..."
 										</div>
+										<section className="section">
+											<div className="main-testimonial-name ">
+												<h3>Foster Mom Alisa & Darcy</h3> with Chihuahua Rescue of San Diego
+											</div>
+										</section>
 									</div>
 								</div>
 							</div>
@@ -115,10 +112,24 @@ class FostersLearn extends React.Component {
 				<section className="section">
 					<div className="container content">
 						<h2 className="title is-2">Join our network of furry foster families for support.</h2>
-						<div>
-							<img src={bannerImage} className="circled" />
-							<img src={bannerImage} className="circled" />
-							<img src={bannerImage} className="circled" />
+						<div className="columns">
+							<div className="column is-one-fifth" />
+							<div className="column is-one-fifth">
+								<img src={bannerImage} className="circled" alt="circle" />
+								<h4 className="">Margaret</h4>
+								<p>San Diego, CA</p>
+							</div>
+							<div className="column is-one-fifth">
+								<img src={bannerImage} className="circled" alt="circle" />
+								<h4 className="">Margaret</h4>
+								<p>San Diego, CA</p>
+							</div>
+							<div className="column is-one-fifth">
+								<img src={bannerImage} className="circled" alt="circle" />
+								<h4 className="">Margaret</h4>
+								<p>San Diego, CA</p>
+							</div>
+							<div className="column is-one-fifth" />
 						</div>
 						<p>
 							Participate in our community and connect with other furry foster parents and their
@@ -127,43 +138,7 @@ class FostersLearn extends React.Component {
 						<Button link="/pets" text="Find a foster pet" />
 					</div>
 				</section>
-				<section className="section">
-					<div className="container content">
-						<h2 className="title is-2">Steps to start fostering</h2>
-						<div className="content">
-							<div className="columns">
-								<div className="column">
-									<PawTile
-										cardTitle="Find a Pet"
-										cardContent={[
-											"Use the ",
-											<a href=""> foster finder </a>,
-											" to search and inquire about pets"
-										]}
-									/>
-								</div>
-								<div className="column">
-									<PawTile
-										cardTitle="Apply to Foster"
-										cardContent={["Submit an application when you find the right pet"]}
-									/>
-								</div>
-								<div className="column">
-									<PawTile
-										cardTitle="Meet and Greet"
-										cardContent={["Meet the pet in person (the most fun step)"]}
-									/>
-								</div>
-								<div className="column">
-									<PawTile
-										cardTitle="Start Fostering"
-										cardContent={["Welcome your new pet home, temporarily!"]}
-									/>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+				<FosterSteps />
 				<NewsletterBanner />
 			</div>
 		);
