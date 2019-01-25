@@ -1,6 +1,6 @@
 const jwt = require("jwt-simple");
 const User = require("../models/User");
-const Rescue = require("../models/Rescue");\
+const Rescue = require("../models/Rescue");
 
 // Create JWT token
 function tokenForUser(user) {
