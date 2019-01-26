@@ -24,7 +24,7 @@ const Header = ({ auth }) => {
 					<div className=" header-search-input-bar">
 						<Search />
 					</div>
-
+					&nbsp;&nbsp;&nbsp;
 					<Navbar />
 				</div>
 			</div>

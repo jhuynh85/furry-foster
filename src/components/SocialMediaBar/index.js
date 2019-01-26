@@ -28,7 +28,7 @@ const SocialMediaBar = ({ auth }) => {
 	return (
 		<div className="social-media-bar level">
 			<div className="level-left">
-				Share your foster stories and pictures!
+				Share your foster stories and pictures! &nbsp;&nbsp;&nbsp;
 				<a href="http://www.facebook.com/furryfoster" target="_blank" rel="noopener noreferrer">
 					<i className="fa fa-facebook fa-1x" aria-hidden="true" />
 				</a>

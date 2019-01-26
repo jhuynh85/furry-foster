@@ -1,8 +1,6 @@
 import React from "react";
 import "./SearchResults.css";
 import SearchTile from "../../components/SearchTile";
-import axios from "axios";
-import { toast } from "react-toastify";
 
 import defaultCatAvatar from "../../assets/images/default_cat_avatar.png";
 import defaultDogAvatar from "../../assets/images/default_dog_avatar.png";
@@ -15,25 +13,13 @@ class SearchResults extends React.Component {
 		};
 	}
 
-	// When the component is mounted, make an API call to backend to get all pets in database
-	async componentDidMount() {
-		try {
-			const petList = await axios.get("/api/pet");
-			console.log("petList: ", petList.data);
-			this.setState({ results: petList.data });
-		} catch (err) {
-			toast.error(err);
-			console.log("ERROR: ", err);
-		}
-	}
-
 	// Displays all pets in our current results
 	render() {
 		return (
 			<div>
 				<div className="tile is-ancestor search-results">
-					{this.state.results &&
-						this.state.results.map(pet => {
+					{this.props.results &&
+						this.props.results.map(pet => {
 							return (
 								<SearchTile
 									key={pet._id}
