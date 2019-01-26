@@ -7,7 +7,7 @@ const sizeBrackets = require("../../src/assets/js/sizeBrackets");
 
 module.exports = function(app) {
 	app.get("/api/search", function(req, res, next) {
-		const type = req.query.type;
+		const type = req.query.animalType;
 		const breed = req.query.breed;
 		const size = req.query.size;
 		const age = req.query.age;
@@ -55,66 +55,68 @@ module.exports = function(app) {
 		}
 
 		// Get all pets of [type] and filter results
-		Pet.find({ type }, null, null, function(err, pets) {
-			let filteredPets = pets.filter(pet => {
-				// Check if pet contains breed
-				if (breed && pet.breed && pet.breed.indexOf(breed) < 0) {
-					return false;
-				}
+		Pet.find({ type })
+			.populate("rescue")
+			.exec(function(err, pets) {
+				let filteredPets = pets.filter(pet => {
+					// Check if pet contains breed
+					if (breed && pet.breed && pet.breed.indexOf(breed) < 0) {
+						return false;
+					}
 
-				// Check size
-				if (size && pet.size) {
-					if (size === "xlarge" && pet.weightInOz < sizeBrackets.xlarge) {
-						return false;
+					// Check size
+					if (size && pet.weightInOz) {
+						if (size === "xlarge" && pet.weightInOz < sizeBrackets.xlarge) {
+							return false;
+						}
+						if (
+							size === "large" &&
+							(pet.weightInOz < sizeBrackets.large || pet.weightInOz >= sizeBrackets.xlarge)
+						) {
+							return false;
+						}
+						if (
+							size === "medium" &&
+							(pet.weightInOz < sizeBrackets.medium || pet.weightInOz >= sizeBrackets.large)
+						) {
+							return false;
+						}
+						if (size === "small" && pet.weightInOz >= sizeBrackets.medium) {
+							return false;
+						}
 					}
-					if (
-						size === "large" &&
-						(pet.weightInOz < sizeBrackets.large || pet.weightInOz >= sizeBrackets.xlarge)
-					) {
-						return false;
-					}
-					if (
-						size === "medium" &&
-						(pet.weightInOz < sizeBrackets.medium || pet.weightInOz >= sizeBrackets.large)
-					) {
-						return false;
-					}
-					if (size === "small" && pet.weightInOz >= sizeBrackets.medium) {
-						return false;
-					}
-				}
 
-				// Check age
-				if (age && pet.age) {
-					if (age === "senior" && pet.ageInMonths < ageBrackets.senior) {
-						return false;
+					// Check age
+					if (age && pet.ageInMonths) {
+						if (age === "senior" && pet.ageInMonths < ageBrackets.senior) {
+							return false;
+						}
+						if (
+							age === "adult" &&
+							(pet.ageInMonths < ageBrackets.adult || pet.ageInMonths >= ageBrackets.senior)
+						) {
+							return false;
+						}
+						if (
+							age === "young" &&
+							(pet.ageInMonths < ageBrackets.young || pet.ageInMonths >= ageBrackets.adult)
+						) {
+							return false;
+						}
+						if (age === "baby" && pet.ageInMonths >= ageBrackets.young) {
+							return false;
+						}
 					}
-					if (
-						age === "adult" &&
-						(pet.ageInMonths < ageBrackets.adult || pet.ageInMonths >= ageBrackets.senior)
-					) {
-						return false;
-					}
-					if (
-						age === "young" &&
-						(pet.ageInMonths < ageBrackets.young || pet.ageInMonths >= ageBrackets.adult)
-					) {
-						return false;
-					}
-					if (age === "baby" && pet.ageInMonths >= ageBrackets.young) {
-						return false;
-					}
-				}
 
-				// Check gender
-				if (gender && pet.gender && pet.gender !== gender) {
-					return false;
-				}
+					// Check gender
+					if (gender && pet.gender && pet.gender !== gender) {
+						return false;
+					}
 
-				// Check availability?
-				return true;
+					// Check availability?
+					return true;
+				});
+				res.json(filteredPets);
 			});
-			res.json(filteredPets);
-		});
 	});
 };

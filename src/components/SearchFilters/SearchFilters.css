@@ -29,3 +29,15 @@
 .search-filter-form span.select {
 	font-size: 0.8em;
 }
+
+.sort-selected {
+	text-decoration: underline;
+}
+
+.sort-unselected {
+	cursor: pointer;
+}
+
+.filter-selected {
+	background: #eee;
+}
