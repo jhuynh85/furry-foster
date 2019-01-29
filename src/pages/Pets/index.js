@@ -8,7 +8,7 @@ class Pets extends React.Component {
 		super(props);
 		this.state = {
 			petSearchResults: null,
-			sortBy: "newest"
+			sortBy: "name"
 		};
 	}
 
@@ -36,6 +36,10 @@ class Pets extends React.Component {
 		// Copy results to new array
 		let newSortedResults = results.slice();
 		// Sort new array and re-assign to state
+		if (this.state.sortBy === "name") {
+			return newSortedResults.sort(this.sortByNameComparator);
+		}
+
 		if (this.state.sortBy === "newest") {
 			return newSortedResults.sort(this.sortByNewestComparator);
 		}
@@ -46,6 +50,13 @@ class Pets extends React.Component {
 				return newSortedResults.sort(this.sortByClosestComparator);
 			}
 		}
+	};
+
+	// Comparator function to sort by name
+	sortByNameComparator = (petA, petB) => {
+		const nameA = petA.name.toLowerCase();
+		const nameB = petB.name.toLowerCase();
+		return nameA.localeCompare(nameB, "en", { sensitivity: "base" });
 	};
 
 	// Comparator function to sort by newest
