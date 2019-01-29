@@ -36,6 +36,10 @@ class SearchFilters extends React.Component {
 		) {
 			this.sendSearchRequest();
 		}
+
+		if (prevState.sortBy !== this.state.sortBy) {
+			this.props.updateSortType(this.state.sortBy);
+		}
 	}
 
 	// Returns the proper styling based on the currently-selected sort type
