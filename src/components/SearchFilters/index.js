@@ -16,7 +16,7 @@ class SearchFilters extends React.Component {
 			breed: null,
 			size: null,
 			age: null,
-			sortBy: "newest"
+			sortBy: "name"
 		};
 	}
 
@@ -35,6 +35,10 @@ class SearchFilters extends React.Component {
 			prevState.age !== this.state.age
 		) {
 			this.sendSearchRequest();
+		}
+
+		if (prevState.sortBy !== this.state.sortBy) {
+			this.props.updateSortType(this.state.sortBy);
 		}
 	}
 
@@ -216,6 +220,14 @@ class SearchFilters extends React.Component {
 					</div>
 				</form>
 				Sort by :&nbsp;&nbsp;
+				<span
+					className={this.getSortClassName("name")}
+					onClick={() => {
+						this.setSort("name");
+					}}>
+					Name
+				</span>
+				&nbsp;&nbsp;|&nbsp;&nbsp;
 				<span
 					className={this.getSortClassName("newest")}
 					onClick={() => {
