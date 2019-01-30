@@ -2,9 +2,9 @@ import React from "react";
 import "./Rescues.css";
 
 import Banner from "../../components/Banner";
-import Sidebar from "../../components/Sidebar";
 import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
 import Button from "../../components/Button";
+import CheckedTile from "../../components/CheckedTile";
 
 class Rescues extends React.Component {
 	componentDidMount() {
@@ -14,58 +14,73 @@ class Rescues extends React.Component {
 	render() {
 		return (
 			<div>
-				<Banner image={bannerImage} text="Find new foster families with Furry Foster." />
-				<div className="container">
+				<Banner image={bannerImage} text="Rescue Organizations" />
+				<section className="section">
+					<div className="container">
+						<div className="content">
+							<h2 className="sibtitle is-2 has-text-centered">
+								Find new foster families with Furry Foster. <br />
+								We help you find and educate new foster families.
+							</h2>
+						</div>
+					</div>
+				</section>
+				<div className="container has-text-centered">
 					<div className="columns">
 						<div className="column">
 							<section className="section content">
-								<h1 className="title is-1">Rescue Organizations</h1>
-								<div>
-									<h2>Find new foster families with Furry Foster.</h2>
-									<p>
-										We help you find new foster families plus provide free services and resource.
-									</p>
-									<br />
-								</div>
-
-								<div>
-									<h2>Perks of Partnership</h2>
-									<p className="subtitle">
-										Becoming a rescue partner is more than just listing your pets online.
-									</p>
-									<ul>
-										<li>List available foster pets for free</li>
-										<li>Attract new foster families</li>
-										<li>Free services, food, and accessories</li>
-										<li>Extra promotion for your pets</li>
-										<li>A community for your foster families</li>
-									</ul>
-									<br />
-								</div>
-								<div>
-									<h2>Partnership Criteria:</h2>
-									<p className="subtitle">
-										If your organization meets the criteria below, let's work together.
-									</p>
-									<ul>
-										<li>Engage in 501(c)(3) non-profit activities involved with animal rescue</li>
-										<li>
-											Cover basic costs for foster homes including food, vet care, and bedding
-										</li>
-										<li>Reliable Transportation</li>
-										<li>
-											Review foster applications and conduct home checks to ensure the comfort and
-											safety of pets
-										</li>
-									</ul>
-									<br />
-								</div>
+								<h1 className="title is-1">Find a Foster Pet</h1>
 								<div>
 									<Button link="/" text="MORE INFO" />
 								</div>
 							</section>
+							<section className="section content">
+								<h1 className="title is-1">Get Free Foster Resources</h1>
+								<div>
+									<Button link="/" text="MORE INFO" />
+								</div>
+							</section>
+							<section className="section content">
+								<h1 className="title is-1">Feature your foster pets on social media</h1>
+								<div>
+									<Button link="/" text="MORE INFO" />
+								</div>
+							</section>
+
+							<section className="section">
+								<div className="container">
+									<div className="columns">
+										<div className="column">
+											<div className="content">
+												<h3>Feature your foster pets on social media</h3>
+											</div>
+										</div>
+										<div className="column">
+											<div className="content">
+												<h3>Foster Qualifications</h3>
+												<CheckedTile
+													checkedImg={[<i class="fas fa-home" />]}
+													checkedTitle="18+ Years Old"
+													checkedBody="Be 18 years or older and have valid ID."
+												/>
+												<CheckedTile
+													checkedTitle="Pet-friendly Housing"
+													checkedBody="Have appropriate housing and landlord approval for a pet."
+												/>
+												<CheckedTile
+													checkedTitle="Ability and Time"
+													checkedBody="Enough ability and time to care for, train, and socialize a pet."
+												/>
+												<CheckedTile
+													checkedTitle="Commitment to Fostering"
+													checkedBody="Commit to caring for a pet until they are adopted."
+												/>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
 						</div>
-						<Sidebar />
 					</div>
 				</div>
 			</div>

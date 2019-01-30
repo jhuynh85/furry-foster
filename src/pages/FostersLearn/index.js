@@ -4,8 +4,9 @@ import Button from "../../components/Button";
 import CheckedTile from "../../components/CheckedTile";
 import Banner from "../../components/Banner";
 import FosterSteps from "../../components/FosterSteps";
-import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
+import squareImage from "../../assets/images/default_cat_avatar.png";
 import NewsletterBanner from "../../components/NewsletterBanner";
+import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
 
 import pawPattern from "../../assets/images/ff_pattern_white.png";
 
@@ -83,27 +84,30 @@ class FostersLearn extends React.Component {
 				</section>
 				<section className="hero is-warning is-medium " style={sectionStyle}>
 					<div className="hero-body ">
-						<div className="container">
-							<div className="has-text-centered">
-								<div className="columns">
-									<div className="column is-one-quarter">
-										<div className="main-testimonial-sq">
-											<img src={bannerImage} alt="Happy foster family" />
-										</div>
+						<div className="container has-text-centered">
+							<div className="columns">
+								<div className="column is-one-quarter">
+									<div className="main-testimonial-sq">
+										<img
+											src={squareImage}
+											alt="Happy foster family"
+											className="is-square"
+											width="100%"
+										/>
 									</div>
-									<div className="column has-text-left">
-										<div className="main-testimonial-quote">
-											"I love animals. I thought about volunteering at an animal shelter, but felt I
-											had to do something more. After moving back to San Diego from Switzerland, I
-											decided I wanted to foster as many dogs as I could, but was wondering how to
-											go about it ..."
-										</div>
-										<section className="section">
-											<div className="main-testimonial-name ">
-												<h3>Foster Mom Alisa & Darcy</h3> with Chihuahua Rescue of San Diego
-											</div>
-										</section>
+								</div>
+								<div className="column has-text-left">
+									<div className="main-testimonial-quote">
+										"I love animals. I thought about volunteering at an animal shelter, but felt I
+										had to do something more. After moving back to San Diego from Switzerland, I
+										decided I wanted to foster as many dogs as I could, but was wondering how to go
+										about it ..."
 									</div>
+									<section className="section">
+										<div className="main-testimonial-name ">
+											<h3>Foster Mom Alisa & Darcy</h3> with Chihuahua Rescue of San Diego
+										</div>
+									</section>
 								</div>
 							</div>
 						</div>
@@ -112,20 +116,21 @@ class FostersLearn extends React.Component {
 				<section className="section">
 					<div className="container content">
 						<h2 className="title is-2">Join our network of furry foster families for support.</h2>
+						<br />
 						<div className="columns">
 							<div className="column is-one-fifth" />
 							<div className="column is-one-fifth">
-								<img src={bannerImage} className="circled" alt="circle" />
+								<img src={squareImage} alt="circle" />
 								<h4 className="">Margaret</h4>
 								<p>San Diego, CA</p>
 							</div>
 							<div className="column is-one-fifth">
-								<img src={bannerImage} className="circled" alt="circle" />
+								<img src={squareImage} alt="circle" />
 								<h4 className="">Margaret</h4>
 								<p>San Diego, CA</p>
 							</div>
 							<div className="column is-one-fifth">
-								<img src={bannerImage} className="circled" alt="circle" />
+								<img src={squareImage} alt="circle" />
 								<h4 className="">Margaret</h4>
 								<p>San Diego, CA</p>
 							</div>
@@ -133,7 +138,7 @@ class FostersLearn extends React.Component {
 						</div>
 						<p>
 							Participate in our community and connect with other furry foster parents and their
-							pets. Together we can bring every homeless pet home.
+							pets. <br />Together we can bring every homeless pet home.
 						</p>
 						<Button link="/pets" text="Find a foster pet" />
 					</div>

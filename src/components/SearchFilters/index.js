@@ -133,6 +133,8 @@ class SearchFilters extends React.Component {
 								</span>
 							</p>
 						</div>
+					</div>
+					<div className="column is-inline-flex">
 						<div className="field has-addons has-text-centered">
 							<p className="control">
 								<span className="select is-hover">
@@ -151,6 +153,8 @@ class SearchFilters extends React.Component {
 								</span>
 							</p>
 						</div>
+					</div>
+					<div className="column is-inline-flex">
 						<div className="field has-addons has-text-centered">
 							<label
 								className={this.getFilterClassName("male", "gender")}
@@ -165,6 +169,8 @@ class SearchFilters extends React.Component {
 								Female
 							</label>
 						</div>
+					</div>
+					<div className="column is-inline-flex">
 						<div className="field has-addons has-text-centered">
 							<label
 								className={this.getFilterClassName("small", "size")}
@@ -191,6 +197,8 @@ class SearchFilters extends React.Component {
 								X-Large
 							</label>
 						</div>
+					</div>
+					<div className="column is-inline-flex">
 						<div className="field has-addons has-text-centered">
 							<label
 								className={this.getFilterClassName("baby", "age")}

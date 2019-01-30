@@ -1,15 +1,17 @@
 import React from "react";
 import Tile from "../../components/Tile";
 import "./Donate.css";
+import Banner from "../../components/Banner";
+import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
 
 class Donate extends React.Component {
 	render() {
 		return (
 			<div>
+				<Banner image={bannerImage} text="Donate" />
 				<section className="section">
 					<div className="container">
 						<div className="content">
-							<h1 className="title is-1 has-text-centered">Donate</h1>
 							<h2 className="sibtitle is-2 has-text-centered">
 								Furry Foster doesn't exist without your support.
 								<br /> If you can't foster, please donate to help our programs and pets.

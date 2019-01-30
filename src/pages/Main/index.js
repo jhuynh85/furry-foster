@@ -10,10 +10,10 @@ import donateIcon from "../../assets/images/ff_website2018_icons_donate.png";
 import Button from "../../components/Button";
 import Search from "../../components/Search";
 import Pane from "../../components/Pane";
-import ImageButton from "../../components/ImageButton";
 import NewsletterBanner from "../../components/NewsletterBanner";
 import RecentPets from "../../components/RecentPets";
 import bannerImage from "../../assets/images/ff_website2018_carousel.jpg";
+import Tile from "../../components/Tile";
 
 class Main extends React.Component {
 	componentDidMount() {
@@ -56,39 +56,49 @@ class Main extends React.Component {
 					<div className="hero-body">
 						<div className="container">
 							<div className="has-text-centered">
-								<h2 className="title is-2">It's easy to help</h2>
+								<section className="section content">
+									<h2 className="title is-2">It's easy to help</h2>
 
-								<p className="subtitle is-4">There are plenty of ways to get involved!</p>
-								<br />
+									<p className="subtitle is-4">There are plenty of ways to get involved!</p>
+								</section>
 								<div className="columns container is-fluid is-centered">
 									<div className="column is-one-quarter">
-										<ImageButton
-											className="main-image-button"
-											link="/pets"
-											image={findIcon}
-											text="FIND A FOSTER PET"
-											infoText="MORE INFO"
-											infoLink="/about"
+										<Tile
+											className=""
+											tileURL="/pets"
+											tileImage=""
+											tileHeader={
+												<div>
+													<img src={findIcon} alt="share" />
+													<p>Share</p>
+												</div>
+											}
 										/>
 									</div>
 									<div className="column is-one-quarter">
-										<ImageButton
-											className="main-image-button"
-											link="/fosters/learn"
-											image={learnIcon}
-											text="LEARN ABOUT FOSTERING"
-											infoText="MORE INFO"
-											infoLink="/about"
+										<Tile
+											className=""
+											tileURL="/foster"
+											tileImage=""
+											tileHeader={
+												<div>
+													<img src={learnIcon} alt="foster" />
+													<p>Foster</p>
+												</div>
+											}
 										/>
 									</div>
 									<div className="column is-one-quarter">
-										<ImageButton
-											className="main-image-button"
-											link="/donate"
-											image={donateIcon}
-											text="MAKE A DONATION"
-											infoText="MORE INFO"
-											infoLink="/about"
+										<Tile
+											className=""
+											tileURL="/foster"
+											tileImage=""
+											tileHeader={
+												<div>
+													<img src={donateIcon} alt="donate" />
+													<p>Donate</p>
+												</div>
+											}
 										/>
 									</div>
 								</div>
@@ -100,27 +110,31 @@ class Main extends React.Component {
 					<div className="hero-body">
 						<div className="container">
 							<div className="has-text-centered">
-								<h2 className="title is-2">Happy Foster Stories</h2>
-								<div className="columns">
-									<div className="column">
-										<div className="main-testimonial-sq">
-											<img src={bannerImage} alt="Happy foster family" />
-										</div>
-									</div>
-									<div className="column has-text-left">
-										<div className="main-testimonial-quote">
-											"I love animals. I thought about volunteering at an animal shelter, but felt I
-											had to do something more. After moving back to San Diego from Switzerland, I
-											decided I wanted to foster as many dogs as I could, but was wondering how to
-											go about it ..."
-										</div>
-										<section className="section">
-											<div className="main-testimonial-name ">
-												<h3>Foster Mom Alisa & Darcy</h3> with Chihuahua Rescue of San Diego
+								<section className="section">
+									<h2 className="title is-2">Happy Foster Stories</h2>
+								</section>
+								<section>
+									<div className="columns">
+										<div className="column">
+											<div className="main-testimonial-sq">
+												<img src={bannerImage} alt="Happy foster family" />
 											</div>
-										</section>
+										</div>
+										<div className="column has-text-left">
+											<div className="main-testimonial-quote">
+												"I love animals. I thought about volunteering at an animal shelter, but felt
+												I had to do something more. After moving back to San Diego from Switzerland,
+												I decided I wanted to foster as many dogs as I could, but was wondering how
+												to go about it ..."
+											</div>
+											<section className="section">
+												<div className="main-testimonial-name ">
+													<h3>Foster Mom Alisa & Darcy</h3> with Chihuahua Rescue of San Diego
+												</div>
+											</section>
+										</div>
 									</div>
-								</div>
+								</section>
 							</div>
 						</div>
 					</div>
