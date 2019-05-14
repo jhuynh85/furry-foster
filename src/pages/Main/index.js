@@ -23,7 +23,7 @@ class Main extends React.Component {
 	render() {
 		return (
 			<div>
-				<section className="hero is-light is-medium main-background-image">
+				<section className="hero is-light is-medium main-bg-image main-bg-container">
 					<div className="hero-body">
 						<div className="container">
 							<div className="columns">
@@ -52,7 +52,7 @@ class Main extends React.Component {
 						</div>
 					</div>
 				</section>
-				<section className="hero is-light is-medium">
+				<section className="hero is-pattern is-medium">
 					<div className="hero-body">
 						<div className="container">
 							<div className="has-text-centered">
@@ -62,7 +62,7 @@ class Main extends React.Component {
 									<p className="subtitle is-4">There are plenty of ways to get involved!</p>
 								</section>
 								<div className="columns container is-fluid is-centered">
-									<div className="column is-one-quarter">
+									<div className="column is-one-third">
 										<Tile
 											className=""
 											tileURL="/pets"
@@ -75,7 +75,7 @@ class Main extends React.Component {
 											}
 										/>
 									</div>
-									<div className="column is-one-quarter">
+									<div className="column is-one-third">
 										<Tile
 											className=""
 											tileURL="/foster"
@@ -88,7 +88,7 @@ class Main extends React.Component {
 											}
 										/>
 									</div>
-									<div className="column is-one-quarter">
+									<div className="column is-one-third">
 										<Tile
 											className=""
 											tileURL="/foster"
@@ -115,23 +115,55 @@ class Main extends React.Component {
 								</section>
 								<section>
 									<div className="columns">
-										<div className="column">
-											<div className="main-testimonial-sq">
-												<img src={bannerImage} alt="Happy foster family" />
-											</div>
-										</div>
-										<div className="column has-text-left">
+										<div className="column has-text-centered">
+											<div className="main-testimonial-sq">"</div>
 											<div className="main-testimonial-quote">
-												"I love animals. I thought about volunteering at an animal shelter, but felt
+												I love animals. I thought about volunteering at an animal shelter, but felt
 												I had to do something more. After moving back to San Diego from Switzerland,
 												I decided I wanted to foster as many dogs as I could, but was wondering how
-												to go about it ..."
-											</div>
-											<section className="section">
+												to go about it ...
 												<div className="main-testimonial-name ">
-													<h3>Foster Mom Alisa & Darcy</h3> with Chihuahua Rescue of San Diego
+													- Foster Mom Alisa & Darcy, Chihuahua Rescue of San Diego
 												</div>
-											</section>
+											</div>
+										</div>
+										<div className="column has-text-centered">
+											<div className="main-testimonial-sq">"</div>
+											<div className="main-testimonial-quote">
+												I love animals. I thought about volunteering at an animal shelter, but felt
+												I had to do something more. After moving back to San Diego from Switzerland,
+												I decided I wanted to foster as many dogs as I could, but was wondering how
+												to go about it ...
+												<div className="main-testimonial-name ">
+													- Foster Mom Alisa & Darcy, Chihuahua Rescue of San Diego
+												</div>
+											</div>
+										</div>
+									</div>
+									<div className="columns">
+										<div className="column has-text-centered">
+											<div className="main-testimonial-sq">"</div>
+											<div className="main-testimonial-quote">
+												I love animals. I thought about volunteering at an animal shelter, but felt
+												I had to do something more. After moving back to San Diego from Switzerland,
+												I decided I wanted to foster as many dogs as I could, but was wondering how
+												to go about it ...
+												<div className="main-testimonial-name ">
+													- Foster Mom Alisa & Darcy, Chihuahua Rescue of San Diego
+												</div>
+											</div>
+										</div>
+										<div className="column has-text-centered">
+											<div className="main-testimonial-sq">"</div>
+											<div className="main-testimonial-quote">
+												I love animals. I thought about volunteering at an animal shelter, but felt
+												I had to do something more. After moving back to San Diego from Switzerland,
+												I decided I wanted to foster as many dogs as I could, but was wondering how
+												to go about it ...
+												<div className="main-testimonial-name ">
+													- Foster Mom Alisa & Darcy, Chihuahua Rescue of San Diego
+												</div>
+											</div>
 										</div>
 									</div>
 								</section>

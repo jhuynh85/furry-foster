@@ -1,0 +1,8 @@
+#news-banner input,
+#news-banner .button {
+	font-size: 1.5em;
+}
+
+#news-banner .field {
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
