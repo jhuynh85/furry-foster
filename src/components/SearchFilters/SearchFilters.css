@@ -1,13 +1,14 @@
 .filter-checkbox {
-	border: 1px solid #ccc;
-	padding: 5px;
+	border: 1px solid #000;
+	padding: 8px;
 	display: block;
-	height: 2.2em;
 	text-transform: uppercase;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #fff;
 }
 
 .filter-checkbox:hover {
-	background: #eee;
+	background: #ffdd57;
 	cursor: pointer;
 }
 
@@ -30,6 +31,23 @@
 	font-size: 0.8em;
 }
 
+.search-filter-form span.select select {
+	border: 1px solid #000;
+	text-transform: uppercase;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #fff;
+}
+
+.sort-container {
+	display: flex;
+	flex-direction: row;
+	padding: 10px;
+}
+
+.sort-total {
+	flex-grow: 1;
+}
+
 .sort-selected {
 	text-decoration: underline;
 	font-weight: bold;
@@ -41,4 +59,16 @@
 
 .filter-selected {
 	background: #eee;
+}
+
+.filter-container {
+	width: 100%;
+	padding: 10px;
+	background: #4a3d35;
+}
+
+.search-filter-form {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }

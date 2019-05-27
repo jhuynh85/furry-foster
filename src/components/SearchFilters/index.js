@@ -112,8 +112,8 @@ class SearchFilters extends React.Component {
 	render() {
 		return (
 			<div>
-				<form className="columns search-filter-form">
-					<div className="column is-inline-flex">
+				<form className="filter-container search-filter-form">
+					<div className="is-inline-flex">
 						<div className="field has-addons has-text-centered">
 							<p className="control">
 								<span className="select is-hover">
@@ -134,7 +134,7 @@ class SearchFilters extends React.Component {
 							</p>
 						</div>
 					</div>
-					<div className="column is-inline-flex">
+					<div className="is-inline-flex">
 						<div className="field has-addons has-text-centered">
 							<p className="control">
 								<span className="select is-hover">
@@ -154,7 +154,7 @@ class SearchFilters extends React.Component {
 							</p>
 						</div>
 					</div>
-					<div className="column is-inline-flex">
+					<div className="is-inline-flex">
 						<div className="field has-addons has-text-centered">
 							<label
 								className={this.getFilterClassName("male", "gender")}
@@ -170,7 +170,7 @@ class SearchFilters extends React.Component {
 							</label>
 						</div>
 					</div>
-					<div className="column is-inline-flex">
+					<div className="is-inline-flex">
 						<div className="field has-addons has-text-centered">
 							<label
 								className={this.getFilterClassName("small", "size")}
@@ -198,7 +198,7 @@ class SearchFilters extends React.Component {
 							</label>
 						</div>
 					</div>
-					<div className="column is-inline-flex">
+					<div className="is-inline-flex">
 						<div className="field has-addons has-text-centered">
 							<label
 								className={this.getFilterClassName("baby", "age")}
@@ -227,30 +227,35 @@ class SearchFilters extends React.Component {
 						</div>
 					</div>
 				</form>
-				Sort by :&nbsp;&nbsp;
-				<span
-					className={this.getSortClassName("name")}
-					onClick={() => {
-						this.setSort("name");
-					}}>
-					Name
-				</span>
-				&nbsp;&nbsp;|&nbsp;&nbsp;
-				<span
-					className={this.getSortClassName("newest")}
-					onClick={() => {
-						this.setSort("newest");
-					}}>
-					Newest
-				</span>
-				&nbsp;&nbsp;|&nbsp;&nbsp;
-				<span
-					className={this.getSortClassName("closest")}
-					onClick={() => {
-						this.setSort("closest");
-					}}>
-					Closest
-				</span>
+				<div className="sort-container">
+					<p className="sort-total">19,289 Dogs near 92126</p>
+					<div>
+						Sort by :&nbsp;&nbsp;
+						<span
+							className={this.getSortClassName("name")}
+							onClick={() => {
+								this.setSort("name");
+							}}>
+							Name
+						</span>
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+						<span
+							className={this.getSortClassName("newest")}
+							onClick={() => {
+								this.setSort("newest");
+							}}>
+							Newest
+						</span>
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+						<span
+							className={this.getSortClassName("closest")}
+							onClick={() => {
+								this.setSort("closest");
+							}}>
+							Closest
+						</span>
+					</div>
+				</div>
 			</div>
 		);
 	}

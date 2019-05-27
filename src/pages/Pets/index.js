@@ -82,7 +82,6 @@ class Pets extends React.Component {
 				<div className="container ">
 					<section className="section content">
 						<h1 className="is-size-1">Find Pets</h1>
-						<p>19,289 Dogs near 92126</p>
 						<div className="columns is-desktop">
 							<div className="column">
 								<SearchFilters
