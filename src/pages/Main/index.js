@@ -30,9 +30,11 @@ class Main extends React.Component {
 								<div className="column">
 									<h1 className="title is-1 has-text-white">You can make a difference</h1>
 									<p className="subtitle is-4 has-text-white">Find a pet who needs your help.</p>
-									<Pane>
-										<Search />
-									</Pane>
+									<div className="header-search-container">
+										<div className="header-search-input-bar">
+											<Search />
+										</div>
+									</div>
 								</div>
 								<div className="column" />
 							</div>

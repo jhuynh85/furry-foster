@@ -21,8 +21,10 @@ const Header = ({ auth }) => {
 					</Link>
 				</div>
 				<div className="level-right">
-					<div className=" header-search-input-bar">
-						<Search />
+					<div className="header-search-container">
+						<div className="header-search-input-bar">
+							<Search />
+						</div>
 					</div>
 					&nbsp;&nbsp;&nbsp;
 					<Navbar />

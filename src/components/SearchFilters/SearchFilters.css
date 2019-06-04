@@ -27,10 +27,6 @@
 	margin-right: 10px;
 }
 
-.search-filter-form span.select {
-	font-size: 0.8em;
-}
-
 .search-filter-form span.select select {
 	border: 1px solid #000;
 	text-transform: uppercase;
