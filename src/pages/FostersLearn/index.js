@@ -138,7 +138,8 @@ class FostersLearn extends React.Component {
 						</div>
 						<p>
 							Participate in our community and connect with other furry foster parents and their
-							pets. <br />Together we can bring every homeless pet home.
+							pets. <br />
+							Together we can bring every homeless pet home.
 						</p>
 						<Button link="/pets" text="Find a foster pet" />
 					</div>
