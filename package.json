@@ -4,7 +4,7 @@
 	"private": true,
 	"author": "Joseph Huynh, Margaret Choi",
 	"dependencies": {
-		"aws-sdk": "^2.312.0",
+		"aws-sdk": "^2.814.0",
 		"axios": "^0.18.0",
 		"bcrypt-nodejs": "^0.0.3",
 		"body-parser": "^1.18.3",
